@@ -32,14 +32,14 @@
                 </div>
                 <div class="widget-text">
                   <a mat-button [matMenuTriggerFor]="langMenu" #langMenuTrigger="matMenuTrigger">
-                    <img [src]="flag.image" width="18">
+                    <img [src]="flag.image" width="18" alt="">
                     <span fxShow="false" fxShow.gt-sm class="flag-menu-title">{{flag.name}}</span>
                     <mat-icon class="mat-icon-sm caret cur-icon">arrow_drop_down</mat-icon>
                 </a>
                 <mat-menu #langMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
                     <span>
                         <button mat-menu-item *ngFor="let flag of flags" (click)="changeLang(flag)">
-                            <img [src]="flag.image" width="18"> {{flag.name}}
+                            <img [src]="flag.image" width="18" alt = ""> {{flag.name}}
                         </button>
                     </span>
                 </mat-menu>
@@ -88,14 +88,14 @@
                 </div>
                 <div class="widget-text">
                   <a mat-button [matMenuTriggerFor]="langMenu" #langMenuTrigger="matMenuTrigger">
-                    <img [src]="flag.image" width="18">
+                    <img [src]="flag.image" width="18" alt="">
                     <span fxShow="false" fxShow.gt-sm class="flag-menu-title">{{flag.name}}</span>
                     <mat-icon class="mat-icon-sm caret cur-icon">arrow_drop_down</mat-icon>
                 </a>
                 <mat-menu #langMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
                     <span>
                         <button mat-menu-item *ngFor="let flag of flags" (click)="changeLang(flag)">
-                            <img [src]="flag.image" width="18"> {{flag.name}}
+                            <img [src]="flag.image" width="18" alt=""> {{flag.name}}
                         </button>
                     </span>
                 </mat-menu>
