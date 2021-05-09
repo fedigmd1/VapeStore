@@ -1,24 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DemoComponent } from './components/demo/demo.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxImgZoomModule } from 'ngx-img-zoom';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-import { MainComponent } from './components/main/main.component';
-
-
-
+import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShopModule } from './components/shop/shop.module';
+import { MainComponent } from './components/main/main.component';
+import { DemoComponent } from './components/demo/demo.component';
 import { SharedModule } from './components/shared/shared.module';
 import { ColorOptionsComponent } from './components/color-options/color-options.component';
-
 
 @NgModule({
   declarations: [
@@ -26,22 +21,19 @@ import { ColorOptionsComponent } from './components/color-options/color-options.
     DemoComponent,
     MainComponent,
     ColorOptionsComponent
-
-
-
   ],
   imports: [
-    NgxSpinnerModule,
-    BrowserModule,
-    SharedModule,
     ShopModule,
-    NgxSkeletonLoaderModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
+    BrowserModule,
+    NgxSpinnerModule,
     AppRoutingModule,
-    NgxImgZoomModule
+    HttpClientModule,
+    NgxImgZoomModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

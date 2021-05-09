@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
-import { Settings, AppSettings } from './components/shared/services/color-option.service';
 import { Router, NavigationEnd } from '@angular/router';
 
+import { Settings, AppSettings } from './components/shared/services/color-option.service';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +13,19 @@ export class AppComponent {
 
   title = 'ecommerce-sophia-new';
   public settings: Settings;
-  public url : any;
+  public url: any;
 
-  constructor(private spinner: NgxSpinnerService, public appSettings:AppSettings, public router: Router) {
+  constructor(
+    private spinner: NgxSpinnerService,
+    public appSettings: AppSettings,
+    public router: Router
+  ) {
     this.settings = this.appSettings.settings;
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.url = event.url;
       }
-    } )
+    })
   }
 
 
@@ -36,11 +40,11 @@ export class AppComponent {
 
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
-          return;
+        return;
       }
-      window.scrollTo(0,0)
-  });
-  document.documentElement.style.setProperty('--theme-deafult', '#ef6c00');
+      window.scrollTo(0, 0)
+    });
+    document.documentElement.style.setProperty('--theme-deafult', '#ef6c00');
   }
 
 }
