@@ -6,6 +6,7 @@ import {CartService} from "../shared/services/cart.service";
 import { Router, NavigationEnd } from '@angular/router';
 import { SidebarMenuService } from '../shared/sidebar/sidebar-menu.service';
 import { SidenavMenu } from '../shared/sidebar/sidebar-menu.model';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main',
@@ -19,11 +20,9 @@ export class MainComponent implements OnInit {
   public currencies = ['USD', 'EUR'];
   public currency:any;
   public flags = [
-    { name:'English', image: 'assets/images/flags/gb.svg' },
-    { name:'German', image: 'assets/images/flags/de.svg' },
-    { name:'French', image: 'assets/images/flags/fr.svg' },
-    { name:'Russian', image: 'assets/images/flags/ru.svg' },
-    { name:'Turkish', image: 'assets/images/flags/tr.svg' }
+    { id:'en', name:'English', image: 'assets/images/flags/gb.svg' },
+    { id:'fr',name:'French', image: 'assets/images/flags/fr.svg' },
+    { id:'ar',name:'Arabic', image: 'assets/images/flags/tr.svg' }
   ]
   public flag:any;
 
@@ -273,13 +272,14 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.currency = this.currencies[0];
-    this.flag = this.flags[0];
+    this.flag = this.flags.find(flag => flag.id === (localStorage.getItem('lang') || 'fr') )
   }
 
   public changeCurrency(currency){
     this.currency = currency;
   }
   public changeLang(flag){
-    this.flag = flag;
+    localStorage.setItem('lang',flag.id)
+    window.location.reload()
   }
 }
