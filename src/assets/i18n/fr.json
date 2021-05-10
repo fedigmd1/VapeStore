@@ -1,0 +1,10 @@
+{
+    "CONTACT_US":
+       {"CONTACT_US":"Contactez-nous",
+        "PHONE":"Téléphone",
+        "EMAIL":"Email",
+        "YOUR_NAME":"Votre Nom",
+        "YOUR_EMAIL":"votre Email",
+        "SUBJECT":"Objet",
+        "POST_CONTENT":"Contenu"}
+    }
