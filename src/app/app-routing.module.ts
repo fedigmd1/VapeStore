@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 import { HomeComponent } from './components/shop/home/home.component';
 import { DemoComponent } from './components/demo/demo.component';
+import { ErrorPageComponent } from './components/pages/error-page/error-page.component';
 
 
 const appRoutes: Routes = [
@@ -34,16 +35,18 @@ const appRoutes: Routes = [
       },
     ]
   },
-  {
-    path: '**',
-    redirectTo: 'home/one'
-  }
+  { path: '**', component: ErrorPageComponent }
 ];
 
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(appRoutes, { useHash: true, relativeLinkResolution: 'legacy' })
+    RouterModule.forRoot(appRoutes, {
+      useHash: true,
+      onSameUrlNavigation: 'ignore',
+      relativeLinkResolution: 'legacy',
+      scrollPositionRestoration: 'top',
+    })
   ],
   exports: [RouterModule]
 })
