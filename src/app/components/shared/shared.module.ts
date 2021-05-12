@@ -50,7 +50,13 @@ import { ShoppingWidgetsThreeComponent } from './shopping-widgets-three/shopping
 import { HeaderSevenComponent } from './header-seven/header-seven.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../../../assets/i18n/', '.json');
+}  
 
 @NgModule({
   declarations: [
@@ -101,7 +107,14 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     MatDividerModule,
     MatCardModule,
     FlexLayoutModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  }),
   ],
   exports: [
     CommonModule,
@@ -144,13 +157,15 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     HeaderSixComponent,
     ShoppingWidgetsThreeComponent,
     HeaderSevenComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    TranslateModule
 
   ],
   providers: [
     ProductService,
     CartService,
-    AppSettings
+    AppSettings,
+    HttpClient
   ]
 })
 export class SharedModule {}
