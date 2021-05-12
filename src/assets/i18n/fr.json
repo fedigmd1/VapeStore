@@ -1,10 +1,16 @@
-{
-    "CONTACT_US":
+{    "CONTACT_US":
        {"CONTACT_US":"Contactez-nous",
+        "ADDRESS":"Adresse",
         "PHONE":"Téléphone",
         "EMAIL":"Email",
         "YOUR_NAME":"Votre Nom",
-        "YOUR_EMAIL":"votre Email",
+        "YOUR_EMAIL":"Votre Email",
         "SUBJECT":"Objet",
-        "POST_CONTENT":"Contenu"}
+        "POST_CONTENT":"Contenu"},
+    "COMMON": {
+        "FROM" : {},
+        "BUTTON" : {
+            "SEND":"Envoyer"
+        }
     }
+}

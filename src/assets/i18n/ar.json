@@ -1,10 +1,17 @@
 {
     "CONTACT_US":
        {"CONTACT_US":"اتصل بنا",
+        "ADDRESS":"عنوان",
         "PHONE":"هاتف",
         "EMAIL":"البريد الإلكتروني",
         "YOUR_NAME":"اسمك",
         "YOUR_EMAIL":"بريدك الالكتروني",
         "SUBJECT":"الهدف",
-        "POST_CONTENT":"محتوى"}
+        "POST_CONTENT":"محتوى"},
+    "COMMON": {
+            "FROM" : {},
+            "BUTTON" : {
+                "SEND":"إرسال"
+            }
     }
+}
