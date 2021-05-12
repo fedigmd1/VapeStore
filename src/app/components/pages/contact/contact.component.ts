@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { from } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -28,10 +27,10 @@ export class ContactComponent implements OnInit {
 
   }
   initForm(){
-    this.name = new FormControl('',{validators: Validators.required}),
-    this.email = new FormControl('',{validators: [Validators.required, Validators.email]}),
-    this.subject = new FormControl('',{validators: Validators.required}),
+    this.name = new FormControl('',{validators: Validators.required})
     this.content = new FormControl('',{validators: Validators.required})
+    this.subject = new FormControl('',{validators: Validators.required})
+    this.email = new FormControl('',{validators: [Validators.required, Validators.email]})
     this.contactForm = new FormGroup({
       name: this.name ,
       email: this.email,
