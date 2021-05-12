@@ -7,72 +7,70 @@
     <div class="col-lg-7 map">
       <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Avenue%20de%20Yasser%20Arafat,sahloul%20sousse%20tunisa+(My%20Business%20Name)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"   allowfullscreen></iframe>
   </div>
-    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" class="mt-20">
+  <div class="mt-20"> 
+      <div class="title">
+        <h3>{{'CONTACT_US.CONTACT_US'| translate }}</h3>
+      </div>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" class="mt-20" >
       <div fxFlex="100"   fxFlex.gt-sm="60" class="left-info-panel">
-    
-        <div class="title">
-            <h3>Contact us</h3>
-        </div>
   
          <ul>
            <li>
               <i class="material-icons">home </i>
               <br>
-            <h4>Address</h4>
+            <h4>{{'CONTACT_US.ADDRESS'| translate }}</h4>
             <br>
-           <p class="text-muted">123 Main Street, Anytown, CA 12345 – USA</p>
+           <p class="text-muted">Avenue de Yasser Arafat, Sahloul, Sousse</p>
            </li>
            <li>
               <i class="material-icons">call </i>
               <br>
-            <h4>Phone</h4>
+            <h4>{{'CONTACT_US.PHONE'| translate }}</h4>
             <br>
-            <p class="text-muted">123 Main Street, Anytown, CA 12345 – USA</p>
+            <p class="text-muted">+216 53 897 129 / +216 24 260 330 / +216 54 836 708</p>
            </li>
            <li>
               <i class="material-icons">email </i>
               <br>
-            <h4>Email</h4>
+            <h4>{{'CONTACT_US.EMAIL'| translate }}</h4>
             <br>
-            <p class=" text-muted text-muted">123 Main Street, Anytown, CA 12345 – USA</p>
+            <p class=" text-muted text-muted">vapestore@gmail.com</p>
            </li>
          </ul>
       </div>
       <div fxFlex="100"   fxFlex.gt-sm="60" class="contact-form">
-          <div class="title">
-              <h3>Contact us</h3>
-          </div>
-          <form fxLayout="row wrap">
+        
+          <form fxLayout="row wrap" [formGroup]="contactForm" (ngSubmit)="sendMail()">
             <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
                 <mat-form-field class="w-100">
-                    <input matInput placeholder="Your Name (required)" #name="ngModel" ngModel name="name" required>
+                    <input matInput placeholder="{{'CONTACT_US.YOUR_NAME'| translate }}" name="name"  formControlName="name">
                     <mat-error *ngIf="name.invalid">Please enter a valid message</mat-error>
                   </mat-form-field>
             </div>
             <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
                 <mat-form-field class="w-100">
-                    <input matInput placeholder="Your Email (required)" #email="ngModel" ngModel name="email" required>
+                    <input matInput placeholder="{{'CONTACT_US.YOUR_EMAIL'| translate }}"  name="email" formControlName="email">
                     <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
                   </mat-form-field>
             </div>
             <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
                 <mat-form-field class="w-100">
-                    <input matInput placeholder="Subject" #subject="ngModel" ngModel name="subject" required>
+                    <input matInput placeholder="{{'CONTACT_US.SUBJECT'| translate }}"  name="subject" formControlName="subject">
                     <mat-error *ngIf="subject.invalid">Please enter a valid message</mat-error>
                   </mat-form-field>
             </div>
             <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
                 <mat-form-field class="w-100">
-                    <textarea placeholder="Post content" matInput rows="6" ngModel name="content" required></textarea>
+                    <textarea placeholder="{{'CONTACT_US.POST_CONTENT'| translate }}" matInput rows="6" name="content" formControlName="content"></textarea>
                   </mat-form-field>
             </div>
             <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                <button class="btn-project" mat-raised-button color="primary" type="submit">Send</button>
+                <button class="btn-project" mat-raised-button color="primary" type="submit">{{'COMMON.BUTTON.SEND'| translate }}</button>
               </div>
             </form>
       </div>
     </div>
-    
+  </div>
   </mat-card>
 </div>
 </div>

@@ -20,8 +20,8 @@ export class MainComponent implements OnInit {
   public currencies = ['USD', 'EUR'];
   public currency:any;
   public flags = [
-    { id:'en', name:'English', image: 'assets/images/flags/gb.svg' },
     { id:'fr',name:'French', image: 'assets/images/flags/fr.svg' },
+    { id:'en', name:'English', image: 'assets/images/flags/gb.svg' },
     { id:'ar',name:'Arabic', image: 'assets/images/flags/tr.svg' }
   ]
   public flag:any;

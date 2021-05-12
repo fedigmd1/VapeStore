@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  contactForm : FormGroup;
+  name : FormControl
+  email : FormControl
+  subject : FormControl
+  content : FormControl
+
+  
+  constructor(private translateService: TranslateService
+    ) { 
+      //TODO: replace after fix archi of project
+      this.translateService.setDefaultLang('fr');
+      this.translateService.use(localStorage.getItem('lang'||'fr'))}
 
   ngOnInit() {
+    this.initForm();
+
+  }
+  initForm(){
+    this.name = new FormControl('',{validators: Validators.required}),
+    this.email = new FormControl('',{validators: [Validators.required, Validators.email]}),
+    this.subject = new FormControl('',{validators: Validators.required}),
+    this.content = new FormControl('',{validators: Validators.required})
+    this.contactForm = new FormGroup({
+      name: this.name ,
+      email: this.email,
+      subject: this.subject,
+      content: this.content
+    })
+  }
+
+  sendMail(){
+    console.warn(this.contactForm.value)
   }
 
 }
