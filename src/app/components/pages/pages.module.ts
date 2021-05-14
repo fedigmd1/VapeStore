@@ -40,6 +40,9 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
     ReviewsComponent,
     OrderSuccessComponent
 
+  ],
+  exports:[
+    ErrorPageComponent
   ]
 })
 export class PagesModule { }

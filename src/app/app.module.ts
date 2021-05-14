@@ -13,13 +13,16 @@ import { ShopModule } from './components/shop/shop.module';
 import { MainComponent } from './components/main/main.component';
 import { DemoComponent } from './components/demo/demo.component';
 import { SharedModule } from './components/shared/shared.module';
+import { ErrorPageComponent } from './components/pages/error-page/error-page.component';
 import { ColorOptionsComponent } from './components/color-options/color-options.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DemoComponent,
     MainComponent,
+    ErrorPageComponent,
     ColorOptionsComponent
   ],
   imports: [
