@@ -35,16 +35,18 @@ const appRoutes: Routes = [
       },
     ]
   },
-  {
-    path: '**',
-    redirectTo: 'home/one'
-  }
+  { path: '**', component: ErrorPageComponent }
 ];
 
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(appRoutes, { useHash: true, relativeLinkResolution: 'legacy' })
+    RouterModule.forRoot(appRoutes, {
+      useHash: true,
+      onSameUrlNavigation: 'ignore',
+      relativeLinkResolution: 'legacy',
+      scrollPositionRestoration: 'top',
+    })
   ],
   exports: [RouterModule]
 })

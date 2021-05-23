@@ -12,7 +12,7 @@ export class DemoComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.contentLoaded = true;
-    }, 4000);
+    }, 1000);
   }
 
 }

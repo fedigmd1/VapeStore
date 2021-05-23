@@ -16,11 +16,13 @@ import { SharedModule } from './shared/shared.module';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { ColorOptionsComponent } from './color-options/color-options.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     DemoComponent,
     MainComponent,
+    ErrorPageComponent,
     ColorOptionsComponent
   ],
   imports: [
