@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './components/main/main.component';
-import { HomeComponent } from './components/shop/home/home.component';
-import { DemoComponent } from './components/demo/demo.component';
-import { ErrorPageComponent } from './components/pages/error-page/error-page.component';
+import { MainComponent } from './main/main.component';
+import { HomeComponent } from './shop/home/home.component';
+import { DemoComponent } from './demo/demo.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 
 const appRoutes: Routes = [
@@ -22,16 +22,16 @@ const appRoutes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('./components/shop/shop.module').then(m => m.ShopModule)
+        loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
       },
       {
         path: 'pages',
-        loadChildren: () => import('./components/pages/pages.module').then(m => m.PagesModule)
+        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
 
       },
       {
         path: 'blog',
-        loadChildren: () => import('./components/blog/blog.module').then(m => m.BlogModule)
+        loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
       },
     ]
   },

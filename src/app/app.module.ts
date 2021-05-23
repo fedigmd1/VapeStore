@@ -9,12 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ShopModule } from './components/shop/shop.module';
-import { MainComponent } from './components/main/main.component';
-import { DemoComponent } from './components/demo/demo.component';
-import { SharedModule } from './components/shared/shared.module';
-import { ErrorPageComponent } from './components/pages/error-page/error-page.component';
-import { ColorOptionsComponent } from './components/color-options/color-options.component';
+import { ShopModule } from './shop/shop.module';
+import { MainComponent } from './main/main.component';
+import { DemoComponent } from './demo/demo.component';
+import { SharedModule } from './shared/shared.module';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { ColorOptionsComponent } from './color-options/color-options.component';
 
 
 @NgModule({
