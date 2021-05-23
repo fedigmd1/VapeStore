@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
 import { Router, NavigationEnd } from '@angular/router';
 
-import { Settings, AppSettings } from './components/shared/services/color-option.service';
+import { Settings, AppSettings } from './shared/services/color-option.service';
 
 @Component({
   selector: 'app-root',
