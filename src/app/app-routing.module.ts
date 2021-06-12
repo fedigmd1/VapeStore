@@ -14,27 +14,19 @@ const appRoutes: Routes = [
   },
   {
     path: 'home',
-    component: DemoComponent
+    loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
   },
   {
-    path: '',
-    component: MainComponent,
-    children: [
-      {
-        path: 'home',
-        loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
-      },
-      {
-        path: 'pages',
-        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+    path: 'pages',
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
 
-      },
-      {
-        path: 'blog',
-        loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
-      },
-    ]
   },
+  {
+    path: 'blog',
+    loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
+  },
+
+
   { path: '**', component: ErrorPageComponent }
 ];
 
