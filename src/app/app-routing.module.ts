@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './main/main.component';
-import { HomeComponent } from './shop/home/home.component';
-import { DemoComponent } from './demo/demo.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 
@@ -22,8 +19,8 @@ const appRoutes: Routes = [
 
   },
   {
-    path: 'blog',
-    loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
+    path: 'market-place',
+    loadChildren: () => import('../app/main-feature/market-place/market-place.module').then(m => m.MarketPlaceModule)
   },
 
 
