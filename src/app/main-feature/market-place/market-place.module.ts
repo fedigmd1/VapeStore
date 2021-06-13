@@ -7,6 +7,7 @@ import { MarketPlaceRoutingModule } from './market-place-routing.module';
 import { MarketPlaceDetailsComponent } from './market-place-details/market-place-details.component';
 import { MarketPlaceColumnComponent } from './market-place-column/market-place-column.component';
 import { MarketPlaceListComponent } from './market-place-list/market-place-list.component';
+import { MarketPlaceMainComponent } from './market-place-main/market-place-main.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MarketPlaceListComponent } from './market-place-list/market-place-list.
   declarations: [
     MarketPlaceDetailsComponent,
     MarketPlaceColumnComponent,
-    MarketPlaceListComponent
+    MarketPlaceListComponent,
+    MarketPlaceMainComponent
   ]
 })
 export class MarketPlaceModule { }

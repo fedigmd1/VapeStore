@@ -3,16 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { MarketPlaceDetailsComponent } from './market-place-details/market-place-details.component';
 import { MarketPlaceColumnComponent } from './market-place-column/market-place-column.component';
 import { MarketPlaceListComponent } from './market-place-list/market-place-list.component';
+import { MarketPlaceMainComponent } from './market-place-main/market-place-main.component';
 
 
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'list' },
   {
-    path: '',
+    path: '', component: MarketPlaceMainComponent,
     children: [
-      { path: 'list', component: MarketPlaceListComponent},
-      { path: 'column', component: MarketPlaceColumnComponent},
-      { path: 'details', component: MarketPlaceDetailsComponent}
+      { path: 'list', component: MarketPlaceListComponent },
+      { path: 'column', component: MarketPlaceColumnComponent },
+      { path: 'details', component: MarketPlaceDetailsComponent }
     ]
   }
 ];
