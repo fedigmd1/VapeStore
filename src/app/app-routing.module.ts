@@ -22,6 +22,15 @@ const appRoutes: Routes = [
     path: 'market-place',
     loadChildren: () => import('../app/main-feature/market-place/market-place.module').then(m => m.MarketPlaceModule)
   },
+  {
+    path: 'wish-list',
+    loadChildren: () => import('../app/main-feature/wish-list/wish-list.module').then(m => m.WishListModule)
+  },
+  {
+    path: 'compare',
+    loadChildren: () => import('../app/main-feature/compare/compare.module').then(m => m.CompareModule)
+  },
+  
 
 
   { path: '**', component: ErrorPageComponent }
