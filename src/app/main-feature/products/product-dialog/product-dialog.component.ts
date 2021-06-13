@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Product } from 'src/app/modals/product.model';
+import { Product } from 'src/app/core/modals/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { Router } from '@angular/router';
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Product } from 'src/app/modals/product.model';
+import { Product } from 'src/app/core/modals/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CartItem } from 'src/app/modals/cart-item';
+import { CartItem } from 'src/app/core/modals/cart-item';
 import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject, Subscriber } from 'rxjs';
 

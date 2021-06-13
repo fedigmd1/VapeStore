@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/modals/product.model';
+import { Product } from 'src/app/core/modals/product.model';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({

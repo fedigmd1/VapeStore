@@ -23,31 +23,24 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MenuComponent } from './menu/menu.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { MenuComponent } from './layout/menu/menu.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { ProductService } from './services/product.service';
 import { CartService } from './services/cart.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { BannersComponent } from './banners/banners.component';
-import { HeaderTwoComponent } from './header-two/header-two.component';
 import { ShoppingWidgetsComponent } from './shopping-widgets/shopping-widgets.component';
-import { HeaderThreeComponent } from './header-three/header-three.component';
 import { BannersFourComponent } from './banners-four/banners-four.component';
 import { BlogSectionComponent } from './blog-section/blog-section.component';
 import { BannerPromotionComponent } from './banner-promotion/banner-promotion.component';
-import { HeaderFourComponent } from './header-four/header-four.component';
 import { CategoriesMenuComponent } from './categories-menu/categories-menu.component';
 import { CategoriesSectionComponent } from './categories-section/categories-section.component';
-import { FooterTwoComponent } from './footer-two/footer-two.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ShoppingWidgetsTwoComponent } from './shopping-widgets-two/shopping-widgets-two.component';
-import { HeaderFiveComponent } from './header-five/header-five.component';
 import { BlogSectionTwoComponent } from './blog-section-two/blog-section-two.component';
-import { HeaderSixComponent } from './header-six/header-six.component';
 import { ShoppingWidgetsThreeComponent } from './shopping-widgets-three/shopping-widgets-three.component';
-import { HeaderSevenComponent } from './header-seven/header-seven.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
@@ -60,22 +53,15 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     SidebarComponent,
     OrderByPipe,
     BannersComponent,
-    HeaderTwoComponent,
     ShoppingWidgetsComponent,
-    HeaderThreeComponent,
     BannersFourComponent,
     BlogSectionComponent,
     BannerPromotionComponent,
-    HeaderFourComponent,
     CategoriesMenuComponent,
     CategoriesSectionComponent,
-    FooterTwoComponent,
     ShoppingWidgetsTwoComponent,
-    HeaderFiveComponent,
     BlogSectionTwoComponent,
-    HeaderSixComponent,
     ShoppingWidgetsThreeComponent,
-    HeaderSevenComponent,
     BreadcrumbComponent
   ],
   imports: [
@@ -130,20 +116,13 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     SidebarComponent,
     BannersComponent,
     FlexLayoutModule,
-    HeaderTwoComponent,
-    HeaderThreeComponent,
-    HeaderFourComponent,
     ShoppingWidgetsComponent,
     BannersFourComponent,
     BlogSectionComponent,
     BannerPromotionComponent,
     CategoriesMenuComponent,
     CategoriesSectionComponent,
-    FooterTwoComponent,
-    HeaderFiveComponent,
-    HeaderSixComponent,
     ShoppingWidgetsThreeComponent,
-    HeaderSevenComponent,
     BreadcrumbComponent
 
   ],

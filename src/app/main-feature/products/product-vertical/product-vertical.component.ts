@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
-import { Product } from 'src/app/modals/product.model';
+import { Product } from 'src/app/core/modals/product.model';
 
 @Component({
   selector: 'app-product-vertical',

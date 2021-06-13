@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../../modals/product.model';
+import { Product } from '../../core/modals/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable, of, Subscriber} from 'rxjs';
 import { map, filter, scan } from 'rxjs/operators';

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { ErrorPageComponent } from './main-feature/pages/error-page/error-page.component';
 
 
 const appRoutes: Routes = [
@@ -11,11 +11,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
+    loadChildren: () => import('./main-feature/shop/shop.module').then(m => m.ShopModule)
   },
   {
-    path: 'pages',
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+    path: 'page',
+    loadChildren: () => import('./main-feature/pages/pages.module').then(m => m.PagesModule)
 
   },
   {

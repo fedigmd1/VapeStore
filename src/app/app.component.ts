@@ -5,8 +5,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Settings, AppSettings } from './shared/services/color-option.service';
 import { CartService } from './shared/services/cart.service';
 import { SidebarMenuService } from './shared/sidebar/sidebar-menu.service';
-import { Product } from './modals/product.model';
-import { CartItem } from './modals/cart-item';
+import { Product } from './core/modals/product.model';
+import { CartItem } from './core/modals/cart-item';
 import { SidenavMenu } from './shared/sidebar/sidebar-menu.model';
 
 @Component({
@@ -178,7 +178,7 @@ export class AppComponent {
       ]
     },
     {
-      displayName: 'Blog',
+      displayName: 'Market Place',
       iconName: 'report_problem',
       children: [
         {

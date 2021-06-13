@@ -41,8 +41,7 @@
             <mat-menu #langMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
               <span>
                 <button mat-menu-item *ngFor="let flag of flags" (click)="changeLang(flag)">
-                  <img [src]="flag.image" width="18" alt=""> {{flag.name}}
-                </button>
+                  <img [src]="flag.image" width="18" alt="">{{flag.name}}</button>
               </span>
             </mat-menu>
           </div>

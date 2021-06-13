@@ -4,7 +4,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/modals/product.model';
+import { Product } from 'src/app/core/modals/product.model';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 
 @Component({
