@@ -1,8 +1,8 @@
 <mat-toolbar-row fxHide fxShow.gt-sm class="container" fxLayout="row" fxLayout.xs="row"
   fxLayoutAlign="space-between center">
   <div class="main-menu" fxLayout="row" fxHide fxShow.gt-sm>
-    <a mat-button class="mat-button">Home</a>
-    <a mat-button class="mat-button">Stores</a>
+    <a mat-button class="mat-button" [routerLink]="['/']">Home</a>
+    <a mat-button class="mat-button" [routerLink]="['/Stores']">Stores</a>
 
     <!-- <a [matMenuTriggerFor]="products" routerLinkActive="router-link-active" mat-button class="mat-button">Products
             <mat-icon class="caret">arrow_drop_down</mat-icon>
@@ -14,9 +14,7 @@
                 routerLinkActive="router-link-active">Products Right Sidebar</a>
             <a mat-menu-item [routerLink]="['/home/products/all/no-sidebar']"
                 routerLinkActive="router-link-active">Products No Sidebar</a>
-
         </mat-menu> -->
-
 
     <!-- <a mat-button [matMenuTriggerFor]="shop" class="mat-button" (click)="openMegaMenu()">Features<mat-icon
                 class="caret">arrow_drop_down</mat-icon></a>
@@ -30,7 +28,6 @@
                         Centered</a>
                     <a mat-menu-item>Sticky Description </a>
                     <a mat-menu-item>With Stock Progressbar </a>
-
                 </div>
                 <div fxFlex="25" class="p-1">
                     <a mat-menu-item routerLink="/"><b>FEATURES</b></a>
@@ -56,9 +53,7 @@
                     <button mat-menu-item>Icons on Side</button>
                     <button mat-menu-item>Quick Shop</button>
                 </div>
-
             </div>
-
         </mat-menu> -->
 
 
