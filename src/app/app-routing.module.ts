@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import { MainComponent } from './components/main/main.component';
-import { HomeComponent } from './components/shop/home/home.component';
-import { DemoComponent } from './components/demo/demo.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ErrorPageComponent } from './main-feature/pages/error-page/error-page.component';
 
 
 const appRoutes: Routes = [
@@ -13,37 +11,40 @@ const appRoutes: Routes = [
   },
   {
     path: 'home',
-    component: DemoComponent
+    loadChildren: () => import('./main-feature/shop/shop.module').then(m => m.ShopModule)
   },
   {
-    path: '',
-    component: MainComponent,
-    children: [
-      {
-        path: 'home',
-        loadChildren: () => import('./components/shop/shop.module').then(m => m.ShopModule)
-      },
-      {
-        path: 'pages',
-        loadChildren: () => import('./components/pages/pages.module').then(m => m.PagesModule)
+    path: 'page',
+    loadChildren: () => import('./main-feature/pages/pages.module').then(m => m.PagesModule)
 
-      },
-      {
-        path: 'blog',
-        loadChildren: () => import('./components/blog/blog.module').then(m => m.BlogModule)
-      },
-    ]
   },
   {
-    path: '**',
-    redirectTo: 'home/one'
-  }
+    path: 'market-place',
+    loadChildren: () => import('../app/main-feature/market-place/market-place.module').then(m => m.MarketPlaceModule)
+  },
+  {
+    path: 'wish-list',
+    loadChildren: () => import('../app/main-feature/wish-list/wish-list.module').then(m => m.WishListModule)
+  },
+  {
+    path: 'compare',
+    loadChildren: () => import('../app/main-feature/compare/compare.module').then(m => m.CompareModule)
+  },
+  
+
+
+  { path: '**', component: ErrorPageComponent }
 ];
 
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(appRoutes, { useHash: true, relativeLinkResolution: 'legacy' })
+    RouterModule.forRoot(appRoutes, {
+      useHash: true,
+      onSameUrlNavigation: 'ignore',
+      relativeLinkResolution: 'legacy',
+      scrollPositionRestoration: 'top',
+    })
   ],
   exports: [RouterModule]
 })
