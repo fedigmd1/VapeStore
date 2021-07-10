@@ -2,24 +2,26 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 
 @Component({
-  selector: 'app-main-carousel',
-  templateUrl: './main-carousel.component.html',
-  styleUrls: ['./main-carousel.component.scss']
+  selector: 'app-main-carousel-food',
+  templateUrl: './main-carousel-food.component.html',
+  styleUrls: ['./main-carousel-food.component.sass']
 })
-export class MainCarouselComponent implements OnInit {
+export class MainCarouselComponentFood implements OnInit {
 
   @Input('slides') slides: Array<any> = [];
+  contentLoaded = false;
   public config: SwiperConfigInterface = {};
 
   private pagination: SwiperPaginationInterface = {
     el: '.swiper-pagination',
     clickable: true
   };
-
   constructor() { }
 
-  ngOnInit() {
-  
+  ngOnInit() { 
+    setTimeout(() => {
+      this.contentLoaded = true;
+    }, 3000);
   }
 
   ngAfterViewInit(){
