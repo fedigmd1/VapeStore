@@ -10,6 +10,10 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'auth',
+    loadChildren: () => import('./main-feature/authentication/authentication.module').then(m => m.AuthenticationModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./main-feature/shop/shop.module').then(m => m.ShopModule)
   },
