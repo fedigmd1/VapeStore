@@ -43,6 +43,7 @@ import { BlogSectionTwoComponent } from './blog-section-two/blog-section-two.com
 import { ShoppingWidgetsThreeComponent } from './shopping-widgets-three/shopping-widgets-three.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -87,7 +88,9 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     MatDividerModule,
     MatCardModule,
     FlexLayoutModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
@@ -123,7 +126,9 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     CategoriesMenuComponent,
     CategoriesSectionComponent,
     ShoppingWidgetsThreeComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [
