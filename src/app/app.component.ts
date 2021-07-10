@@ -16,12 +16,18 @@ import { SidenavMenu } from './shared/sidebar/sidebar-menu.model';
 })
 export class AppComponent {
 
+  public flag: any;
+  isAuthPages = false
+  public banners = [];
   title = 'Vape Store';
+  public currency: any;
+  indexProduct: number;
   public settings: Settings;
+  wishlistItems: Product[] = [];
+  shoppingCartItems: CartItem[] = [];
+  public currencies = ['USD', 'EUR'];
   public sidenavMenuItems: Array<any>;
 
-  public currencies = ['USD', 'EUR'];
-  public currency: any;
   public flags = [
     { name: 'English', image: 'assets/images/flags/gb.svg' },
     { name: 'German', image: 'assets/images/flags/de.svg' },
@@ -29,12 +35,7 @@ export class AppComponent {
     { name: 'Russian', image: 'assets/images/flags/ru.svg' },
     { name: 'Turkish', image: 'assets/images/flags/tr.svg' }
   ]
-  public flag: any;
-  products: Product[];
-  indexProduct: number;
-  shoppingCartItems: CartItem[] = [];
-  public banners = [];
-  wishlistItems: Product[] = [];
+
   navItems: SidenavMenu[] = [
     {
       displayName: 'Home',
@@ -287,6 +288,10 @@ export class AppComponent {
     document.documentElement.style.setProperty('--theme-deafult', '#901010');
     this.currency = this.currencies[0];
     this.flag = this.flags[0];
+
+    this.router.events.subscribe((val) => {
+     this.isAuthPages = this.router.url.includes('auth')
+  })
   }
   public changeCurrency(currency) {
     this.currency = currency;
