@@ -38,6 +38,13 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ProductVerticalFoodComponent } from '../shop/products/product-vertical-food/product-vertical-food.component';
 import { ProductDetailsLeftComponent } from '../shop/products/product-details-left/product-details-left.component';
 import { ProductDetailsCenteredComponent } from '../shop/products/product-details-centered/product-details-centered.component';
+import { HomeTwoComponent } from './home/home-of-home/home-two/home-two.component';
+import { HomeThreeComponent } from './home/home-of-home/home-three/home-three.component';
+import { HomeFourComponent } from './home/home-of-home/home-four/home-four.component';
+import { HomeFiveComponent } from './home/home-of-home/home-five/home-five.component';
+import { FoodComponent } from './home/home-of-home/food/food.component';
+import { FurnitureComponent } from './home/home-of-home/furniture/furniture.component';
+import { MainCarouselComponentFood } from './home/home-of-home/food/main-carousel-food/main-carousel-food.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +75,14 @@ import { ProductDetailsCenteredComponent } from '../shop/products/product-detail
     ProductCarouselTwoComponent,
     ProductVerticalFoodComponent,
     ProductDetailsLeftComponent,
-    ProductDetailsCenteredComponent
+    ProductDetailsCenteredComponent,
+    HomeTwoComponent,
+    HomeThreeComponent,
+    HomeFourComponent,
+    HomeFiveComponent,
+    FoodComponent,
+    FurnitureComponent,
+    MainCarouselComponentFood
 
   ],
   imports: [
