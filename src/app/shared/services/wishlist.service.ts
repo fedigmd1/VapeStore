@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../core/modals/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BehaviorSubject, Observable, of, Subscriber} from 'rxjs';
+import { BehaviorSubject, Observable, of, Subscriber } from 'rxjs';
 import { map, filter, scan } from 'rxjs/operators';
 
 // Get product from Localstorage
@@ -14,28 +14,28 @@ export class WishlistService {
 
   // wishlist array
   public wishlistProducts: BehaviorSubject<Product[]> = new BehaviorSubject([]);
-  public observer   :  Subscriber<{}>;
+  public observer: Subscriber<{}>;
 
   constructor(public snackBar: MatSnackBar) { }
 
-    // Get  wishlist Products
-    public getProducts(): Observable<Product[]> {
-      const itemsStream = new Observable(observer => {
-        observer.next(products);
-        observer.complete();
-      });
-      return <Observable<Product[]>>itemsStream;
-    }
+  // Get  wishlist Products
+  public getProducts(): Observable<Product[]> {
+    const itemsStream = new Observable(observer => {
+      observer.next(products);
+      observer.complete();
+    });
+    return <Observable<Product[]>>itemsStream;
+  }
 
 
-   // If item is aleready added In wishlist
- public hasProduct(product: Product): boolean {
-  const item = products.find(item => item.id === product.id);
-  return item !== undefined;
-}
+  // If item is aleready added In wishlist
+  public hasProduct(product: Product): boolean {
+    const item = products.find(item => item.id === product.id);
+    return item !== undefined;
+  }
 
-   // Add to wishlist
-   public addToWishlist(product: Product): Product | boolean {
+  // Add to wishlist
+  public addToWishlist(product: Product): Product | boolean {
     let message, status;
     var item: Product | boolean = false;
     if (this.hasProduct(product)) {
@@ -45,10 +45,10 @@ export class WishlistService {
       products.push(product);
     }
     message = 'The product ' + product.name + ' has been added to wishlist.';
-            status = 'success';
-            this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
-      localStorage.setItem("wishlistItem", JSON.stringify(products));
-      return item;
+    status = 'success';
+    this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
+    localStorage.setItem("wishlistItem", JSON.stringify(products));
+    return item;
   }
 
 

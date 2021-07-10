@@ -5,10 +5,8 @@
 </div>
 
 <div class="home-1-wrap">
-
   <div class="container">
     <div fxLayout="row wrap" class="info-bar">
-
       <div class="card-wrap" fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
         <mat-card class="light-block" fxLayout="row" fxLayoutAlign="start center">
           <ngx-skeleton-loader [theme]="{ width: '80px', height: '80px' }" appearance="circle" animation="progress"
@@ -68,25 +66,15 @@
     </div>
     <div class="products-industrial sec-padding">
       <mat-tab-group>
-
         <mat-tab label="FEATURED PRODUCTS">
-
           <app-product-carousel [product]="products | slice:0:8"></app-product-carousel>
-
         </mat-tab>
-
         <mat-tab label="LATEST PRODUCTS">
-
-          <app-product-carousel [product]="products | slice:0:14"></app-product-carousel>
-
+          <app-product-carousel [product]="products | slice:5:14"></app-product-carousel>
         </mat-tab>
-
         <mat-tab label="ON SALE PRODUCTS">
-
           <app-product-carousel [product]="products | slice:14:22"></app-product-carousel>
-
         </mat-tab>
-
       </mat-tab-group>
     </div>
     <app-banners [banners]="banners"></app-banners>

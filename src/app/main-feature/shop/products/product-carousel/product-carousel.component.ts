@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import {  SwiperDirective } from 'ngx-swiper-wrapper';
+import { SwiperDirective } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -19,14 +19,20 @@ export class ProductCarouselComponent implements OnInit {
   @Input('product') product: Array<Product> = [];
   public config: SwiperConfigInterface = {};
   contentLoaded = false;
-  constructor(private dialog: MatDialog, private router: Router, private cartService: CartService, private productService: ProductService, private wishlistService: WishlistService) { }
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private cartService: CartService,
+    private productService: ProductService,
+    private wishlistService: WishlistService
+  ) { }
 
   ngOnInit() {
     setTimeout(() => {
       this.contentLoaded = true;
     }, 3000);
   }
-  ngAfterViewInit(){ 
+  ngAfterViewInit() {
     this.config = {
       observer: true,
       slidesPerView: 5,
@@ -58,33 +64,33 @@ export class ProductCarouselComponent implements OnInit {
   }
 
 
-  public openProductDialog(product){
+  public openProductDialog(product) {
     let dialogRef = this.dialog.open(ProductDialogComponent, {
-        data: product,
-        panelClass: 'product-dialog',
+      data: product,
+      panelClass: 'product-dialog',
     });
     dialogRef.afterClosed().subscribe(product => {
-      if(product){
+      if (product) {
         this.router.navigate(['/products', product.id, product.name]);
       }
     });
   }
 
-   // Add to cart
-   public addToCart(product: Product,  quantity: number = 1) {
-    this.cartService.addToCart(product,quantity);
+  // Add to cart
+  public addToCart(product: Product, quantity: number = 1) {
+    this.cartService.addToCart(product, quantity);
     console.log(product, quantity);
   }
 
-   // Add to wishlist
-   public addToWishlist(product: Product) {
+  // Add to wishlist
+  public addToWishlist(product: Product) {
     this.wishlistService.addToWishlist(product);
- }
+  }
 
-    // Add to compare
-    public addToCompare(product: Product) {
-      this.productService.addToCompare(product);
-   }
+  // Add to compare
+  public addToCompare(product: Product) {
+    this.productService.addToCompare(product);
+  }
 }
 
 
