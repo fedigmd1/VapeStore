@@ -80,7 +80,11 @@ export class ProductRightSidebarComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+    setTimeout(() => {
+      
+      console.warn("products", this.products);
+    }, 3000);
+  
   }
 
 

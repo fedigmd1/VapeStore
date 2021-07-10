@@ -45,6 +45,7 @@ import { HomeFiveComponent } from './home/home-of-home/home-five/home-five.compo
 import { FoodComponent } from './home/home-of-home/food/food.component';
 import { FurnitureComponent } from './home/home-of-home/furniture/furniture.component';
 import { MainCarouselComponentFood } from './home/home-of-home/food/main-carousel-food/main-carousel-food.component';
+import { StoreListComponent } from './menu/store-list.component';
 
 @NgModule({
   declarations: [
@@ -76,13 +77,15 @@ import { MainCarouselComponentFood } from './home/home-of-home/food/main-carouse
     ProductVerticalFoodComponent,
     ProductDetailsLeftComponent,
     ProductDetailsCenteredComponent,
+    StoreListComponent,
     HomeTwoComponent,
     HomeThreeComponent,
     HomeFourComponent,
     HomeFiveComponent,
     FoodComponent,
     FurnitureComponent,
-    MainCarouselComponentFood
+    MainCarouselComponentFood,
+
 
   ],
   imports: [
@@ -100,8 +103,8 @@ import { MainCarouselComponentFood } from './home/home-of-home/food/main-carouse
   exports: [
     ProductDialogComponent,
     ProductZoomComponent,
-    ProductZoomFoodComponent
-
+    ProductZoomFoodComponent,
+    ProductComponent
   ],
 
   entryComponents: [

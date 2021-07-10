@@ -15,37 +15,37 @@ import { Product } from 'src/app/core/modals/product.model';
 export class ProductComponent implements OnInit {
 
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
- @Input() product: Product;
+  @Input() product: Product;
 
-  constructor(private cartService: CartService, public productsService: ProductService, private wishlistService: WishlistService, private dialog: MatDialog, private router: Router ) { }
+  constructor(private cartService: CartService, public productsService: ProductService, private wishlistService: WishlistService, private dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
   }
 
-     // Add to cart
-     public addToCart(product: Product,  quantity: number = 1) {
-      this.cartService.addToCart(product,quantity);
-      console.log(product, quantity);
-    }
+  // Add to cart
+  public addToCart(product: Product, quantity: number = 1) {
+    this.cartService.addToCart(product, quantity);
+    console.log(product, quantity);
+  }
 
-    // Add to wishlist
-    public addToWishlist(product: Product) {
-      this.wishlistService.addToWishlist(product);
-   }
+  // Add to wishlist
+  public addToWishlist(product: Product) {
+    this.wishlistService.addToWishlist(product);
+  }
 
-    // Add to compare
-    public addToCompare(product: Product) {
-      this.productsService.addToCompare(product);
-   }
+  // Add to compare
+  public addToCompare(product: Product) {
+    this.productsService.addToCompare(product);
+  }
 
 
-  public openProductDialog(product){
+  public openProductDialog(product) {
     let dialogRef = this.dialog.open(ProductDialogComponent, {
-        data: product,
-        panelClass: 'product-dialog',
+      data: product,
+      panelClass: 'product-dialog',
     });
     dialogRef.afterClosed().subscribe(product => {
-      if(product){
+      if (product) {
         this.router.navigate(['/products', product.id, product.name]);
       }
     });
