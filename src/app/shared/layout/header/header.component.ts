@@ -8,7 +8,7 @@ import { AppSettings, Settings } from '../../services/color-option.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.sass']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   public sidenavMenuItems:Array<any>;
