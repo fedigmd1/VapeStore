@@ -4,7 +4,7 @@ import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wra
 @Component({
   selector: 'app-main-carousel',
   templateUrl: './main-carousel.component.html',
-  styleUrls: ['./main-carousel.component.sass']
+  styleUrls: ['./main-carousel.component.scss']
 })
 export class MainCarouselComponent implements OnInit {
 
