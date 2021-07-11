@@ -1,5 +1,10 @@
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { ROUTE } from 'src/app/core/config/route/route';
+import { AuthService } from '../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +20,7 @@ export class SignUpComponent implements OnInit {
   registerForm: FormGroup
   confirmPassword: FormControl
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.initForm()
@@ -42,6 +47,22 @@ export class SignUpComponent implements OnInit {
   register() {
     if (this.registerForm.valid) {
 
+      const requestData = {
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password,
+        last_name: this.registerForm.value.lastName,
+        first_name: this.registerForm.value.firstName,
+        role: "user"
+      }
+
+      const subscription = new Subscription();
+      this.authService.register(requestData).subscribe((res) => {
+        if (res) {
+          console.log("resgister response :", res);
+          this.router.navigate([ROUTE.HOME])
+          subscription.unsubscribe()
+        }
+      })
     }
   }
 
