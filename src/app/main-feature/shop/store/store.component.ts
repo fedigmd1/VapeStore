@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { CartItem } from 'src/app/core/modals/cart-item';
 
 import { Product } from 'src/app/core/modals/product.model';
@@ -14,6 +15,7 @@ export class StoreComponent implements OnInit {
   products: Product[];
   shoppingCartItems: CartItem[] = [];
   contentLoaded = false;
+  id: number;
   public slides = [
     { title: 'Huge sale', subtitle: 'Up to 70%', image: 'assets/images/carousel/banner1.jpg' },
     { title: 'Biggest discount', subtitle: 'Check the promotion', image: 'assets/images/carousel/banner2.jpg' },
@@ -22,17 +24,26 @@ export class StoreComponent implements OnInit {
     { title: 'Massive sale', subtitle: 'Only for today', image: 'assets/images/carousel/banner5.jpg' }
   ];
 
-  constructor(private productService: ProductService, private cartService: CartService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private cartService: CartService,
+    private productService: ProductService,
+  ) {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = params['id'];
+      })
+  }
 
   ngOnInit() {
 
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
     this.productService.getProducts()
-    .subscribe(
-      (product: Product[]) => {
-      this.products = product;
-      }
-    )
+      .subscribe(
+        (product: Product[]) => {
+          this.products = product;
+        }
+      )
 
     setTimeout(() => {
       this.contentLoaded = true;
@@ -40,17 +51,17 @@ export class StoreComponent implements OnInit {
   }
 
 
-       // Collection banner
-       public discount = [{
-        image: 'assets/images/product/tablet_bn.png',
-        title: 'Tablets, Smartphones and more',
-        subtitle: 'Sale up to 30%',
-      }, {
-        image: 'assets/images/product/camera_bn.png',
-        title: 'New Cameras Collection',
-        subtitle: 'Sale up to 30%',
-      }]
+  // Collection banner
+  public discount = [{
+    image: 'assets/images/product/tablet_bn.png',
+    title: 'Tablets, Smartphones and more',
+    subtitle: 'Sale up to 30%',
+  }, {
+    image: 'assets/images/product/camera_bn.png',
+    title: 'New Cameras Collection',
+    subtitle: 'Sale up to 30%',
+  }]
 
-  }
+}
 
 

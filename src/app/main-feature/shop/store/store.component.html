@@ -36,7 +36,7 @@
     <div class="categories-menu-wrap">
       <ngx-skeleton-loader *ngIf="!contentLoaded" count="1" [theme]="{ 'border-radius': '0', height: '60px' }">
       </ngx-skeleton-loader>
-      <app-categories-menu *ngIf="contentLoaded"></app-categories-menu>
+      <app-categories-menu [id]="id" *ngIf="contentLoaded"></app-categories-menu>
     </div>
   </div>
 
