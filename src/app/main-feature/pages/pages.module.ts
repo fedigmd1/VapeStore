@@ -16,6 +16,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { OrderSuccessComponent } from './order-success/order-success.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
     AboutUsComponent,
     ErrorPageComponent,
     ReviewsComponent,
-    OrderSuccessComponent
+    OrderSuccessComponent,
+    MainPageComponent
 
   ],
   exports:[
