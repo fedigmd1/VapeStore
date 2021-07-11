@@ -26,6 +26,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   public products: Product[] = [];
   public tags: any[] = [];
   public colors: any[] = [];
+  id: number
 
   constructor(
     private productService: ProductService,
@@ -34,6 +35,7 @@ export class ProductLeftSidebarComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         const category = params['category'];
+        this.id = params['id'];
         this.productService.getProductByCategory(category).subscribe(products => {
           this.allItems = this.allItemsSearch = products;
           // this.allItemsSearch = products;
