@@ -1,15 +1,19 @@
+
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Product, ColorFilter } from 'src/app/core/modals/product.model';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
-import { ColorFilter, Product } from 'src/app/core/modals/product.model';
 
 @Component({
-  selector: 'app-product-left-sidebar',
-  templateUrl: './product-left-sidebar.component.html',
-  styleUrls: ['./product-left-sidebar.component.sass']
+  selector: 'app-store-list',
+  templateUrl: './store-list.component.html',
+  styleUrls: ['./store-list.component.scss']
 })
-export class ProductLeftSidebarComponent implements OnInit {
+export class StoreListComponent implements OnInit {
   public sidenavOpen: boolean = true;
   public animation: any;   // Animation
   public sortByOrder: string = '';   // sorting
@@ -21,22 +25,20 @@ export class ProductLeftSidebarComponent implements OnInit {
   public colorFilters: ColorFilter[] = [];
 
   public items: Product[] = [];
-  public allItemsSearch: Product[] = [];
   public allItems: Product[] = [];
+  public allItemsSearch: Product[] = [];
   public products: Product[] = [];
   public tags: any[] = [];
   public colors: any[] = [];
 
-  constructor(
-    private productService: ProductService,
-    private route: ActivatedRoute
-  ) {
+  constructor(private productService: ProductService, private route: ActivatedRoute) {
     this.route.params.subscribe(
       (params: Params) => {
-        const category = params['category'];
+        const category = "all";
         this.productService.getProductByCategory(category).subscribe(products => {
-          this.allItems = this.allItemsSearch = products;
-          // this.allItemsSearch = products;
+          this.allItems = products;
+          this.allItemsSearch = products;
+
           this.products = products.slice(0.8);
           this.getTags(products)
           this.getColors(products)
@@ -84,6 +86,10 @@ export class ProductLeftSidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(() => {
+
+      console.warn("products", this.products);
+    }, 3000);
 
   }
 
@@ -136,7 +142,6 @@ export class ProductLeftSidebarComponent implements OnInit {
       }, true);
       return Colors && Tags; // return true
     });
-
   }
 
   public onPageChanged(event) {
@@ -170,23 +175,20 @@ export class ProductLeftSidebarComponent implements OnInit {
   public updatePriceFilters(price: any) {
     console.log(price);
     console.log(this.products);
-
-
     this.allItems = this.products.filter((item: Product) => {
       return item.price >= price.priceFrom && item.price <= price.priceTo
     });
     console.log(this.products);
-
   }
 
   onBrendsChanged(newBrend) {
     console.log(newBrend);
     this.allItems = newBrend === 'all' ? this.products : this.products.filter(
-
       item => item.brand === newBrend
     )
     console.log(this.allItems);
-
-
   }
 }
+
+
+

@@ -2,7 +2,7 @@
   fxLayoutAlign="space-between center">
   <div class="main-menu" fxLayout="row" fxHide fxShow.gt-sm>
     <a mat-button class="mat-button" [routerLink]="['/']">Home</a>
-    <a mat-button class="mat-button" [routerLink]="['/Stores']">Stores</a>
+    <a mat-button class="mat-button" [routerLink]="['/store-list']">Stores</a>
 
     <!-- <a [matMenuTriggerFor]="products" routerLinkActive="router-link-active" mat-button class="mat-button">Products
             <mat-icon class="caret">arrow_drop_down</mat-icon>
@@ -35,7 +35,7 @@
                     <button mat-menu-item [routerLink]="['/pages/order-success']">Order Success</button>
                     <button mat-menu-item>Track Order</button>
                     <button mat-menu-item>My Orders</button>
-                    <button mat-menu-item>Upload Product</button>
+                     <button mat-menu-item>Upload Product</button>
                 </div>
                 <div fxFlex="25" class="p-1">
                     <a mat-menu-item routerLink="/"><b>GALLERY</b></a>
@@ -56,16 +56,7 @@
             </div>
         </mat-menu> -->
 
-
-    <a mat-button mat-button [matMenuTriggerFor]="marketPlace" class="mat-button">Market Place<mat-icon class="caret">
-        arrow_drop_down</mat-icon></a>
-    <mat-menu #marketPlace="matMenu" [overlapTrigger]="false" class="app-dropdown">
-      <a mat-menu-item [routerLink]="['/market-place/list']">Market Place List</a>
-      <a mat-menu-item [routerLink]="['/market-place/column']">Market Place Columns</a>
-      <a mat-menu-item [routerLink]="['/market-place/details']">Market Place Details</a>
-
-    </mat-menu>
-
+    <a mat-button class="mat-button" [routerLink]="['/market-place']">Market Place</a>
     <a mat-button [matMenuTriggerFor]="shop" class="mat-button" (click)="openMegaMenu()">Tutorials<mat-icon
         class="caret">arrow_drop_down</mat-icon></a>
     <mat-menu #shop="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">

@@ -1,43 +1,37 @@
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+
+import { Product } from 'src/app/core/modals/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
-import { Product } from 'src/app/core/modals/product.model';
+import { ProductDialogComponent } from '../products/product-dialog/product-dialog.component';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.sass']
+  selector: 'app-store-item',
+  templateUrl: './store-item.component.html',
+  styleUrls: ['./store-item.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class StoreItemComponent implements OnInit {
 
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
   @Input() product: Product;
 
-  constructor(private cartService: CartService, public productsService: ProductService, private wishlistService: WishlistService, private dialog: MatDialog, private router: Router) { }
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    public productsService: ProductService,
+    private wishlistService: WishlistService,
+  ) { }
 
   ngOnInit() {
-  }
-
-  // Add to cart
-  public addToCart(product: Product, quantity: number = 1) {
-    this.cartService.addToCart(product, quantity);
-    console.log(product, quantity);
   }
 
   // Add to wishlist
   public addToWishlist(product: Product) {
     this.wishlistService.addToWishlist(product);
   }
-
-  // Add to compare
-  public addToCompare(product: Product) {
-    this.productsService.addToCompare(product);
-  }
-
 
   public openProductDialog(product) {
     let dialogRef = this.dialog.open(ProductDialogComponent, {

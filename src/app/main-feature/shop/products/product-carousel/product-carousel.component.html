@@ -10,7 +10,7 @@
         </div>
 
         <div class="product-img" *ngIf="contentLoaded">
-          <a class="product-link" [routerLink]="['/home/product', product.id]">
+          <a class="product-link" [routerLink]="['/store/']+ (product.id+3) +['/product/']+ product.id + ['/details']">
             <img [src]="product.pictures[0].big" alt="">
           </a>
         </div>

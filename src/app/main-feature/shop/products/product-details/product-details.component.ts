@@ -35,6 +35,8 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, public productsService: ProductService, public dialog: MatDialog, private router: Router, private cartService: CartService) {
     this.route.params.subscribe(params => {
       const id = +params['id'];
+      console.warn(id);
+      
       this.productsService.getProduct(id).subscribe(product => this.product = product)
     });
   }

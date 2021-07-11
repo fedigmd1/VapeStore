@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main-feature/authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
-    path: 'home',
+    path: '',
     loadChildren: () => import('./main-feature/shop/shop.module').then(m => m.ShopModule)
   },
   {
@@ -44,7 +44,7 @@ const appRoutes: Routes = [
   declarations: [],
   imports: [
     RouterModule.forRoot(appRoutes, {
-      useHash: true,
+      useHash: false,
       onSameUrlNavigation: 'ignore',
       relativeLinkResolution: 'legacy',
       scrollPositionRestoration: 'top',
