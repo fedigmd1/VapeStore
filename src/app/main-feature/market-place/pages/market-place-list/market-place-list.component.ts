@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-market-place-list',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./market-place-list.component.sass']
 })
 export class MarketPlaceListComponent implements OnInit {
-
-  constructor() { }
+  id = 6
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  getDetails(id :any) {
+    this.id = id
+    this.router.navigate(["['post/']" + this.id + "['/details']"])
   }
 
 }

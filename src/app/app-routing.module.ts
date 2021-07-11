@@ -10,7 +10,7 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: '',
     loadChildren: () => import('./main-feature/shop/shop.module').then(m => m.ShopModule)
   },
   {

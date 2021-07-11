@@ -11,8 +11,8 @@ const routes: Routes = [
     path: '', component: MarketPlaceMainComponent,
     children: [
       { path: 'list', component: MarketPlaceListComponent },
-      { path: 'column', component: MarketPlaceColumnComponent },
-      { path: 'details', component: MarketPlaceDetailsComponent }
+      { path: 'post/:id/details', component: MarketPlaceDetailsComponent }
+      // { path: 'column', component: MarketPlaceColumnComponent },
     ]
   }
 ];
