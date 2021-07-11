@@ -23,8 +23,10 @@
     overflow: unset!important;
   }
 
-
-
+  .form-control:focus {
+    border-color:rgb(144, 16, 16);
+    box-shadow: 0 0 0 0.2rem rgba(144, 16, 16, 0.25);
+  } 
 
 
 
