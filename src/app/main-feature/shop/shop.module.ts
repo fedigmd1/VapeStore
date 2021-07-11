@@ -47,6 +47,7 @@ import { FurnitureComponent } from './home/home-of-home/furniture/furniture.comp
 import { MainCarouselComponentFood } from './home/home-of-home/food/main-carousel-food/main-carousel-food.component';
 import { StoreListComponent } from './store-list/store-list.component';
 import { StoreItemComponent } from './store-item/store-item.component';
+import { StoreComponent } from './store/store.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { StoreItemComponent } from './store-item/store-item.component';
     ProductDetailsCenteredComponent,
     StoreListComponent,
     StoreItemComponent,
+    StoreComponent,
     HomeTwoComponent,
     HomeThreeComponent,
     HomeFourComponent,
