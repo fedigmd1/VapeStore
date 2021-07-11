@@ -21,17 +21,22 @@ export class ProductLeftSidebarComponent implements OnInit {
   public colorFilters: ColorFilter[] = [];
 
   public items: Product[] = [];
+  public allItemsSearch: Product[] = [];
   public allItems: Product[] = [];
   public products: Product[] = [];
   public tags: any[] = [];
   public colors: any[] = [];
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) {
     this.route.params.subscribe(
       (params: Params) => {
         const category = params['category'];
         this.productService.getProductByCategory(category).subscribe(products => {
-          this.allItems = products;
+          this.allItems = this.allItemsSearch = products;
+          // this.allItemsSearch = products;
           this.products = products.slice(0.8);
           this.getTags(products)
           this.getColors(products)
@@ -138,6 +143,14 @@ export class ProductLeftSidebarComponent implements OnInit {
     this.page = event;
     this.allItems;
     window.scrollTo(0, 0);
+  }
+
+  onStoreSearch(value: string): void {
+    if (value === '') {
+      this.allItems = this.allItemsSearch;
+    } else {
+      this.allItems = this.allItemsSearch.filter(({ name }) => name.toLowerCase().indexOf(value) > -1);
+    }
   }
 
 
