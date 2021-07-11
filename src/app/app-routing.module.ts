@@ -40,7 +40,7 @@ const appRoutes: Routes = [
   declarations: [],
   imports: [
     RouterModule.forRoot(appRoutes, {
-      useHash: true,
+      useHash: false,
       onSameUrlNavigation: 'ignore',
       relativeLinkResolution: 'legacy',
       scrollPositionRestoration: 'top',
