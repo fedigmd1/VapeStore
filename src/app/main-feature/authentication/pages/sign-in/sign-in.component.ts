@@ -1,4 +1,8 @@
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ROUTE } from 'src/app/core/config/route/route';
+import { AuthService } from '../../service/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -13,7 +17,7 @@ export class SignInComponent implements OnInit {
   loginForm: FormGroup
   password: FormControl
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.initForm()
@@ -31,10 +35,18 @@ export class SignInComponent implements OnInit {
 
   }
 
+
   login() {
     if (this.loginForm.valid) {
 
+      const subscription = new Subscription();
+      this.authService.login(this.loginForm.value).subscribe((res) => {
+        if (res) {
+          console.log("login response :", res);
+          this.router.navigate([ROUTE.HOME])
+          subscription.unsubscribe()
+        }
+      })
     }
   }
-
 }
