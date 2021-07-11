@@ -45,7 +45,8 @@ import { HomeFiveComponent } from './home/home-of-home/home-five/home-five.compo
 import { FoodComponent } from './home/home-of-home/food/food.component';
 import { FurnitureComponent } from './home/home-of-home/furniture/furniture.component';
 import { MainCarouselComponentFood } from './home/home-of-home/food/main-carousel-food/main-carousel-food.component';
-import { StoreListComponent } from './menu/store-list.component';
+import { StoreListComponent } from './store-list/store-list.component';
+import { StoreItemComponent } from './store-item/store-item.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { StoreListComponent } from './menu/store-list.component';
     ProductDetailsLeftComponent,
     ProductDetailsCenteredComponent,
     StoreListComponent,
+    StoreItemComponent,
     HomeTwoComponent,
     HomeThreeComponent,
     HomeFourComponent,

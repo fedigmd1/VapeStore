@@ -1,3 +1,7 @@
+
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -22,6 +26,7 @@ export class StoreListComponent implements OnInit {
 
   public items: Product[] = [];
   public allItems: Product[] = [];
+  public allItemsSearch: Product[] = [];
   public products: Product[] = [];
   public tags: any[] = [];
   public colors: any[] = [];
@@ -29,9 +34,11 @@ export class StoreListComponent implements OnInit {
   constructor(private productService: ProductService, private route: ActivatedRoute) {
     this.route.params.subscribe(
       (params: Params) => {
-        const category = params['category'];
+        const category = "all";
         this.productService.getProductByCategory(category).subscribe(products => {
           this.allItems = products;
+          this.allItemsSearch = products;
+
           this.products = products.slice(0.8);
           this.getTags(products)
           this.getColors(products)
@@ -135,13 +142,20 @@ export class StoreListComponent implements OnInit {
       }, true);
       return Colors && Tags; // return true
     });
-
   }
 
   public onPageChanged(event) {
     this.page = event;
     this.allItems;
     window.scrollTo(0, 0);
+  }
+
+  onStoreSearch(value: string): void {
+    if (value === '') {
+      this.allItems = this.allItemsSearch;
+    } else {
+      this.allItems = this.allItemsSearch.filter(({ name }) => name.toLowerCase().indexOf(value) > -1);
+    }
   }
 
 
@@ -161,29 +175,19 @@ export class StoreListComponent implements OnInit {
   public updatePriceFilters(price: any) {
     console.log(price);
     console.log(this.products);
-
-
     this.allItems = this.products.filter((item: Product) => {
       return item.price >= price.priceFrom && item.price <= price.priceTo
     });
     console.log(this.products);
-
   }
 
   onBrendsChanged(newBrend) {
     console.log(newBrend);
     this.allItems = newBrend === 'all' ? this.products : this.products.filter(
-
       item => item.brand === newBrend
     )
     console.log(this.allItems);
-
-
   }
-
-
-
-
 }
 
 

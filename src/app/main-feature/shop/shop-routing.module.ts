@@ -15,7 +15,7 @@ import { HomeFiveComponent } from './home/home-of-home/home-five/home-five.compo
 import { HomeFourComponent } from './home/home-of-home/home-four/home-four.component';
 import { HomeTwoComponent } from './home/home-of-home/home-two/home-two.component';
 import { HomeThreeComponent } from './home/home-of-home/home-three/home-three.component';
-import { StoreListComponent } from './menu/store-list.component';
+import { StoreListComponent } from './store-list/store-list.component';
 
 
 // Routes

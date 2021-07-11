@@ -3,52 +3,12 @@
 <div class="left-sidebar-wrapper sec-padding">
   <div class="container">
     <div class="sidebar-wrapper" fxLayout='row' fxLayout.lt-md="column">
-      <div fxFlex="25" fxFlex.lt-sm="100" class="filter-sidenav" perfectScrollbar>
-        <div class="toggles-wrapper" fxLayout="column" fxLayout.lt-md="column">
-          <div class="toggles" fxFlex.lt-md="100">
-            <mat-accordion>
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <span>Categories</span>
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <app-categories></app-categories>
-              </mat-expansion-panel>
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <span>Brands</span>
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <div class="brands">
-                  <app-brands (brandChanged)="onBrendsChanged($event)"></app-brands>
-                </div>
-              </mat-expansion-panel>
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <span>Price</span>
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <app-price (priceFilters)="updatePriceFilters($event)"></app-price>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </div>
-          <div class="popular-products" fxFlex.lt-md="100">
-            <app-popular-products></app-popular-products>
-          </div>
-        </div>
-
-      </div>
-      <div fxFlex="75" fxFlex.lt-sm="100" class="all-products" ngClass.gt-sm="p-left">
+      <div fxFlex="100" fxFlex.lt-sm="100" class="all-products" ngClass.gt-sm="p-left">
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxHide.lt-md="true"
           class="filter-row mat-elevation-z1 text-muted">
           <mat-form-field appearance="legacy">
             <mat-label>Search product</mat-label>
-            <input matInput placeholder="Placeholder">
+            <input (input)="onStoreSearch($event.target.value)" matInput placeholder="Placeholder">
             <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
           <button *ngIf="!sidenavOpen" mat-icon-button (click)="sidenav.toggle()">
@@ -84,7 +44,7 @@
             *ngFor="let products of allItems | orderBy:sortByOrder | paginate: { itemsPerPage: 12, currentPage: page  }"
             fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
             <div class="product-box">
-              <app-product [product]="products"></app-product>
+              <app-store-item [product]="products"></app-store-item>
             </div>
           </div>
         </div>
