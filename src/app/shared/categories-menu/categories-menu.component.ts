@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-categories-menu',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories-menu.component.sass']
 })
 export class CategoriesMenuComponent implements OnInit {
+  @Input() id: number
 
   constructor() { }
 
