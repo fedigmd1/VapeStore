@@ -6,6 +6,9 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { AuthenticationMainComponent } from './authentication-main/authentication-main.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -17,8 +20,11 @@ import { AuthenticationMainComponent } from './authentication-main/authenticatio
   ],
 
   imports: [
+    FormsModule,
     CommonModule,
+    ReactiveFormsModule,
     AuthenticationRoutingModule
-  ]
+  ],
+  
 })
 export class AuthenticationModule { }
