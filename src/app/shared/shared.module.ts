@@ -44,6 +44,7 @@ import { ShoppingWidgetsThreeComponent } from './shopping-widgets-three/shopping
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -90,7 +91,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FlexLayoutModule,
     NgxSkeletonLoaderModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     CommonModule,
@@ -128,8 +130,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ShoppingWidgetsThreeComponent,
     BreadcrumbComponent,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     ProductService,
