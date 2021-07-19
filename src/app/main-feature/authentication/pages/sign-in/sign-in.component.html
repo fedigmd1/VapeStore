@@ -1,33 +1,44 @@
-    <div   class="card auth-card-position"> 
-        <div class=" p-0"  >
-            <div class="login-wrapper " >
-              <div class="d-flex justify-content-center mt-3">
-                <div class="mt-3">
-                <img src="assets/images/logo-01.png" alt="logo" class="auth-card-logo">
-              </div>
-              </div>
-                <div class="title">
-                  <h3 class="text-center mt-3">Sign into your account</h3>
-                </div>
-                <form fxLayout="row wrap form-layout" [formGroup]="loginForm" (ngSubmit)="login()">
-                    <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-3" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                        <div class="w-100">
-                            <input class="form-control" placeholder="Username or email address (required)"  type="text"  formControlName="email" required>
-                          </div>
-                    </div>
-                    <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                        <div class="w-100">
-                            <input class="form-control" placeholder="Password (required)" type="password"  formControlName="password" required>
-                          </div>
-                    </div>
-                    <div class="button-wrap mt-5" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                        <button class="btn btn-project text-center" mat-raised-button color="primary" type="submit">Log in</button>
-                      </div>
-                    </form>
-                <p class="forgot-password-link text-center mt-3"><a href="#!" class="text-danger">Forgot password? </a></p>
-                <p class="login-card-footer-text text-center ">Don't have an account? <a [routerLink]="['/auth/register']" class="text-danger">Register here</a></p>
-              </div>
+<div class="card auth-card-position">
+  <div class=" p-0">
+    <div class="login-wrapper ">
+      <div class="d-flex justify-content-center mt-3">
+        <div class="mt-3">
+          <img src="assets/images/logo-01.png" alt="logo" class="auth-card-logo">
+        </div>
       </div>
+      <div class="title">
+        <h3 class="text-center mt-3">Sign into your account</h3>
+      </div>
+      <form fxLayout="form-layout  mb-3" [formGroup]="loginForm" (ngSubmit)="login()" >
+        <div class=" text-left">
+          <small class="text-danger ml-1" *ngIf="displayMessageError">Please check your email/password</small>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+          <div class="w-100">
+            <input class="form-control" [ngClass]="{'error-form-control' : email.invalid && email.touched}" placeholder="Username or email address (required)"  type="text"
+              [class.is-invalid]="email.invalid && email.touched" formControlName="email" required>
+          </div>
+          <div *ngIf="email.invalid && email.touched" class="text-danger text-left">
+            <small *ngIf="email.errors?.required">Email is required</small>
+            <small *ngIf="email.errors?.email">Invalid email format</small>
+          </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+          <div class="w-100">
+            <input class="form-control" [ngClass]="{'error-form-control' : password.invalid && password.touched}" placeholder="Password (required)"  type="password"
+              [class.is-invalid]="password.invalid && password.touched" formControlName="password" required>
+          </div>
+          <div *ngIf="password.invalid && password.touched" class="text-danger text-left">
+            <small *ngIf="password.errors?.required">Password is required</small>
+          </div>
+        </div>
+        <div class="button-wrap mt-5" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+          <button class="btn btn-project text-center" mat-raised-button color="primary" type="submit">Log in</button>
+        </div>
+      </form>
+      <p class="forgot-password-link text-center mt-3"><a href="#!" class="text-danger">Forgot password? </a></p>
+      <p class="login-card-footer-text text-center ">Don't have an account? <a [routerLink]="['/auth/register']"
+          class="text-danger">Register here</a></p>
+    </div>
   </div>
-  
-
+</div>

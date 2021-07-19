@@ -16,6 +16,7 @@ export class SignInComponent implements OnInit {
   email: FormControl
   loginForm: FormGroup
   password: FormControl
+  displayMessageError = false
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -35,10 +36,8 @@ export class SignInComponent implements OnInit {
 
   }
 
-
   login() {
     if (this.loginForm.valid) {
-
       const subscription = new Subscription();
       this.authService.login(this.loginForm.value).subscribe((res) => {
         if (res) {
@@ -46,6 +45,9 @@ export class SignInComponent implements OnInit {
           this.router.navigate([ROUTE.HOME])
           subscription.unsubscribe()
         }
+      }, (error) => {
+        console.log(error);
+        this.displayMessageError = true
       })
     }
   }

@@ -10,40 +10,58 @@
         <h3 class="text-center mt-3">Create new account</h3>
       </div>
       <form fxLayout="row wrap form-layout" [formGroup]="registerForm" (ngSubmit)="register()">
-        <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-3" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <div class="row">
+          <div class="col-6">
 
-          <input class="form-control" placeholder="FistName (required)" type="text" formControlName="firstName"
+            <div fxFlex="100"   fxFlex.gt-sm="100" class="mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+
+              <input class="form-control" [class.is-invalid]="firstName.invalid && firstName.touched"  [ngClass]="{'error-form-control' : firstName.invalid && firstName.touched}" placeholder="Fistname" type="text" formControlName="firstName" required>
+              <div *ngIf="firstName.invalid && firstName.touched" class="text-danger text-left">
+                <small *ngIf="firstName.errors?.required">Firstname is required*</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+
+            <div fxFlex="100" fxFlex.gt-sm="100" class="mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+
+              <input class="form-control" [class.is-invalid]="lastName.invalid && lastName.touched" [ngClass]="{'error-form-control' : lastName.invalid && lastName.touched}" placeholder="Lastname" type="text" formControlName="lastName" required>
+              <div *ngIf="lastName.invalid && lastName.touched" class="text-danger text-left">
+                <small *ngIf="lastName.errors?.required">Lastname is required*</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="100"  class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+          <input class="form-control"  [class.is-invalid]="email.invalid && email.touched"  [ngClass]="{'error-form-control' : email.invalid && email.touched}" placeholder="Email address" type="email" formControlName="email" required>
+          <div *ngIf="email.invalid && email.touched" class="text-danger text-left">
+            <small *ngIf="email.errors?.required">Email is required*</small>
+            <small *ngIf="email.errors?.email">Invalid email format</small>
+          </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+
+          <input class="form-control" [class.is-invalid]="password.invalid && password.touched"  placeholder="Password" [ngClass]="{'error-form-control' : password.invalid && password.touched}" type="password" formControlName="password" required>
+          <div *ngIf="password.invalid && password.touched" class="text-danger text-left">
+            <small *ngIf="password.errors?.required">Password is required*</small>
+          </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+          <input class="form-control" [class.is-invalid]="confirmPassword.invalid && confirmPassword.touched"  placeholder="Confirm password" [ngClass]="{'error-form-control' : confirmPassword.invalid && confirmPassword.touched || validatepasswords}" type="password" formControlName="confirmPassword"
             required>
-
+          <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="text-danger text-left">
+            <small *ngIf="confirmPassword.errors?.required">Confirm password is required*</small>  
         </div>
-        <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
-
-          <input class="form-control" placeholder="LastName (required)" type="text" formControlName="lastName" required>
-
+        <div class="text-danger text-left" >
+            <small    *ngIf="validatepasswords">Passwords must match</small>
         </div>
-        <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
-
-          <input class="form-control" placeholder="Email address (required)" type="email" formControlName="email"
-            required>
-
         </div>
-        <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
 
-          <input class="form-control" placeholder="Password (required)" type="password" formControlName="password"
-            required>
-
-        </div>
-        <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
-
-          <input class="form-control" placeholder="Confirm password (required)" type="password"
-            formControlName="confirmPassword" required>
-
-        </div>
-        <div class="button-wrap mt-5" fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-3" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <div class="button-wrap mt-5" fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-2" ngClass.xs="mt-1">
           <button class="btn btn-project text-center" mat-raised-button color="primary" type="submit">Register</button>
         </div>
       </form>
-      <p class="login-card-footer-text text-center mt-3 ">Already have an account? <a [routerLink]="['/auth/login']"
+      <p class="login-card-footer-text text-center mt-1">Already have an account? <a [routerLink]="['/auth/login']"
           class="text-danger">Log in</a></p>
     </div>
   </div>

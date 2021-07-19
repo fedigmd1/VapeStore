@@ -4,6 +4,7 @@ import { ROUTE } from 'src/app/core/config/route/route';
 import { AuthService } from '../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from 'src/app/shared/validators/confirmPassword.validator';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class SignUpComponent implements OnInit {
   firstName: FormControl
   registerForm: FormGroup
   confirmPassword: FormControl
-
+  validatepasswords 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ export class SignUpComponent implements OnInit {
     this.lastName = new FormControl('', { validators: Validators.required })
     this.password = new FormControl('', { validators: Validators.required })
     this.firstName = new FormControl('', { validators: Validators.required })
-    this.confirmPassword = new FormControl('', { validators: Validators.required })
+    this.confirmPassword = new FormControl('', { validators: Validators.required})
     this.email = new FormControl('', { validators: [Validators.required, Validators.email] })
 
     this.registerForm = new FormGroup({
@@ -41,10 +42,16 @@ export class SignUpComponent implements OnInit {
       password: this.password,
       firstName: this.firstName,
       confirmPassword: this.confirmPassword
-    })
+    },{
+      validators : CustomValidators.mustMatchPwd
+    }
+    )
   }
 
   register() {
+    console.log(this.validatepasswords,this.registerForm.errors?.passwordNotmatch );
+    
+    this.registerForm.errors?.passwordNotmatch ? this.validatepasswords = true : this.validatepasswords = false
     if (this.registerForm.valid) {
 
       const requestData = {
@@ -54,7 +61,6 @@ export class SignUpComponent implements OnInit {
         first_name: this.registerForm.value.firstName,
         role: "user"
       }
-
       const subscription = new Subscription();
       this.authService.register(requestData).subscribe((res) => {
         if (res) {
