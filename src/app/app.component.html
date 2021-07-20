@@ -1,16 +1,9 @@
-<div *ngIf="!isAuthPages" class="sophia-app app" [ngClass]="settings.theme" id="mainDIV" style="height: 100vh;overflow: auto;">
+<div class="sophia-app app" [ngClass]="settings.theme" id="mainDIV" style="height: 100vh;overflow: auto;">
   <!-- <ngx-spinner></ngx-spinner> -->
   <!-- <app-color-options></app-color-options> -->
-  <mat-sidenav-container fullscreen>
-   
-    <app-header></app-header>
+  <app-header *ngIf="!isAuthPages"></app-header>
+  <div [ngClass]="{'auth-layout bg': isAuthPages}">
     <router-outlet></router-outlet>
-
-    <app-footer></app-footer>
-
-  </mat-sidenav-container>
-</div>
-
-<div *ngIf="isAuthPages" class="auth-layout">
-  <router-outlet></router-outlet>
+  </div>
+  <app-footer *ngIf="!isAuthPages"></app-footer>
 </div>
