@@ -8,6 +8,7 @@ import { SidebarMenuService } from './shared/sidebar/sidebar-menu.service';
 import { Product } from './core/modals/product.model';
 import { CartItem } from './core/modals/cart-item';
 import { SidenavMenu } from './shared/sidebar/sidebar-menu.model';
+import { AuthService } from './main-feature/authentication/service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ import { SidenavMenu } from './shared/sidebar/sidebar-menu.model';
 export class AppComponent {
 
   public flag: any;
+  isloggedIn = false
   isAuthPages = false
   public banners = [];
   title = 'Vape Store';
@@ -271,7 +273,8 @@ export class AppComponent {
 
 
   ngOnInit() {
-    /** spinner starts on init */
+    /** spinner starts on in
+     * it */
     this.spinner.show();
 
     setTimeout(() => {
@@ -289,10 +292,17 @@ export class AppComponent {
     this.currency = this.currencies[0];
     this.flag = this.flags[0];
 
+    this.checkIsAuthPages()
+
+  }
+ 
+
+  checkIsAuthPages() {
     this.router.events.subscribe((val) => {
      this.isAuthPages = this.router.url.includes('auth')
   })
   }
+
   public changeCurrency(currency) {
     this.currency = currency;
   }
