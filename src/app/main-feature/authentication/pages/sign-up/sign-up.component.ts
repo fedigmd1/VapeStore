@@ -65,7 +65,7 @@ export class SignUpComponent implements OnInit {
       this.authService.register(requestData).subscribe((res) => {
         if (res) {
           console.log("resgister response :", res);
-          this.router.navigate([ROUTE.HOME])
+          this.router.navigateByUrl(ROUTE.HOME)
           subscription.unsubscribe()
         }
       })

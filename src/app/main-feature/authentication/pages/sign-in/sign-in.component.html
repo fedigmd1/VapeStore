@@ -15,7 +15,7 @@
         </div>
         <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
           <div class="w-100">
-            <input class="form-control" [ngClass]="{'error-form-control' : email.invalid && email.touched}" placeholder="Username or email address (required)"  type="text"
+            <input class="form-control" [ngClass]="{'error-form-control' : email.invalid && email.touched}" placeholder="Email"  type="text"
               [class.is-invalid]="email.invalid && email.touched" formControlName="email" required>
           </div>
           <div *ngIf="email.invalid && email.touched" class="text-danger text-left">
@@ -25,7 +25,7 @@
         </div>
         <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
           <div class="w-100">
-            <input class="form-control" [ngClass]="{'error-form-control' : password.invalid && password.touched}" placeholder="Password (required)"  type="password"
+            <input class="form-control" [ngClass]="{'error-form-control' : password.invalid && password.touched}" placeholder="Password"  type="password"
               [class.is-invalid]="password.invalid && password.touched" formControlName="password" required>
           </div>
           <div *ngIf="password.invalid && password.touched" class="text-danger text-left">

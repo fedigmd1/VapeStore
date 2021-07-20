@@ -39,7 +39,7 @@ export class SignInComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       const subscription = new Subscription();
-      this.authService.login(this.loginForm.value).subscribe((res) => {
+     this.authService.login(this.loginForm.value).subscribe((res) => {
         if (res) {
           console.log("login response :", res);
           this.router.navigate([ROUTE.HOME])
