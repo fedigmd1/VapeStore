@@ -45,6 +45,9 @@ export class HeaderComponent implements OnInit {
   loggedIn() {
     this.isloggedIn = this.authService.loggedIn()
   }
+  logout(){
+    this.authService.logoutUser()
+  }
   public changeCurrency(currency){
     this.currency = currency;
   }

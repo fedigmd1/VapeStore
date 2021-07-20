@@ -65,8 +65,8 @@
           <mat-icon  >person</mat-icon>Sign in
         </a>
       </div>
-      <div class="widget-text" *ngIf="isloggedIn">
-        <a fxShow="false"  fxShow.gt-xs [routerLink]="['/auth/login']" routerLinkActive="router-link-active">
+      <div class="widget-text cursor-pointer" *ngIf="isloggedIn">
+        <a fxShow="false"  fxShow.gt-xs (click)="logout()" routerLinkActive="router-link-active">
           <mat-icon  >person</mat-icon>Logout
         </a>
       </div>

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/core/models/auth';
 import { environment } from 'src/environments/environment';
 import { APIS } from 'src/app/core/config/route/endpoint'
+import { Router } from '@angular/router';
+import { ROUTE } from 'src/app/core/config/route/route';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class AuthService {
   baseUrl: string = environment.baseUrl
   endpoint = APIS
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private router : Router) { }
 
   login(requestData) {
     return new Observable<User>(observer => {
@@ -68,5 +70,12 @@ export class AuthService {
   getToken() {
     return localStorage.getItem('token')
   }
+  
+  logoutUser(){
+    localStorage.removeItem('token')
+    localStorage.removeItem('userDetail')
+    this.router.navigate([ROUTE.LOGIN])
+  }
+  
 
 }
