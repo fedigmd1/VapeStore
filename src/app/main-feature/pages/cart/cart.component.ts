@@ -10,8 +10,8 @@ import { CartService } from '../../../shared/services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  public cartItems : Observable<CartItem[]> = of([]);
-  public shoppingCartItems  : CartItem[] = [];
+  public cartItems: Observable<CartItem[]> = of([]);
+  public shoppingCartItems: CartItem[] = [];
 
   constructor(private cartService: CartService) { }
 
@@ -22,23 +22,23 @@ export class CartComponent implements OnInit {
   }
 
 
-    // Remove cart items
-    public removeItem(item: CartItem) {
-      this.cartService.removeFromCart(item);
-    }
+  // Remove cart items
+  public removeItem(item: CartItem) {
+    this.cartService.removeFromCart(item);
+  }
 
 
-   // Increase Product Quantity
-   public increment(product: any, quantity: number = 1) {
-    this.cartService.updateCartQuantity(product,quantity);
+  // Increase Product Quantity
+  public increment(product: any, quantity: number = 1) {
+    this.cartService.updateCartQuantity(product, quantity);
   }
 
   // Decrease Product Quantity
   public decrement(product: any, quantity: number = -1) {
-    this.cartService.updateCartQuantity(product,quantity);
+    this.cartService.updateCartQuantity(product, quantity);
   }
-   // Get Total
-   public getTotal(): Observable<number> {
+  // Get Total
+  public getTotal(): Observable<number> {
     return this.cartService.getTotalAmount();
   }
 
