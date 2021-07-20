@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/config/route/guards/auth.guard';
 import { ErrorPageComponent } from './main-feature/pages/error-page/error-page.component';
 
 
@@ -18,20 +19,20 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main-feature/shop/shop.module').then(m => m.ShopModule)
   },
   {
-    path: 'page',
+    path: 'page', canActivate :[AuthGuard],
     loadChildren: () => import('./main-feature/pages/pages.module').then(m => m.PagesModule)
 
   },
   {
-    path: 'market-place',
+    path: 'market-place', canActivate :[AuthGuard],
     loadChildren: () => import('../app/main-feature/market-place/market-place.module').then(m => m.MarketPlaceModule)
   },
   {
-    path: 'wish-list',
+    path: 'wish-list', canActivate :[AuthGuard],
     loadChildren: () => import('../app/main-feature/wish-list/wish-list.module').then(m => m.WishListModule)
   },
   {
-    path: 'compare',
+    path: 'compare', canActivate :[AuthGuard],
     loadChildren: () => import('../app/main-feature/compare/compare.module').then(m => m.CompareModule)
   },
   

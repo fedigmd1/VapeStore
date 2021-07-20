@@ -21,7 +21,9 @@ export class AuthService {
         if (res) {
           localStorage.setItem('token', res.token)
           this.getUserInfo().subscribe((res) => {
-            if (res) observer.next(res)
+            if (res) {
+              localStorage.setItem('userDetail',JSON.stringify(res))
+              observer.next(res)}
           })
         }
       },
@@ -35,6 +37,7 @@ export class AuthService {
         if (res) {
           localStorage.setItem('token', res.token)
           this.getUserInfo().subscribe((res) => {
+            localStorage.setItem('userDetail',JSON.stringify(res))
             if (res) observer.next(res)
           })
         }
@@ -55,7 +58,11 @@ export class AuthService {
   }
 
   loggedIn() {
-    return !!localStorage.getItem('token')
+    if (!!localStorage.getItem('token') ) {
+      return true
+    } else {
+      return false
+    }
   }
 
   getToken() {
