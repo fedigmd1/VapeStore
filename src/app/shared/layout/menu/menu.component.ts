@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/main-feature/authentication/service/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  isloggedIn = false
+  
+  constructor(private authService: AuthService, private router : Router) { }
 
   ngOnInit() {
+    this.loggedIn()
+   }
+
+  loggedIn() {
+    this.isloggedIn = this.authService.loggedIn()
   }
+  
+  goTo(page){
+    this.router.navigate(['/'+page])
+  }
+
   openMegaMenu(){
     let pane = document.getElementsByClassName('cdk-overlay-pane');
     [].forEach.call(pane, function (el) {

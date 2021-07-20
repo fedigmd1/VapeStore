@@ -1,8 +1,7 @@
-<mat-toolbar-row fxHide fxShow.gt-sm class="container" fxLayout="row" fxLayout.xs="row"
-  fxLayoutAlign="space-between center">
-  <div class="main-menu" fxLayout="row" fxHide fxShow.gt-sm>
-    <a mat-button class="mat-button" [routerLink]="['/']">Home</a>
-    <a mat-button class="mat-button" [routerLink]="['/store-list']">Stores</a>
+<mat-toolbar-row >
+  <div class="main-menu">
+    <a mat-button class="mat-button"  [routerLink]="['/']">Home</a>
+    <a mat-button class="mat-button" (click)="goTo('store-list')">Stores</a>
 
     <!-- <a [matMenuTriggerFor]="products" routerLinkActive="router-link-active" mat-button class="mat-button">Products
             <mat-icon class="caret">arrow_drop_down</mat-icon>
@@ -56,8 +55,8 @@
             </div>
         </mat-menu> -->
 
-    <a mat-button class="mat-button" [routerLink]="['/market-place']">Market Place</a>
-    <a mat-button [matMenuTriggerFor]="shop" class="mat-button" (click)="openMegaMenu()">Tutorials<mat-icon
+    <a mat-button class="mat-button"  [routerLink]="['/market-place']" *ngIf="isloggedIn"> Market Place</a>
+    <a mat-button [matMenuTriggerFor]="shop" class="mat-button" (click)="openMegaMenu()" routerLinkActive="active-link" *ngIf="isLoggedIn">Tutorials<mat-icon
         class="caret">arrow_drop_down</mat-icon></a>
     <mat-menu #shop="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
       <div fxLayout="row wrap">
@@ -113,6 +112,6 @@
         </mat-menu> -->
 
 
-    <a [routerLink]="['/pages/contact']" routerLinkActive="router-link-active" mat-button class="mat-button">Contact</a>
+    <a [routerLink]="['/pages/contact']"  mat-button class="mat-button">Contact</a>
   </div>
 </mat-toolbar-row>
