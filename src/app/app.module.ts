@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxImgZoomModule } from 'ngx-img-zoom';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +13,8 @@ import { ShopModule } from './main-feature/shop/shop.module';
 import { SharedModule } from './shared/shared.module';
 import { ErrorPageComponent } from './main-feature/pages/error-page/error-page.component';
 import { ColorOptionsComponent } from './main-feature/color-options/color-options.component';
+import { AuthGuard } from './core/config/route/guards/auth.guard';
+import { TokenInterceptorService } from './core/config/route/token-interceptor.service';
 
 
 @NgModule({
@@ -34,7 +36,11 @@ import { ColorOptionsComponent } from './main-feature/color-options/color-option
     BrowserAnimationsModule,
     NgxSkeletonLoaderModule,
   ],
-  providers: [],
+  providers: [AuthGuard,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

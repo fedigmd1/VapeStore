@@ -4,6 +4,7 @@ import { CartItem } from 'src/app/core/modals/cart-item';
 import { CartService } from '../../services/cart.service';
 import { SidebarMenuService } from '../../sidebar/sidebar-menu.service';
 import { AppSettings, Settings } from '../../services/color-option.service';
+import { AuthService } from 'src/app/main-feature/authentication/service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -23,23 +24,30 @@ export class HeaderComponent implements OnInit {
     { name:'Turkish', image: 'assets/images/flags/tr.svg' }
   ]
   public flag:any;
-
+  isloggedIn = false
   products: Product[];
 
   indexProduct: number;
   shoppingCartItems: CartItem[] = [];
   public settings: Settings;
 
-  constructor(private cartService: CartService, public appSettings:AppSettings) {
+  constructor(private cartService: CartService, public appSettings:AppSettings,private authService:AuthService) {
     this.settings = this.appSettings.settings;
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
   }
 
   ngOnInit() {
+    this.loggedIn()
     this.currency = this.currencies[0];
     this.flag = this.flags[0];
   }
 
+  loggedIn() {
+    this.isloggedIn = this.authService.loggedIn()
+  }
+  logout(){
+    this.authService.logoutUser()
+  }
   public changeCurrency(currency){
     this.currency = currency;
   }

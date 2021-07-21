@@ -1,0 +1,44 @@
+.bg {
+    background-image: url("../../../../../assets//images/auth-bg.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+.auth-card-position {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    height: 600px;
+    width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+    
+
+.auth-card-logo{
+  height: 100px;
+}
+.forgot-password-link {
+  font-size: 14px;
+  color: #919aa3;
+}
+
+form {
+  padding: 30px !important ;
+  text-align: center !important;
+  button {
+    color: white;
+    margin-top: 30px;
+    background-color: rgb(144, 16, 16);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+
+  }
+  }
+
+.text-left{
+  text-align: left !important;
+  margin-left: 10px 
+}
+
