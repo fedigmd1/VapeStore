@@ -43,8 +43,6 @@
       </div>
     </div>
     <div class="widgets-left" fxLayout="row">
-      <div class="text-danger widget-text">
-      </div>
       <div class="widget-text" *ngIf="isloggedIn"  >
         <a fxShow="false"  fxShow.gt-xs [routerLink]="['/wish-list']" routerLinkActive="router-link-active">
           <mat-icon  class="mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon> WISHLIST
@@ -67,7 +65,7 @@
       </div>
       <div class="widget-text cursor-pointer" *ngIf="isloggedIn">
         <a fxShow="false"  fxShow.gt-xs (click)="logout()" routerLinkActive="router-link-active">
-          <mat-icon  >person</mat-icon>Logout
+          <mat-icon>exit_to_app</mat-icon>Logout
         </a>
       </div>
     </div>
