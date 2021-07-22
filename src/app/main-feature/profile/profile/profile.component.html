@@ -1,0 +1,159 @@
+<div class="breadcrumb-section">
+    <div class="container">
+      <div fxLayout="row" fxLayoutAlign="space-between start" class="">
+        <div class="breadcrumb-title  pr-15" fxFlex="100" fxFlex.gt-md="45" fxFlex.md="45">
+          <div class="page-title">
+            <h4>My account</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-wrapper container mt-4 mb-4">
+    <!-- Content Header (Page header) -->
+  
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div>
+          <div>
+  
+            <!-- Profile Image -->
+            <div class="card card-info card-outline">
+              <div class="card-body box-profile d-flex justify-content-center align-items-center flex-column ">
+                <div class="position-relative">
+                  <img class="profile-user-img img-fluid img-circle " src="../../../../assets/images/user-photo.jpg"
+                    alt="User profile picture">
+                  <span class="update-picture-btn d-flex justify-content-center align-items-center" data-toggle="tooltip" data-placement="top" title="Update picture">
+                    <mat-icon #updatePictureIcon class="d-flex justify-content-center align-items-center">camera_alt</mat-icon>
+                  </span>
+                </div>
+  
+  
+                <h4 class="profile-username text-center mt-3">Raya Naouar</h4>
+  
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+  
+  
+          </div>
+          <!-- /.col -->
+          <div>
+            <div class="card">
+              <div class="card-header p-2">
+                <div class="d-flex justify-content-between">
+                  <h4>{{showUpdateForm ? 'Settings':'Personal informations'}}</h4>
+                  <mat-icon class="cursor-pointer" data-toggle="tooltip" data-placement="top" title="Settings" (click)="showForm()">create</mat-icon>
+                </div>
+              </div><!-- /.card-header -->
+              <div class="card-body"  [ngClass]="{'p-5':showUpdateForm}">
+                <div *ngIf="!showUpdateForm">
+                  <strong class="d-flex  align-items-center">
+                    <mat-icon>person</mat-icon>Username
+                  </strong>
+  
+                  <p class="text-muted">
+                    Raya Naouar
+                  </p>
+  
+                  <hr>
+                  <strong class="d-flex  align-items-center">
+                    <mat-icon>mail</mat-icon>Email
+                  </strong>
+  
+                  <p class="text-muted">
+                    raya.naouar@proxym-it.com
+                  </p>
+  
+                  <hr>
+  
+                  <strong class="d-flex  align-items-center">
+                    <mat-icon>home</mat-icon> Address
+                  </strong>
+  
+                  <p class="text-muted">Sousse, Tunisia</p>
+  
+                  <hr>
+                  <strong class="d-flex  align-items-center">
+                    <mat-icon> phone</mat-icon>Phone
+                  </strong>
+                  <p class="text-muted">+21654836708
+                  </p>
+  
+                </div>
+                <div class="tab-pane container" *ngIf="showUpdateForm" id="settings">
+                  <form class="form-horizontal">
+                    <div class="form-group row mb-3">
+                      <div class="col-lg-6 col-md-12">
+                        <label for="inputName" class="col-sm-12 col-form-label">Firstname</label>
+                        <div>
+                          <input type="email" class="form-control" id="inputName">
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12">
+                        <label for="inputName" class="col-sm-12 col-form-label">Lastname</label>
+                        <div>
+                          <input type="email" class="form-control" id="inputName">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group  row mb-3">
+                      <div class="col-lg-12 col-md-12">
+                        <label for="inputEmail" class="col-sm-12 col-form-label">Email</label>
+                        <div>
+                          <input type="email" disabled class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group  row mb-3">
+                      <div class="col-lg-6 col-md-12">
+                        <label for="inputName" class="col-sm-12 col-form-label">Password</label>
+                        <div>
+                          <input type="email" class="form-control" id="inputName" placeholder="Role">
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12">
+                        <label for="inputName" class="col-sm-4 col-form-label">Confirm password</label>
+                        <div>
+                          <input type="email" class="form-control" id="inputName" placeholder="Role">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group  row mb-3">
+                      <div class="col-lg-6 col-md-12">
+                        <label for="inputName" class="col-sm-12 col-form-label">Address</label>
+                        <div>
+                          <input type="email" class="form-control" id="inputName" placeholder="Role">
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12">
+                        <label for="inputName" class="col-sm-12 col-form-label">Phone</label>
+                        <div>
+                          <input type="email" class="form-control" id="inputName" placeholder="Role">
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="form-group row mt-4 mb-3">
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-danger w-100">Submit</button>
+                      </div>
+                    </div>
+                  </form>
+  
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
