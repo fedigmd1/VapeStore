@@ -35,8 +35,10 @@ const appRoutes: Routes = [
     path: 'compare', canActivate :[AuthGuard],
     loadChildren: () => import('../app/main-feature/compare/compare.module').then(m => m.CompareModule)
   },
-  
-
+  {
+    path: '', canActivate :[AuthGuard],
+    loadChildren: () => import('../app/main-feature/profile/profile.module').then(m => m.ProfileModule)
+  },
 
   { path: '**', component: ErrorPageComponent }
 ];
