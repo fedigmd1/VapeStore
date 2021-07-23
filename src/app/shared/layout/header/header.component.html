@@ -1,10 +1,10 @@
-<mat-sidenav [opened]="false" mode="over" #start class="sidenav">
+<mat-sidenav [opened]="false" mode="over" #start class="sidenav h-100 dark">
   <button mat-icon-button color="warn" class="close" (click)="start.close()">
     <mat-icon color="warn">close</mat-icon>
   </button>
   <div class="divider"></div>
   <div class="sidebar-items" fxLayout="column">
-    <app-sidebar *ngFor="let item of navItems" [item]="item"></app-sidebar>
+    <app-sidebar *ngFor="let item of navItems" [item]="item" (click)="start.close()"></app-sidebar>
   </div>
 </mat-sidenav>
 <!-- topbar start -->
@@ -45,29 +45,29 @@
     <div class="widgets-left" fxLayout="row">
       <div class="text-danger widget-text">
       </div>
-      <div class="widget-text" *ngIf="isloggedIn"  >
-        <a fxShow="false"  fxShow.gt-xs [routerLink]="['/wish-list']" routerLinkActive="router-link-active">
-          <mat-icon  class="mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon> WISHLIST
+      <div class="widget-text" *ngIf="isloggedIn">
+        <a fxShow="false" fxShow.gt-xs [routerLink]="['/wish-list']" routerLinkActive="router-link-active">
+          <mat-icon class="mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon> WISHLIST
         </a>
       </div>
       <div class="widget-text" *ngIf="isloggedIn">
-        <a fxShow="false"  fxShow.gt-xs [routerLink]="['/compare']" routerLinkActive="router-link-active">
-          <mat-icon >cached</mat-icon>COMPARE
+        <a fxShow="false" fxShow.gt-xs [routerLink]="['/compare']" routerLinkActive="router-link-active">
+          <mat-icon>cached</mat-icon>COMPARE
         </a>
       </div>
       <div class="widget-text" *ngIf="isloggedIn">
         <a fxShow="false" fxShow.gt-xs [routerLink]="['/profile']" routerLinkActive="router-link-active">
-          <mat-icon >person</mat-icon>My Account
+          <mat-icon>person</mat-icon>My Account
         </a>
       </div>
       <div class="widget-text" *ngIf="!isloggedIn">
-        <a fxShow="false"   fxShow.gt-xs [routerLink]="['/auth/login']" routerLinkActive="router-link-active">
-          <mat-icon  >person</mat-icon>Sign in
+        <a fxShow="false" fxShow.gt-xs [routerLink]="['/auth/login']" routerLinkActive="router-link-active">
+          <mat-icon>person</mat-icon>Sign in
         </a>
       </div>
       <div class="widget-text cursor-pointer" *ngIf="isloggedIn">
-        <a fxShow="false"  fxShow.gt-xs (click)="logout()" routerLinkActive="router-link-active">
-          <mat-icon  >person</mat-icon>Logout
+        <a fxShow="false" fxShow.gt-xs (click)="logout()" routerLinkActive="router-link-active">
+          <mat-icon>person</mat-icon>Logout
         </a>
       </div>
     </div>
@@ -79,7 +79,8 @@
     <mat-toolbar-row class="container" fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="20px"
       fxlayoutalign="space-between center">
       <div class="logo">
-        <a [routerLink]="['/']" routerLinkActive="router-link-active"><img class="header-logo" src="assets/images/logo-02-01.png"></a>
+        <a [routerLink]="['/']" routerLinkActive="router-link-active"><img class="header-logo"
+            src="assets/images/logo-02-01.png"></a>
       </div>
       <div fxflexoffset.gt-sm="10" fxFlex class="search-form">
         <form class="search-form" fxLayout="row">

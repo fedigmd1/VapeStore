@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Product } from 'src/app/core/modals/product.model';
+import { Component, OnInit } from '@angular/core';
+
 import { CartItem } from 'src/app/core/modals/cart-item';
 import { CartService } from '../../services/cart.service';
-import { AppSettings, Settings } from '../../services/color-option.service';
+import { Product } from 'src/app/core/modals/product.model';
 import { SessionService } from '../../services/session.service';
+import { SidenavMenu } from '../../sidebar/sidebar-menu.model';
+import { AppSettings, Settings } from '../../services/color-option.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +15,7 @@ import { SessionService } from '../../services/session.service';
 export class HeaderComponent implements OnInit {
   public sidenavMenuItems: Array<any>;
 
-  public currencies = ['USD', 'EUR'];
+  public currencies = ['USD', 'EUR', 'DT'];
   public currency: any;
   public flags = [
     { name: 'English', image: 'assets/images/flags/gb.svg' },
@@ -22,6 +24,20 @@ export class HeaderComponent implements OnInit {
     { name: 'Russian', image: 'assets/images/flags/ru.svg' },
     { name: 'Turkish', image: 'assets/images/flags/tr.svg' }
   ]
+
+  navItems: SidenavMenu[] = [
+    {
+      displayName: 'Home',
+      iconName: 'recent_actors',
+      route: '/home'
+    },
+    {
+      displayName: 'Products',
+      iconName: 'feedback',
+      route: '/home/products/all'
+    }
+  ];
+
   public flag: any;
   isloggedIn = false
   products: Product[];
