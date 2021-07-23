@@ -38,3 +38,13 @@
         color: rgb(144, 16, 16);
     }
 }
+.hideInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 225px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+  z-index: 2;
+}

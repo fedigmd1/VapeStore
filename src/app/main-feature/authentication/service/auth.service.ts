@@ -4,10 +4,6 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/core/models/auth';
 import { environment } from 'src/environments/environment';
 import { APIS } from 'src/app/core/config/route/endpoint'
-import { Router } from '@angular/router';
-import { ROUTE } from 'src/app/core/config/route/route';
-import { LoaderComponent } from 'src/app/shared/common/loader/loader.component';
-import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +14,6 @@ export class AuthService {
   endpoint = APIS
 
   constructor(
-    private router: Router,
-    private loader: LoaderService,
     private httpClient: HttpClient,
   ) { }
 
@@ -66,27 +60,6 @@ export class AuthService {
     })
   }
 
-  loggedIn() {
-    if (!!localStorage.getItem('token')) {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  getToken() {
-    return localStorage.getItem('token')
-  }
-
-  logoutUser() {
-    this.loader.showSpinner()
-    localStorage.removeItem('token')
-    localStorage.removeItem('userDetail')
-    setTimeout(() => {
-      this.router.navigate([ROUTE.LOGIN])
-      this.loader.stopSpinner()
-    }, 2000);
-  }
 
 
 }
