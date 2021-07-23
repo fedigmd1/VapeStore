@@ -1,86 +1,24 @@
 <app-breadcrumb [title]="'Market Place'" [breadcrumb]="'Market Place'"></app-breadcrumb>
 
 <div class="blog-list">
+ 
   <div class="container">
+    <div class="d-flex justify-content-end mt-4">
+      <a class="add-post-btn">
+        <mat-icon mat-stroked-button  class="mat-icon-lg mat-icon material-icons">add
+        </mat-icon>
+      </a>
+    </div>
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" class="blog-list-wrapper sec-padding">
       <div fxFlex="100" fxFlex.gt-sm="100" class="main-blog-panel">
-        <div class="single-blog-list" fxLayout="row" fxLayout.lt-md="column">
-          <div fxFlex="100" fxFlex.gt-sm="50" class="image-box">
-            <a [routerLink]="['/market-place/post/'] + id + ['/details']"><img src="assets/images/blog/b1.jpg" alt="">
-            </a>
+        <div class="single-blog-list shadow-box cursor-pointer"  (click)="getDetails(id)" fxLayout="row" fxLayout.lt-md="column">
+          <div fxFlex="100" fxFlex.gt-sm="30" class="image-box">
+            <img src="assets/images/blog/b1.jpg" alt="">
           </div>
-          <div fxFlex="100" fxFlex.gt-sm="50" class="text-box">
-            <a [routerLink]="['/market-place/post/'] + id + ['/details']">
+          <div  fxFlex="100" fxFlex.gt-sm="70" class="text-box mt-2">
+            <div>
               <h4> Our Outstanding Services </h4>
-            </a>
-            <ul fxLayout="row">
-              <li>
-                <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">
-                  <i class="material-icons">access_time </i>
-                </button>
-                Aug 21, 2015
-              </li>
-              <li>
-                <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">
-                  <i class="material-icons">person </i>
-                </button>
-                Marc Spenser
-              </li>
-              <li>
-                <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">
-                  <i class="material-icons">sms </i>
-                </button>
-                05 Comments
-              </li>
-            </ul>
-            <p>Aenean ligula nibh, molestie id viverra a, dapibus at dolor. In iaculis viverra neque Benenatis mauris
-              Vestibulum ante ipsum primis in industry, logistics, finance, business orci ultrices venenatis mauris. It
-              is a long established fact that a reader will be distracted.</p>
-          </div>
-        </div>
-        <div class="single-blog-list" fxLayout="row" fxLayout.lt-md="column">
-          <div fxFlex="100" fxFlex.gt-sm="50" class="image-box">
-            <a [routerLink]="['/market-place/post/'] + id + ['/details']"><img src="assets/images/blog/b1.jpg" alt="">
-            </a>
-          </div>
-          <div fxFlex="100" fxFlex.gt-sm="50" class="text-box">
-            <a [routerLink]="['/market-place/post/'] + id + ['/details']">
-              <h4> Our Outstanding Services </h4>
-            </a>
-            <ul fxLayout="row">
-              <li>
-                <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">
-                  <i class="material-icons">access_time </i>
-                </button>
-                Aug 21, 2015
-              </li>
-              <li>
-                <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">
-                  <i class="material-icons">person </i>
-                </button>
-                Marc Spenser
-              </li>
-              <li>
-                <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">
-                  <i class="material-icons">sms </i>
-                </button>
-                05 Comments
-              </li>
-            </ul>
-            <p>Aenean ligula nibh, molestie id viverra a, dapibus at dolor. In iaculis viverra neque Benenatis mauris
-              Vestibulum ante ipsum primis in industry, logistics, finance, business orci ultrices venenatis mauris. It
-              is a long established fact that a reader will be distracted.</p>
-          </div>
-        </div>
-        <div class="single-blog-list" fxLayout="row" fxLayout.lt-md="column">
-          <div fxFlex="100" fxFlex.gt-sm="50" class="image-box">
-            <a [routerLink]="['/market-place/post/'] + id + ['/details']"><img src="assets/images/blog/b1.jpg" alt="">
-            </a>
-          </div>
-          <div fxFlex="100" fxFlex.gt-sm="50" class="text-box">
-            <a [routerLink]="['/market-place/post/'] + id + ['/details']">
-              <h4> Our Outstanding Services </h4>
-            </a>
+            </div>
             <ul fxLayout="row">
               <li>
                 <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">
