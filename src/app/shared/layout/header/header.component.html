@@ -1,6 +1,6 @@
-<mat-sidenav [opened]="false" mode="over" #start class="sidenav h-100 dark">
-  <button mat-icon-button color="warn" class="close" (click)="start.close()">
-    <mat-icon color="warn">close</mat-icon>
+<mat-sidenav [opened]="false" mode="over" #start class="sidenav h-100">
+  <button mat-icon-button color="warn" class="close text-light" (click)="start.close()">
+    <mat-icon>close</mat-icon>
   </button>
   <div class="divider"></div>
   <div class="sidebar-items" fxLayout="column">
@@ -43,9 +43,9 @@
       </div>
     </div>
     <div class="widgets-left" fxLayout="row">
-      <div class="widget-text" *ngIf="isloggedIn"  >
-        <a fxShow="false"  fxShow.gt-xs [routerLink]="['/wish-list']" routerLinkActive="router-link-active">
-          <mat-icon  class="mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon> WISHLIST
+      <div class="widget-text" *ngIf="isloggedIn">
+        <a fxShow="false" fxShow.gt-xs [routerLink]="['/wish-list']" routerLinkActive="router-link-active">
+          <mat-icon class="mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon> WISHLIST
         </a>
       </div>
       <div class="widget-text" *ngIf="isloggedIn">
@@ -64,7 +64,7 @@
         </a>
       </div>
       <div class="widget-text cursor-pointer" *ngIf="isloggedIn">
-        <a fxShow="false"  fxShow.gt-xs (click)="logout()" routerLinkActive="router-link-active">
+        <a fxShow="false" fxShow.gt-xs (click)="logout()" routerLinkActive="router-link-active">
           <mat-icon>exit_to_app</mat-icon>Logout
         </a>
       </div>
