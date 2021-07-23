@@ -1,18 +1,16 @@
 <div class="modal-style-2 d-flex justify-content-center align-items-center bg-dark p-3" role="dialog" tabindex="-1">
-    <div class="modal-content d-flex p-2 flex-column justify-content-center bg-dark align-items-center">
-      <div class="height-modal">
-      <image-cropper  *ngIf="isDevice"[imageBase64]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="3 / 3" format="png"
-      (imageCropped)="imageCropped($event)"></image-cropper> 
-      <image-cropper *ngIf="!isDevice"[imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="3 / 3" format="png"
-      (imageCropped)="imageCropped($event)"></image-cropper>
+  <div class="modal-content d-flex p-2 flex-column justify-content-center bg-dark align-items-center">
+    <div class="height-modal">
+      <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="3/3"
+        format="png" (imageCropped)="imageCropped($event)">
+      </image-cropper>
     </div>
     <div class="card-modif-btn d-flex justify-content-center mt-4">
-      <button class="margin-btn btn btn-sm  text-light mainFont-bold fs-16" type="button"
-              type="submit" (click)="confirme()" >
+      <button class="margin-btn btn btn-sm text-light mainFont-bold fs-16" type="button" type="submit"
+        (click)="confirme()">
         confirm</button>
-        <button class="ml-3 btn btn-sm btn-primary mainFont-bold fs-16" type="button" type="reset" (click)="hideModal()">
-          cancel</button>
-    </div>
+      <button class="ml-3 btn btn-sm btn-primary mainFont-bold fs-16" type="button" type="reset" (click)="hideModal()">
+        cancel</button>
     </div>
   </div>
-  
+</div>

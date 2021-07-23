@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ROUTE } from 'src/app/core/config/route/route';
+import { Injectable } from '@angular/core';
+
 import { LoaderService } from './loader.service';
+import { ROUTE } from 'src/app/core/config/route/route';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class SessionService {
     private router: Router,
     private loader: LoaderService) { };
 
-    loggedIn() {
+  loggedIn() {
     if (!!localStorage.getItem('token')) {
       return true
     } else {
@@ -33,7 +34,7 @@ export class SessionService {
       this.loader.stopSpinner()
     }, 2000);
   }
-  getUserDetails(){
+  getUserDetails() {
     return localStorage.getItem('userDetail')
   }
 

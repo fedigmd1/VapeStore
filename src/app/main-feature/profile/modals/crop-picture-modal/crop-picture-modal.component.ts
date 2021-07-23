@@ -1,6 +1,6 @@
-import { Component, OnInit , EventEmitter} from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-crop-picture-modal',
@@ -9,25 +9,24 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 })
 export class CropPictureModalComponent implements OnInit {
 
-  
-
-  imageChangedEvent;
-  croppedImage;
+  imageChangedEvent: any;
+  croppedImage: any;
 
   public event: EventEmitter<any> = new EventEmitter();
 
-  constructor(private bsModalRef: BsModalRef) { }
+  constructor(
+    private bsModalRef: BsModalRef
+  ) { }
 
   ngOnInit(): void {
     console.log("to cropped", this.imageChangedEvent);
-
   }
 
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
     console.log("Cropped image", this.croppedImage);
-
   }
+
   hideModal() {
     this.bsModalRef.hide();
   }

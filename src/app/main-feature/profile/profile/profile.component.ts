@@ -1,6 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+
 import { User } from 'src/app/core/models/auth';
 import { ModalService } from 'src/app/shared/services/modal.service';
 import { SessionService } from 'src/app/shared/services/session.service';
@@ -12,6 +12,8 @@ import { CustomValidators } from 'src/app/shared/validators/confirmPassword.vali
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
+  @ViewChild('inputFile') inputFile: ElementRef;
 
   userPicture: null
   userDetails: User
@@ -25,26 +27,25 @@ export class ProfileComponent implements OnInit {
   validatepasswords = false
   updateProfileForm: FormGroup
   confirmPassword: FormControl
-  @ViewChild('inputFile') inputFile: ElementRef;
 
 
   constructor(
+    private modalService: ModalService,
     private sessionService: SessionService,
-    private modalService: ModalService) { }
+  ) { }
 
   ngOnInit() {
     this.getUserDetails()
   }
 
   initForm() {
-
     this.phone = new FormControl(this.userDetails.phone, { validators: Validators.required })
     this.address = new FormControl(this.userDetails.address, { validators: Validators.required })
     this.password = new FormControl(this.userDetails.password, { validators: Validators.required })
     this.lastName = new FormControl(this.userDetails.last_name, { validators: Validators.required })
     this.firstName = new FormControl(this.userDetails.first_name, { validators: Validators.required })
-    this.confirmPassword = new FormControl(this.userDetails.password, { validators: Validators.required})
-    this.email = new FormControl({value: this.userDetails.email, disabled: true}, { validators: [Validators.required, Validators.email] })
+    this.confirmPassword = new FormControl(this.userDetails.password, { validators: Validators.required })
+    this.email = new FormControl({ value: this.userDetails.email, disabled: true }, { validators: [Validators.required, Validators.email] })
 
     this.updateProfileForm = new FormGroup({
       email: this.email,
@@ -54,22 +55,21 @@ export class ProfileComponent implements OnInit {
       password: this.password,
       firstName: this.firstName,
       confirmPassword: this.confirmPassword
-    },{
-      validators : CustomValidators.mustMatchPwd
-    }
-    )
+    }, {
+      validators: CustomValidators.mustMatchPwd
+    })
   }
 
-  getUserDetails(){
+  getUserDetails() {
     this.userDetails = JSON.parse(this.sessionService.getUserDetails())
   }
 
-  showForm(){
+  showForm() {
     this.initForm()
     this.showUpdateForm = !this.showUpdateForm
   }
 
-  upadateProfile(){
+  upadateProfile() {
     this.updateProfileForm.errors?.passwordNotmatch ? this.validatepasswords = true : this.validatepasswords = false
 
     if (this.updateProfileForm.valid) {
@@ -83,19 +83,19 @@ export class ProfileComponent implements OnInit {
         first_name: this.updateProfileForm.value.firstName,
       }
       console.log(requestData);
-      
-          //TODO WS
+
+      //TODO WS
     }
   }
-  openFile(){
+  openFile() {
     this.inputFile.nativeElement.click();
   }
 
   fileChangeEvent(image: any): void {
     console.log('Image to crop web', image);
-    this.modalService.showCropImageModal(image).subscribe((croppedImage : any )=> {
-       console.log(croppedImage);
-       this.userPicture = croppedImage.file
+    this.modalService.showCropImageModal(image).subscribe((croppedImage: any) => {
+      console.log(croppedImage);
+      this.userPicture = croppedImage.file
     });
   }
 

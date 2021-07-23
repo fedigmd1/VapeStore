@@ -5,15 +5,15 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MainProfileComponent } from './main-profile/main-profile.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 
-
-
 @NgModule({
-  declarations: [ProfileComponent, MainProfileComponent],
+  declarations: [
+    ProfileComponent,
+    MainProfileComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,
     ProfileRoutingModule
-    
   ]
 })
 export class ProfileModule { }
