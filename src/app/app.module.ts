@@ -15,13 +15,15 @@ import { ErrorPageComponent } from './main-feature/pages/error-page/error-page.c
 import { ColorOptionsComponent } from './main-feature/color-options/color-options.component';
 import { AuthGuard } from './core/config/route/guards/auth.guard';
 import { TokenInterceptorService } from './core/config/route/token-interceptor.service';
+import { CropPictureModalComponent } from './main-feature/profile/modals/crop-picture-modal/crop-picture-modal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    ColorOptionsComponent
+    ColorOptionsComponent,
+    CropPictureModalComponent
   ],
   imports: [
     ShopModule,
@@ -41,6 +43,7 @@ import { TokenInterceptorService } from './core/config/route/token-interceptor.s
     useClass: TokenInterceptorService,
     multi: true
   }],
+  entryComponents:[CropPictureModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
