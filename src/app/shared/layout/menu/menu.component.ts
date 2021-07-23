@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/main-feature/authentication/service/auth.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,14 +12,14 @@ export class MenuComponent implements OnInit {
 
   isloggedIn = false
   
-  constructor(private authService: AuthService, private router : Router) { }
+  constructor(private sessionService: SessionService, private router : Router) { }
 
   ngOnInit() {
     this.loggedIn()
    }
 
   loggedIn() {
-    this.isloggedIn = this.authService.loggedIn()
+    this.isloggedIn = this.sessionService.loggedIn()
   }
   
   goTo(page){
