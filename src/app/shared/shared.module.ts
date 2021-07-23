@@ -46,6 +46,9 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './common/loader/loader.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import {ModalModule} from 'ngx-bootstrap/modal';
+
 
 
 @NgModule({
@@ -94,7 +97,9 @@ import { LoaderComponent } from './common/loader/loader.component';
     NgxSkeletonLoaderModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ImageCropperModule,
+    ModalModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -134,6 +139,8 @@ import { LoaderComponent } from './common/loader/loader.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ImageCropperModule,
+    ModalModule
   ],
   providers: [
     ProductService,
