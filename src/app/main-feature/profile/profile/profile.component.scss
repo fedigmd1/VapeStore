@@ -1,0 +1,50 @@
+.profile-user-img {
+    border: 3px solid rgb(144, 16, 16);
+    margin: 0 auto;
+    padding: 3px;
+    width: 100px;
+  }
+
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  .img-circle {
+    border-radius: 50%;
+  }
+
+  .update-picture-btn{
+    width: 27px;
+    border-radius: 50%;
+    height: 27px;
+    position: absolute;
+    top: -0px;
+    right: 0px;
+    background-color: white;
+    border: 1px solid rgb(144, 16, 16);
+    cursor: pointer;
+    mat-icon:hover{
+        color: rgb(144, 16, 16);
+    }
+}
+
+.mat-icon {
+    font-size: 20px;
+  }
+
+.card-header{
+    mat-icon:hover{
+        color: rgb(144, 16, 16);
+    }
+}
+.hideInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 225px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+  z-index: 2;
+}
