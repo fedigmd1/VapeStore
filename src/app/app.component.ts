@@ -7,8 +7,6 @@ import { CartService } from './shared/services/cart.service';
 import { SidebarMenuService } from './shared/sidebar/sidebar-menu.service';
 import { Product } from './core/modals/product.model';
 import { CartItem } from './core/modals/cart-item';
-import { SidenavMenu } from './shared/sidebar/sidebar-menu.model';
-import { AuthService } from './main-feature/authentication/service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +25,7 @@ export class AppComponent {
   public settings: Settings;
   wishlistItems: Product[] = [];
   shoppingCartItems: CartItem[] = [];
-  public currencies = ['USD', 'EUR'];
+  public currencies = ['USD', 'EUR','DT'];
   public sidenavMenuItems: Array<any>;
 
   public flags = [
@@ -37,228 +35,6 @@ export class AppComponent {
     { name: 'Russian', image: 'assets/images/flags/ru.svg' },
     { name: 'Turkish', image: 'assets/images/flags/tr.svg' }
   ]
-
-  navItems: SidenavMenu[] = [
-    {
-      displayName: 'Home',
-      iconName: 'recent_actors',
-      children: [
-        {
-          displayName: 'Home-1',
-          iconName: 'group',
-          route: '/home/one'
-        },
-        {
-          displayName: 'Home-2',
-          iconName: 'speaker_notes',
-          route: '/home/two',
-        },
-        {
-          displayName: 'Home-3',
-          iconName: 'feedback',
-          route: '/home/three'
-        }
-      ]
-    },
-    {
-      displayName: 'Products',
-      iconName: 'feedback',
-      route: '/home/products/all'
-    },
-    {
-      displayName: 'Shop',
-      iconName: 'movie_filter',
-      children: [
-        {
-          displayName: 'Computers',
-          iconName: 'group',
-          children: [
-            {
-              displayName: 'Laptops',
-              iconName: 'person',
-              route: 'michael-prentice',
-            },
-            {
-              displayName: 'Cables',
-              iconName: 'person',
-              route: 'stephen-fluin',
-            },
-            {
-              displayName: 'Monitors',
-              iconName: 'person',
-              route: 'mike-brocchi',
-            },
-            {
-              displayName: 'Tablets',
-              iconName: 'person',
-              route: 'mike-brocchi',
-            },
-            {
-              displayName: 'Headsets',
-              iconName: 'person',
-              route: 'mike-brocchi',
-            }
-          ]
-        },
-        {
-          displayName: 'Tv & Audio',
-          iconName: 'speaker_notes',
-          children: [
-            {
-              displayName: 'Tv',
-              iconName: 'star_rate',
-              route: 'material-design'
-            },
-            {
-              displayName: 'Audio',
-              iconName: 'star_rate',
-              route: 'what-up-web'
-            },
-            {
-              displayName: 'Video',
-              iconName: 'star_rate',
-              route: 'my-ally-cli'
-            },
-            {
-              displayName: 'Dvd',
-              iconName: 'star_rate',
-              route: 'become-angular-tailer'
-            }
-          ]
-        },
-        {
-          displayName: 'Phones',
-          iconName: 'feedback',
-          children: [
-            {
-              displayName: 'Mobile phones',
-              iconName: 'star_rate',
-              route: 'material-design'
-            },
-            {
-              displayName: 'Power Bank',
-              iconName: 'star_rate',
-              route: 'what-up-web'
-            },
-            {
-              displayName: 'Memory Cards',
-              iconName: 'star_rate',
-              route: 'my-ally-cli'
-            },
-            {
-              displayName: 'Accesories',
-              iconName: 'star_rate',
-              route: 'become-angular-tailer'
-            }
-          ]
-        },
-        {
-          displayName: 'Electronics',
-          iconName: 'feedback',
-          children: [
-            {
-              displayName: 'Washing Machines',
-              iconName: 'star_rate',
-              route: 'material-design'
-            },
-            {
-              displayName: 'Water heater',
-              iconName: 'star_rate',
-              route: 'what-up-web'
-            },
-            {
-              displayName: 'Cookers',
-              iconName: 'star_rate',
-              route: 'my-ally-cli'
-            },
-            {
-              displayName: 'Cold stores',
-              iconName: 'star_rate',
-              route: 'become-angular-tailer'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      displayName: 'Market Place',
-      iconName: 'report_problem',
-      children: [
-        {
-          displayName: 'Blog List',
-          iconName: 'group',
-          route: '/blog/blog-list'
-        },
-        {
-          displayName: 'Blog Columns',
-          iconName: 'speaker_notes',
-          route: '/blog/blog-column',
-        },
-        {
-          displayName: 'Blog Details',
-          iconName: 'feedback',
-          route: '/blog/blog-details'
-        }
-      ]
-    },
-    {
-      displayName: 'Pages',
-      iconName: 'report_problem',
-      children: [
-        {
-          displayName: 'About Us',
-          iconName: 'group',
-          route: '/pages/about'
-        },
-        {
-          displayName: 'FAQ',
-          iconName: 'speaker_notes',
-          route: '/pages/faq',
-        },
-        {
-          displayName: 'Contact',
-          iconName: 'feedback',
-          route: '/pages/contact'
-        },
-        {
-          displayName: 'Wishlist',
-          iconName: 'group',
-          route: '/pages/wishlist'
-        },
-        {
-          displayName: 'Compare',
-          iconName: 'speaker_notes',
-          route: '/pages/compare',
-        },
-        {
-          displayName: 'Checkout',
-          iconName: 'feedback',
-          route: '/pages/checkout'
-        },
-        {
-          displayName: 'Cart',
-          iconName: 'group',
-          route: '/pages/cart'
-        },
-        {
-          displayName: 'My Account',
-          iconName: 'speaker_notes',
-          route: '/pages/my-account',
-        },
-        {
-          displayName: '404',
-          iconName: 'feedback',
-          route: '/pages/error'
-        }
-      ]
-    },
-    {
-      displayName: 'Contact',
-      iconName: 'feedback',
-      route: '/pages/contact'
-    }
-  ];
-
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -295,12 +71,12 @@ export class AppComponent {
     this.checkIsAuthPages()
 
   }
- 
+
 
   checkIsAuthPages() {
     this.router.events.subscribe((val) => {
-     this.isAuthPages = this.router.url.includes('auth')
-  })
+      this.isAuthPages = this.router.url.includes('auth')
+    })
   }
 
   public changeCurrency(currency) {
