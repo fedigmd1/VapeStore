@@ -53,21 +53,48 @@
           <mat-icon>cached</mat-icon>COMPARE
         </a>
       </div>
-      <div class="widget-text" *ngIf="isloggedIn">
+      <!-- <div class="widget-text" *ngIf="isloggedIn">
         <a fxShow="false" fxShow.gt-xs [routerLink]="['/profile']" routerLinkActive="router-link-active">
           <mat-icon>person</mat-icon>My Account
         </a>
+      </div> -->
+      <div class="widget-text" *ngIf="isloggedIn">
+        <a fxShow="false" fxShow.gt-xs mat-button [matMenuTriggerFor]="shop" *ngIf="isloggedIn" class="mat-button carett"
+          (click)="openMegaMenu()"><mat-icon class="carett">person</mat-icon>My
+          Account<mat-icon class="carett">arrow_drop_down</mat-icon></a>
+        <mat-menu #shop="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+          <div fxLayout="row wrap">
+            <div fxFlex="100" fxLayout="column" class="">
+              <div mat-menu-item class="widget-text cursor-pointer" *ngIf="isloggedIn">
+                <a fxShow="false" fxShow.gt-xs (click)="logout()" routerLinkActive="router-link-active">
+                  <mat-icon>exit_to_app</mat-icon>Logout
+                </a>
+              </div>
+              <div mat-menu-item class="widget-text cursor-pointer" *ngIf="isloggedIn">
+                <a fxShow="false" fxShow.gt-xs (click)="goTo(profile)" routerLinkActive="router-link-active">
+                  <mat-icon>person</mat-icon>My profile
+                </a>
+              </div>
+              <div mat-menu-item class="widget-text cursor-pointer" *ngIf="isloggedIn">
+                <a fxShow="false" fxShow.gt-xs (click)="goTo(home)" routerLinkActive="router-link-active">
+                  <mat-icon>exit_to_app</mat-icon>Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </mat-menu>
       </div>
+
+
+
+
       <div class="widget-text" *ngIf="!isloggedIn">
         <a fxShow="false" fxShow.gt-xs [routerLink]="['/auth/login']" routerLinkActive="router-link-active">
           <mat-icon>person</mat-icon>Sign in
         </a>
       </div>
-      <div class="widget-text cursor-pointer" *ngIf="isloggedIn">
-        <a fxShow="false" fxShow.gt-xs (click)="logout()" routerLinkActive="router-link-active">
-          <mat-icon>exit_to_app</mat-icon>Logout
-        </a>
-      </div>
+
+
     </div>
   </mat-toolbar-row>
 
