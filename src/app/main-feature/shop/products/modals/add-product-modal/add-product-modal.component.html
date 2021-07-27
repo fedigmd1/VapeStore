@@ -1,0 +1,32 @@
+<div class="modal-style-2 d-flex justify-content-center align-items-center p-3" role="dialog" tabindex="-1">
+  <div class="modal-content d-flex p-2 flex-column justify-content-center align-items-center">
+    <div class="height-modal">
+      <h1>hello</h1>
+      <div class="" (click)="getProductImage()">
+        <h4>hello 4 </h4>
+      </div>
+      <div class="card-modif-btn d-flex justify-content-center mt-4">
+        <button class="margin-btn btn btn-sm btn-primary mainFont-bold fs-16" type="button" type="submit"
+          (click)="confirme()">
+          Confirm</button>
+        <button class="ml-3 btn btn-sm btn-danger mainFont-bold fs-16" type="button" type="reset" (click)="hideModal()">
+          Cancel</button>
+      </div>
+    </div>
+    <div class="card card-info card-outline">
+      <div class="card-body box-profile d-flex justify-content-center align-items-center flex-column ">
+        <div class="position-relative">
+          <img class="profile-user-img img-fluid img-circle " [src]="productPicture"
+            onerror="this.src='../../../../assets/images/user-photo.jpg'" alt="product picture">
+          <span class="update-picture-btn d-flex justify-content-center align-items-center" (click)="openFile()"
+            data-toggle="tooltip" data-placement="top" title="Update picture">
+            <mat-icon class="d-flex justify-content-center align-items-center">camera_alt
+            </mat-icon>
+          </span>
+        </div>
+        <h4 class="profile-username text-center mt-3">hello</h4>
+      </div>
+    </div>
+  </div>
+  <input #inputFile (change)="fileChangeEvent($event)" class="form-control disableInput border-primary-13 "
+    accept="image/*" class="hideInput" type="file" />

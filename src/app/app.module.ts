@@ -16,6 +16,7 @@ import { TokenInterceptorService } from './core/config/route/token-interceptor.s
 import { ErrorPageComponent } from './main-feature/pages/error-page/error-page.component';
 import { ColorOptionsComponent } from './main-feature/color-options/color-options.component';
 import { CropPictureModalComponent } from './main-feature/profile/modals/crop-picture-modal/crop-picture-modal.component';
+import { AddProductModalComponent } from './main-feature/shop/products/modals/add-product-modal/add-product-modal.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CropPictureModalComponent } from './main-feature/profile/modals/crop-pi
     AppComponent,
     ErrorPageComponent,
     ColorOptionsComponent,
-    CropPictureModalComponent
+    AddProductModalComponent,
+    CropPictureModalComponent,
   ],
   imports: [
     ShopModule,
@@ -43,7 +45,11 @@ import { CropPictureModalComponent } from './main-feature/profile/modals/crop-pi
     useClass: TokenInterceptorService,
     multi: true
   }],
-  entryComponents: [CropPictureModalComponent],
+  entryComponents: [
+    AddProductModalComponent,
+    CropPictureModalComponent,
+  ]
+  ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

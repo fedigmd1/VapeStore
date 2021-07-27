@@ -3,17 +3,19 @@ import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { ColorFilter, Product } from 'src/app/core/modals/product.model';
+import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
   selector: 'app-product-left-sidebar',
   templateUrl: './product-left-sidebar.component.html',
-  styleUrls: ['./product-left-sidebar.component.sass']
+  styleUrls: ['./product-left-sidebar.component.scss']
 })
 export class ProductLeftSidebarComponent implements OnInit {
   public sidenavOpen: boolean = true;
   public animation: any;   // Animation
   public sortByOrder: string = '';   // sorting
   public page: any;
+  public productPicture: null
   public tagsFilters: any[] = [];
   public viewType: string = 'grid';
   public viewCol: number = 25;
@@ -29,8 +31,9 @@ export class ProductLeftSidebarComponent implements OnInit {
   id: number
 
   constructor(
+    private route: ActivatedRoute,
+    private modalService: ModalService,
     private productService: ProductService,
-    private route: ActivatedRoute
   ) {
     this.route.params.subscribe(
       (params: Params) => {
@@ -89,7 +92,21 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   }
 
+  addProduct() {
+    console.warn("add product");
+    this.modalService.AddProductModal().subscribe((data: any) => {
+      console.log(data);
+      this.productPicture = data
+    })
+  }
 
+  fileChangeEvent(image: any): void {
+    console.log('Image to crop web', image);
+    this.modalService.showCropImageModal(image).subscribe((croppedImage: any) => {
+      console.log(croppedImage);
+      this.productPicture = croppedImage.file
+    });
+  }
 
   public changeViewType(viewType, viewCol) {
     this.viewType = viewType;

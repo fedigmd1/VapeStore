@@ -2,6 +2,12 @@
 
 <div class="left-sidebar-wrapper sec-padding">
   <div class="container">
+    <div class="d-flex justify-content-end mb-4 mt-4">
+      <a (click)="addProduct()" class="add-post-btn">
+        <mat-icon mat-stroked-button class="mat-icon-lg mat-icon material-icons">add
+        </mat-icon>
+      </a>
+    </div>
     <div class="sidebar-wrapper" fxLayout='row' fxLayout.lt-md="column">
       <div fxFlex="25" fxFlex.lt-sm="100" class="filter-sidenav" perfectScrollbar>
         <div class="toggles-wrapper" fxLayout="column" fxLayout.lt-md="column">
@@ -41,8 +47,8 @@
             <app-popular-products></app-popular-products>
           </div>
         </div>
-
       </div>
+
       <div fxFlex="75" fxFlex.lt-sm="100" class="all-products" ngClass.gt-sm="p-left">
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxHide.lt-md="true"
           class="filter-row mat-elevation-z1 text-muted">
