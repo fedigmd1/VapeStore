@@ -34,20 +34,46 @@
         <div>
           <div class="card">
             <div class="card-header p-2">
-              <div class="d-flex justify-content-between">
-                <h4>{{showUpdateForm ? 'Settings':'Personal informations'}}</h4>
-                <mat-icon class="cursor-pointer" data-toggle="tooltip" data-placement="top" title="Settings"
-                  (click)="showForm()">create</mat-icon>
+              <div>
+                <h4>Personal informations</h4>
               </div>
             </div><!-- /.card-header -->
-            <div class="card-body" [ngClass]="{'p-5':showUpdateForm}">
-              <div *ngIf="!showUpdateForm">
-                <strong class="d-flex  align-items-center mb-1">
-                  <mat-icon>person</mat-icon><span>Username</span>
-                </strong>
-                <p class="text-muted">
-                  {{userDetails.first_name | titlecase}} {{userDetails.last_name | titlecase}}
-                </p>
+            <div class="card-body">
+              <form class="form-horizontal" [formGroup]="updateProfileForm">
+                <div class="position-relative">
+               
+                  <div *ngIf="!showEditUserName">
+                    <strong class="d-flex  align-items-center mb-1">
+                      <mat-icon>person</mat-icon><span>Username</span>
+                    </strong>
+                    <p class="text-muted">
+                      {{userDetails.first_name | titlecase}} {{userDetails.last_name | titlecase}}
+                    </p>
+                  </div>
+                  <div *ngIf="showEditUserName">
+                    <div class="form-group row mb-3">
+                      <div class="col-lg-3 ">
+                        <label  class=" col-md-12 col-form-label mr-2">Firstname</label>
+                        <div>
+                          <input type="text" class="form-control" formControlName="firstName">
+                        </div>
+                      </div>
+                      <div class="col-lg-3 ">
+                        <label  class="col-md-12 col-form-label  mr-2">Lastname</label>
+                        <div>
+                          <input type="text" class="form-control" formControlName="lastName">
+                        </div>
+                      </div>
+                    
+                        <div class="d-flex align-items-end col-lg-1">
+                          <button type="submit" class="btn mt-3 w-100" (click)="updateInfo()">Submit</button>
+                        </div>
+                      
+                    </div>
+                  </div>
+                <mat-icon class="cursor-pointer edit-btn d-flex justify-content-center align-items-center" data-toggle="tooltip" data-placement="top" title="Settings"
+                (click)="showEditUsenameForm()">create</mat-icon>
+              </div>
                 <hr>
                 <strong class="d-flex  align-items-center mb-1">
                   <mat-icon>mail</mat-icon><span>Email</span>
@@ -55,29 +81,121 @@
                 <p class="text-muted">
                   {{userDetails.email}}
                 </p>
-                <hr>
-                <strong class="d-flex  align-items-center mb-1">
-                  <mat-icon>https</mat-icon><span>Password</span>
-                </strong>
-                <p class="text-muted">
-                  ***********
-                </p>
-                <div *ngIf="userDetails.role == 'store'">
+                <div >
                   <hr>
-                  <strong class="d-flex  align-items-center mb-1">
-                    <mat-icon>home</mat-icon><span>Address</span>
-                  </strong>
-                  <p class="text-muted">{{userDetails.address | titlecase}}</p>
-                  <hr>
-                  <strong class="d-flex  align-items-center mb-1">
-                    <mat-icon> phone</mat-icon><span>Phone</span>
-                  </strong>
-                  <p class="text-muted">{{userDetails.phone}}
-                  </p>
+                  <div class="position-relative">
+               
+                    <div *ngIf="!showEditAdress">
+                      <strong class="d-flex  align-items-center mb-1">
+                        <mat-icon>home</mat-icon><span>Address</span>
+                      </strong>
+                      <p class="text-muted">{{(userDetails.adress | titlecase) || '--'}}</p>
+                    </div>
+                    <div *ngIf="showEditAdress">
+                      <div class="form-group row mb-3">
+                        <div class="col-lg-3  col-md-12">
+                          <label  class=" col-md-12 col-form-label mr-2">Address</label>
+                          <div>
+                            <input type="text" class="form-control" formControlName="address">
+                          </div>
+                        </div>
+                          <div class="d-flex align-items-end col-lg-1 col-md-12">
+                            <button type="submit" class="btn w-100 mt-3" (click)="updateInfo()">Submit</button>
+                          </div>
+                        
+                      </div>
+                    </div>
+                  <mat-icon class="cursor-pointer edit-btn d-flex justify-content-center align-items-center" data-toggle="tooltip" data-placement="top" title="Settings"
+                  (click)="showEditAdressForm()">create</mat-icon>
                 </div>
+                  <hr> 
+                  <div class="position-relative">
+               
+                    <div *ngIf="!showEditPhoneNumber">
+                      <strong class="d-flex  align-items-center mb-1">
+                        <mat-icon> phone</mat-icon><span>Phone number</span>
+                      </strong>
+                      <p class="text-muted">{{userDetails.phone || '--'}}
+                      </p>
+                    </div>
+                    <div *ngIf="showEditPhoneNumber">
+                      <div class="form-group row mb-3">
+                        <div class="col-lg-3  col-md-12">
+                          <label  class=" col-md-12 col-form-label mr-2">Phone number</label>
+                          <div>
+                            <input type="text" class="form-control" formControlName="phone">
+                          </div>
+                        </div>
+                          <div class="d-flex align-items-end col-lg-1 col-md-12">
+                            <button type="submit" class="btn w-100 mt-3" (click)="updateInfo()">Submit</button>
+                          </div>
+                        
+                      </div>
+                    </div>
+                  <mat-icon class="cursor-pointer edit-btn d-flex justify-content-center align-items-center" data-toggle="tooltip" data-placement="top" title="Settings"
+                  (click)="showEditPhoneNbrForm()">create</mat-icon>
+                </div>
+                </div>
+              </form>
+              <form class="form-horizontal" [formGroup]="updatePasswordForm" (submit)="updatePassword()">
+                <hr>
+                <div class="position-relative">
+                  <div *ngIf="!showEditPassword">
+                    <strong class="d-flex  align-items-center mb-1">
+                      <mat-icon>https</mat-icon><span>Password</span>
+                    </strong>
+                    <p class="text-muted">
+                      ***********
+                    </p>
+                  </div>
+                  <div *ngIf="showEditPassword">
+                    <div class="form-group row mb-3">
+                      <div class="col-lg-3  col-md-12">
+                        <label  class=" col-md-12 col-form-label mr-2">Old password</label>
+                        <div>
+                          <input type="password" class="form-control" formControlName="oldPassword"
+                            [class.is-invalid]="oldPassword.invalid && oldPassword.touched"
+                            [ngClass]="{'error-form-control' : oldPassword.invalid && oldPassword.touched}">
+                          <div *ngIf="oldPassword.invalid && oldPassword.touched" class="text-danger text-left">
+                            <small *ngIf="oldPassword.errors?.required">Old password is required*</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3  col-md-12">
+                        <label  class="col-md-12 col-form-label  mr-2">New password</label>
+                        <div>
+                          <input type="password" class="form-control" formControlName="password"
+                            [class.is-invalid]="password.invalid && password.touched"
+                            [ngClass]="{'error-form-control' : password.invalid && password.touched}">
+                          <div *ngIf="password.invalid && password.touched" class="text-danger text-left">
+                            <small *ngIf="password.errors?.required">New password is required*</small>
+                          </div>
+                        </div>
+                      </div>    
+                       <div class="col-lg-3  col-md-12">
+                        <label  class="col-md-12 col-form-label  mr-2">Confirm password</label>
+                        <div>
+                          <input type="password" class="form-control" formControlName="confirmPassword"
+                            [class.is-invalid]="confirmPassword.invalid && confirmPassword.touched"
+                            [ngClass]="{'error-form-control' : confirmPassword.invalid && confirmPassword.touched}">
+                          <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="text-danger text-left">
+                            <small *ngIf="confirmPassword.errors?.required">Confirm password is required*</small>
+                          </div>
+                        </div>
+                      </div>
+                    
+                        <div class="d-flex align-items-end col-lg-1  col-md-12">
+                          <button type="submit" class="btn mt-3 w-100">Submit</button>
+                        </div>
+                      
+                    </div>
+                  </div>
+                <mat-icon class="cursor-pointer edit-btn d-flex justify-content-center align-items-center" data-toggle="tooltip" data-placement="top" title="Settings"
+                (click)="showEditPasswordForm()">create</mat-icon>
               </div>
-              <div class="tab-pane container" *ngIf="showUpdateForm" id="settings">
-                <form class="form-horizontal" [formGroup]="updateProfileForm" (ngSubmit)="upadateProfile()">
+              </form>
+              <!-- <div class="tab-pane container" *ngIf="showUpdateForm" id="settings">
+                <form class="form-horizontal" [formGroup]="updateProfileForm" (ngSubmit)="updateInfo()">
                   <div class="form-group row mb-3">
                     <div class="col-lg-6 col-md-12">
                       <label for="inputName" class="col-sm-12 col-form-label">Firstname</label>
@@ -142,11 +260,11 @@
                       </div>
                     </div>
                   </div>
-                  <div *ngIf="userDetails.role == 'store'" class="form-group  row mb-3">
+                  <div  class="form-group  row mb-3">
                     <div class="col-lg-6 col-md-12">
-                      <label for="inputName" class="col-sm-12 col-form-label">Address</label>
+                      <label  class="col-sm-12 col-form-label">Address</label>
                       <div>
-                        <input type="email" class="form-control" id="inputName" formControlName="address"
+                        <input type="text" class="form-control" formControlName="address"
                           [class.is-invalid]="address.invalid && address.touched"
                           [ngClass]="{'error-form-control' : address.invalid && address.touched}">
                         <div *ngIf="address.invalid && address.touched" class="text-danger text-left">
@@ -155,13 +273,13 @@
                       </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
-                      <label for="inputName" class="col-sm-12 col-form-label">Phone</label>
+                      <label class="col-sm-12 col-form-label">Phone</label>
                       <div>
-                        <input type="email" class="form-control" id="inputName" formControlName="phone"
+                        <input type="text" class="form-control"  formControlName="phone"
                           [class.is-invalid]="phone.invalid && phone.touched"
                           [ngClass]="{'error-form-control' : phone.invalid && phone.touched}">
-                        <div *ngIf="Phone.invalid && Phone.touched" class="text-danger text-left">
-                          <small *ngIf="Phone.errors?.required">Phone is required*</small>
+                        <div *ngIf="phone.invalid && phone.touched" class="text-danger text-left">
+                          <small *ngIf="phone.errors?.required">Phone is required*</small>
                         </div>
                       </div>
                     </div>
@@ -173,7 +291,7 @@
                     </div>
                   </div>
                 </form>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
