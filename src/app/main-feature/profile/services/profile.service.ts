@@ -33,11 +33,4 @@ export class ProfileService {
         error => observer.error(error))
     })
   }
-
-  updateProfilePicture(requestData){
-    console.log(requestData);
-    
-    console.log(this.baseUrl + this.endpoint.PROFILE.UPDATE_PICTURE)
-    return this.httpClient.post<any>(this.baseUrl + this.endpoint.PROFILE.UPDATE_PICTURE, requestData)
-  }
 }

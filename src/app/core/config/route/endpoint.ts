@@ -5,7 +5,6 @@ export const APIS: any = {
         REGISTER: "/user/register"
     },
     PROFILE: {
-        UPDATE: "/user/update",
-        UPDATE_PICTURE: "/user/upload-picture"
+        UPDATE: "/user/update"
     }
 }

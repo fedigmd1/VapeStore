@@ -32,7 +32,7 @@ export class CropPictureModalComponent implements OnInit {
   }
 
   confirme() {
-    this.event.emit({ file: this.croppedImage })
+    this.event.emit({ picture: this.croppedImage })
     this.bsModalRef.hide();
   }
 

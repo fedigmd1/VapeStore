@@ -19,7 +19,6 @@ export class ProfileComponent implements OnInit {
   @ViewChild('inputFile') inputFile: ElementRef;
 
   updatedUser: any;
-  userPicture: null
   userDetails: User
   phone: FormControl
   address: FormControl
@@ -180,11 +179,20 @@ updateInfo() {
 
   fileChangeEvent(image: any): void {
     console.log('Image to crop web', image);
-    this.modalService.showCropImageModal(image).subscribe((croppedImage: any) => {
-      console.log(croppedImage);
-      this.userPicture = croppedImage.file
+    this.modalService.showCropImageModal(image).subscribe((requestData: any) => {
+      this.userDetails.picture = requestData.picture
+      this.updatePicture(requestData)
     });
   }
-
-
+   
+  updatePicture(requestData){
+    this.loader.showSpinner()
+    this.profileSession.updateProfile(requestData).subscribe(res => {
+      this.loader.stopSpinner()
+      this.userDetails = res
+   }, (error) => {
+    console.log(error);
+    this.loader.stopSpinner()
+  })
+}
 }
