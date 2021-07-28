@@ -1,13 +1,53 @@
-.margin-btn{
-    margin-right: 10px;
+.margin-btn {
+  margin-right: 10px;
 }
 .hideInput {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 225px;
-    opacity: 0;
-    padding: 14px 0;
-    cursor: pointer;
-    z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 225px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.img-fluid {
+  width: 200px;
+  height: auto;
+}
+.img-circle {
+  border-radius: 10%;
+}
+
+.update-picture-btn {
+  width: 27px;
+  border-radius: 50%;
+  height: 27px;
+  position: absolute;
+  top: -0px;
+  right: 0px;
+  background-color: white;
+  border: 1px solid rgb(144, 16, 16);
+  cursor: pointer;
+  mat-icon:hover {
+    color: rgb(144, 16, 16);
   }
+}
+
+.mat-icon {
+  font-size: 20px;
+}
+
+form {
+  padding: 30px !important ;
+  text-align: center !important;
+  button {
+    margin-top: 30px;
+  }
+}
+
+.text-left {
+  text-align: left !important;
+  margin-left: 10px;
+}

@@ -3,5 +3,11 @@ export const APIS: any = {
         LOGIN: "/user/login",
         USER_INFO: "/user/me",
         REGISTER: "/user/register"
+    },
+    PRODUCT: {
+        ALL: "/product/",
+        ADD: "/product/",
+        UPDATE: "/product/",
+        DELETE: "/product/",
     }
 }
