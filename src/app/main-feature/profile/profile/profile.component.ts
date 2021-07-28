@@ -7,6 +7,7 @@ import { SessionService } from 'src/app/shared/services/session.service';
 import { CustomValidators } from 'src/app/shared/validators/confirmPassword.validator';
 import { ProfileService } from '../services/profile.service';
 import { AuthService } from '../../authentication/service/auth.service';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Component({
   selector: 'app-profile',
@@ -37,10 +38,11 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(
+    private loader: LoaderService,
+    private authService: AuthService,
     private modalService: ModalService,
     private sessionService: SessionService,
     private profileSession: ProfileService,
-    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -82,48 +84,49 @@ export class ProfileComponent implements OnInit {
   }
 
   showEditPasswordForm() {
-    this.showEditPassword = !this.showEditPassword
-    this.showEditUserName = false
+    this.initForm()
     this.showEditAdress = false
+    this.showEditUserName = false
     this.showEditPhoneNumber= false
-
-
-
+    this.showEditPassword = !this.showEditPassword
   }
   showEditUsenameForm() {
-    this.showEditUserName = !this.showEditUserName
-    this.showEditPassword = false
+    this.initForm()
     this.showEditAdress = false
+    this.showEditPassword = false
     this.showEditPhoneNumber= false
-
-
-
+    this.showEditUserName = !this.showEditUserName
   }
   showEditAdressForm() {
-    this.showEditAdress = !this.showEditAdress
+    this.initForm()
     this.showEditPassword = false
     this.showEditUserName = false
     this.showEditPhoneNumber= false
+    this.showEditAdress = !this.showEditAdress
   }
   showEditPhoneNbrForm() {
-    this.showEditPhoneNumber= !this.showEditPhoneNumber
+    this.initForm()
     this.showEditAdress = false
-    this.showEditPassword = false
     this.showEditUserName =false
+    this.showEditPassword = false
+    this.showEditPhoneNumber= !this.showEditPhoneNumber
   }
 
 updatePassword(){
+    this.showEditPassword = false
     this.updatePasswordForm.errors?.passwordNotmatch ? this.validatepasswords = true : this.validatepasswords = false
     if (this.updatePasswordForm.valid) {
-
       const requestData = {
         old_password: this.updatePasswordForm.value.oldPassword,
         password: this.updatePasswordForm.value.password
       }
       console.log(requestData);
+      this.loader.showSpinner()
       this.profileSession.updateProfile(requestData).subscribe(res => {
-        this.authService.getUserInfo()
-        console.log(res);
+        this.loader.stopSpinner()
+        this.userDetails = res
+      }, (error) => {
+        this.loader.stopSpinner()
       })
     }
 }
@@ -148,10 +151,13 @@ updateInfo() {
         first_name: this.updatedUser?.first_name,
       }
       console.log(requestData);
+      this.loader.showSpinner()
       this.profileSession.updateProfile(requestData).subscribe(res => {
-        this.authService.getUserInfo()
-        console.log(res);
-        
+        this.loader.stopSpinner()     
+        this.userDetails = res
+      }, (error) => {
+        console.log(error);
+        this.loader.stopSpinner()
       })
     
   }
