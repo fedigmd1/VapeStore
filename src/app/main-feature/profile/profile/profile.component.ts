@@ -39,7 +39,6 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private loader: LoaderService,
-    private authService: AuthService,
     private modalService: ModalService,
     private sessionService: SessionService,
     private profileSession: ProfileService,
@@ -137,6 +136,8 @@ updateInfo() {
   }
   this.updateCurrentUser();
   this.updateProfile();
+
+  // close forms
   this.showEditPhoneNumber= false
   this.showEditAdress = false
   this.showEditPassword = false
