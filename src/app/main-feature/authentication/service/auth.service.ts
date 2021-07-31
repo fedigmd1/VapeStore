@@ -24,7 +24,6 @@ export class AuthService {
           localStorage.setItem('token', res.token)
           this.getUserInfo().subscribe((res) => {
             if (res) {
-              localStorage.setItem('userDetail', JSON.stringify(res))
               observer.next(res)
             }
           })
@@ -40,7 +39,6 @@ export class AuthService {
         if (res) {
           localStorage.setItem('token', res.token)
           this.getUserInfo().subscribe((res) => {
-            localStorage.setItem('userDetail', JSON.stringify(res))
             if (res) observer.next(res)
           })
         }
@@ -53,6 +51,7 @@ export class AuthService {
     return new Observable<User>(observer => {
       this.httpClient.get<User>(this.baseUrl + this.endpoint.AUTH.USER_INFO).subscribe((res) => {
         if (res) {
+          localStorage.setItem('userDetail', JSON.stringify(res))
           observer.next(res)
         }
       },
