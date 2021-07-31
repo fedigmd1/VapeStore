@@ -4,7 +4,7 @@ import { ROUTE } from 'src/app/core/config/route/route';
 import { AuthService } from '../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from 'src/app/shared/validators/confirmPassword.validator';
+import { CustomValidators } from 'src/app/shared/validators/validators.validator';
 
 
 @Component({

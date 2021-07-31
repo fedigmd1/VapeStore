@@ -4,9 +4,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/core/models/auth';
 import { ModalService } from 'src/app/shared/services/modal.service';
 import { SessionService } from 'src/app/shared/services/session.service';
-import { CustomValidators } from 'src/app/shared/validators/confirmPassword.validator';
+import { CustomValidators } from 'src/app/shared/validators/validators.validator';
 import { ProfileService } from '../services/profile.service';
-import { AuthService } from '../../authentication/service/auth.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Component({
@@ -34,6 +33,7 @@ export class ProfileComponent implements OnInit {
   updateProfileForm: FormGroup
   confirmPassword: FormControl
   updatePasswordForm: FormGroup
+  phoneNumberValidation = false
 
 
   constructor(
@@ -50,14 +50,17 @@ export class ProfileComponent implements OnInit {
   }
 
   initForm() {
-    this.phone = new FormControl(this.userDetails.phone)
-    this.address = new FormControl(this.userDetails.adress)
-    this.lastName = new FormControl(this.userDetails.last_name)
-    this.firstName = new FormControl(this.userDetails.first_name)    
+    this.phone = new FormControl(this.userDetails.phone,Validators.compose([
+      Validators.required,
+      CustomValidators.phoneValidator
+    ]))
+    this.address = new FormControl(this.userDetails.adress, Validators.required)
+    this.lastName = new FormControl(this.userDetails.last_name, Validators.required)
+    this.firstName = new FormControl(this.userDetails.first_name, Validators.required)    
 
-    this.password = new FormControl({validators: Validators.required})
-    this.oldPassword = new FormControl({validators: Validators.required})
-    this.confirmPassword = new FormControl({validators: Validators.required})
+    this.password = new FormControl('',Validators.required)
+    this.oldPassword = new FormControl('',Validators.required)
+    this.confirmPassword = new FormControl('',Validators.required)
 
     this.updateProfileForm = new FormGroup({
       phone: this.phone,
@@ -111,9 +114,9 @@ export class ProfileComponent implements OnInit {
   }
 
 updatePassword(){
-    this.showEditPassword = false
     this.updatePasswordForm.errors?.passwordNotmatch ? this.validatepasswords = true : this.validatepasswords = false
     if (this.updatePasswordForm.valid) {
+     this.showEditPassword = false
       const requestData = {
         old_password: this.updatePasswordForm.value.oldPassword,
         password: this.updatePasswordForm.value.password
