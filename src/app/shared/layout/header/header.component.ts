@@ -6,6 +6,7 @@ import { Product } from 'src/app/core/modals/product.model';
 import { SessionService } from '../../services/session.service';
 import { SidenavMenu } from '../../sidebar/sidebar-menu.model';
 import { AppSettings, Settings } from '../../services/color-option.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -47,9 +48,10 @@ export class HeaderComponent implements OnInit {
   public settings: Settings;
 
   constructor(
+    public router: Router,
     private cartService: CartService,
     public appSettings: AppSettings,
-    private sessionService: SessionService
+    private sessionService: SessionService,
   ) {
     this.settings = this.appSettings.settings;
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
@@ -66,6 +68,9 @@ export class HeaderComponent implements OnInit {
   }
   logout() {
     this.sessionService.logoutUser()
+  }
+  goTo(value) {
+    this.router.navigate(['/' + value])
   }
   public changeCurrency(currency) {
     this.currency = currency;

@@ -1,5 +1,5 @@
 
-<a mat-list-item  [ngStyle]="{'padding-left': (depth * 12) + 'px'}" class="menu-list-item" (click)="onItemSelected(item)"
+<a mat-list-item  [ngStyle]="{'padding-left': (depth * 12) + 'px'}" class="menu-list-item text-light" (click)="onItemSelected(item)"
 [ngClass]="{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}">
   {{item.displayName}}
   <span fxFlex *ngIf="item.children && item.children.length">

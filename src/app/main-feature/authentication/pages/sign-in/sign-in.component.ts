@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ROUTE } from 'src/app/core/config/route/route';
 import { AuthService } from '../../service/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -11,13 +11,14 @@ import { LoaderService } from 'src/app/shared/services/loader.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent implements OnInit , OnDestroy{
 
 
   email: FormControl
   loginForm: FormGroup
   password: FormControl
   displayMessageError = false
+  subscription = new Subscription();
 
   constructor(
     private router: Router,
@@ -45,20 +46,23 @@ export class SignInComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       this.loader.showSpinner()
-      const subscription = new Subscription();
-      this.authService.login(this.loginForm.value).subscribe(
+      this.subscription.add(this.authService.login(this.loginForm.value).subscribe(
         (res) => {
           if (res) {
             console.log("login response :", res);
             this.router.navigate([ROUTE.HOME])
-            subscription.unsubscribe()
             this.loader.stopSpinner()
           }
         }, (error) => {
           console.log(error);
           this.displayMessageError = true
           this.loader.stopSpinner()
-        })
+        }))
     }
   }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe()
+  }
+
 }

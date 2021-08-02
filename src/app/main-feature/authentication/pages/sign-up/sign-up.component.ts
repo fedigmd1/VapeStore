@@ -2,9 +2,10 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ROUTE } from 'src/app/core/config/route/route';
 import { AuthService } from '../../service/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/shared/validators/validators.validator';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 
 @Component({
@@ -12,16 +13,22 @@ import { CustomValidators } from 'src/app/shared/validators/validators.validator
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit , OnDestroy{
 
+
+  validatepasswords
   email: FormControl
   password: FormControl
   lastName: FormControl
   firstName: FormControl
   registerForm: FormGroup
   confirmPassword: FormControl
-  validatepasswords 
-  constructor(private authService: AuthService, private router: Router) { }
+  subscription = new Subscription();
+       
+  constructor(
+          private router: Router,
+          private loader: LoaderService,
+          private authService: AuthService) {}
 
   ngOnInit(): void {
     this.initForm()
@@ -49,11 +56,10 @@ export class SignUpComponent implements OnInit {
   }
 
   register() {
-    console.log(this.validatepasswords,this.registerForm.errors?.passwordNotmatch );
-    
-    this.registerForm.errors?.passwordNotmatch ? this.validatepasswords = true : this.validatepasswords = false
-    if (this.registerForm.valid) {
 
+    this.registerForm.errors?.passwordNotmatch ? this.validatepasswords = true : this.validatepasswords = false
+
+    if (this.registerForm.valid) {
       const requestData = {
         email: this.registerForm.value.email,
         password: this.registerForm.value.password,
@@ -61,15 +67,22 @@ export class SignUpComponent implements OnInit {
         first_name: this.registerForm.value.firstName,
         role: "user"
       }
-      const subscription = new Subscription();
-      this.authService.register(requestData).subscribe((res) => {
+      this.loader.showSpinner()
+      this.subscription.add( this.authService.register(requestData).subscribe((res) => {
         if (res) {
           console.log("resgister response :", res);
           this.router.navigateByUrl(ROUTE.HOME)
-          subscription.unsubscribe()
+          this.loader.stopSpinner()
         }
-      })
+      }, (error) => {
+        console.log(error);
+        this.loader.stopSpinner()
+      }))
     }
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe()
   }
 
 }

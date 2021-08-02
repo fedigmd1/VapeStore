@@ -6,5 +6,11 @@ export const APIS: any = {
     },
     PROFILE: {
         UPDATE: "/user/update"
+    },
+    PRODUCT: {
+        ALL: "/product/",
+        ADD: "/product/",
+        UPDATE: "/product/",
+        DELETE: "/product/",
     }
 }
