@@ -17,11 +17,13 @@ import { ErrorPageComponent } from './main-feature/pages/error-page/error-page.c
 import { ColorOptionsComponent } from './main-feature/color-options/color-options.component';
 import { CropPictureModalComponent } from './main-feature/profile/modals/crop-picture-modal/crop-picture-modal.component';
 import { AddProductModalComponent } from './main-feature/shop/products/modals/add-product-modal/add-product-modal.component';
+import { AddPostComponent } from './main-feature/market-place/modals/add-post/add-post.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AddPostComponent,
     ErrorPageComponent,
     ColorOptionsComponent,
     AddProductModalComponent,
@@ -46,6 +48,7 @@ import { AddProductModalComponent } from './main-feature/shop/products/modals/ad
     multi: true
   }],
   entryComponents: [
+    AddPostComponent,
     AddProductModalComponent,
     CropPictureModalComponent,
   ]

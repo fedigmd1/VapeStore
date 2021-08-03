@@ -1,0 +1,22 @@
+.hideInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 225px;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .uploadImgBtn{
+      margin-right: 10px !important;
+      border-radius: 20px !important;
+      background-color: gray;
+  }
+
+  .cancelBtn{
+    margin-left: 10px !important;
+    background-color: gray 
+
+  }
