@@ -1,8 +1,6 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-post',
@@ -16,8 +14,9 @@ export class AddPostComponent implements OnInit {
   title: FormControl
   description: FormControl
   addNewPostForm: FormGroup
-  subscription = new Subscription();
-  constructor( public bsModalRef: BsModalRef) { }
+  public event: EventEmitter<any> = new EventEmitter();
+
+  constructor(public bsModalRef: BsModalRef) { }
 
   ngOnInit(): void {
     this.initForm()
@@ -26,7 +25,7 @@ export class AddPostComponent implements OnInit {
   initForm() {
     this.title = new FormControl('', { validators: Validators.required })
     this.description = new FormControl('', { validators: Validators.required })
-  
+
 
     this.addNewPostForm = new FormGroup({
       title: this.title,
@@ -34,35 +33,36 @@ export class AddPostComponent implements OnInit {
     })
   }
 
-  uploadImage(event){ 
-      this.uploadedImage = event.target.files[0]    
+  uploadImage(event) {
+    this.uploadedImage = event.target.files[0]
+    const reader = new FileReader();
+    reader.readAsDataURL(this.uploadedImage);
+    reader.onload = () => {
+      this.postImage = reader.result
+      console.log(this.postImage);
+      
+    }
   }
-  
-  deleteUploadedImage(){
-      this.uploadedImage = null
+
+  deleteUploadedImage() {
+    this.uploadedImage = null
   }
 
   hideModal() {
     this.bsModalRef.hide();
   }
 
-  addNewPost(){
-   if (this.addNewPostForm.valid){
-     if (this.uploadedImage){
-       const reader = new FileReader();
-       reader.readAsDataURL(this.uploadedImage);
-       reader.onload = () => {
-           this.postImage = reader.result
-       }
-     }
-     const requestData = {
-       title: this.addNewPostForm.value.title,
-       description: this.addNewPostForm.value.description,
-       picture: this.postImage
-     }
-     
-     console.log(requestData);
-     
-   }
+  addNewPost() {
+    if (this.addNewPostForm.valid) {
+      const requestData = {
+        title: this.addNewPostForm.value.title,
+        description: this.addNewPostForm.value.description,
+        picture: this.postImage
+      }
+      console.log(requestData);
+      
+      this.event.emit(requestData)
+      this.hideModal()
+    }
   }
 }

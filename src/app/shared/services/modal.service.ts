@@ -44,8 +44,7 @@ export class ModalService {
   AddPostModal() {
     return new Observable(obsorver => {
       this.bsModalRef = this.modalService.show(AddPostComponent, {
-        class: 'modal-dialog-centered',
-        initialState: {}
+        class: 'modal-dialog-centered'
       });
       this.bsModalRef.content.closeBtnName = 'Close';
       this.bsModalRef.content.event.subscribe(res => {
