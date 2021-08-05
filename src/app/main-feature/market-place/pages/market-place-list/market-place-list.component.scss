@@ -30,3 +30,57 @@ a:hover{
 .sec-padding{
     padding: 30px 0px;
 }
+
+.description-holder{
+    margin-top: 0px !important;
+    height:42%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+.card-height{
+    height: 200px;
+      @media (max-width: 959px) { 
+         
+         height: 500px;
+       }
+}
+
+.title-margin{
+    margin-right: 55px;
+}
+
+.image-scale{
+    object-fit: contain;
+    height: 100%;
+}
+
+.edit-buttons{
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 50%);
+    background-color: #901010 !important;
+    border-radius: 20px 0px 0px 20px;
+    mat-icon{
+        color: white;
+       }
+       mat-icon:hover{
+        font-size: 28px;
+    }
+    @media (max-width: 959px) { 
+        top: 305px !important;
+        right: 16px !important;
+        position: absolute !important;
+      }
+    @media (min-width: 960px) { 
+      margin-top: 50px;
+    margin-bottom: 50px;
+      }
+}
+
+.text-style{
+    color: #901010 !important;
+    text-decoration: underline;
+    font-size: 16px;
+}
