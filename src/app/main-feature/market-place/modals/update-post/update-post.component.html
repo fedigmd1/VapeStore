@@ -2,9 +2,9 @@
     <div class=" p-0">
       <div class="">
         <div class="">
-          <h3 class="text-center mt-3 mb-4">Add new post</h3>
+          <h3 class="text-center mt-3 mb-4">Update post</h3>
         </div>
-        <form fxLayout="form-layout" [formGroup]="addNewPostForm" (submit)="addNewPost()" >
+        <form fxLayout="form-layout" [formGroup]="updatePostForm" (submit)="updatePost()" >
             <div class="row">
                 <div  class="col-12">   
                  <label class="ml-3 mb-2 mainFont-medium fs-12 text-dark">Post title</label>
@@ -29,11 +29,11 @@
                 <div class="col-12">
                  <label class="ml-3 mb-2 mainFont-medium fs-12 text-dark mt-3">Post image</label>
                   <div class="w-100">
-                    <input type="file"  (change)="uploadImage($event)"   accept="image/*" class="form-control-file hideInput"  #inputFile>
+                    <input type="file"  (change)="uploadImage($event)"   accept="image/*" class="form-control-file hide-input"  #inputFile>
                   <button class="btn uploadImgBtn"  type="button" (click)="inputFile.click()">Choose image</button>
-                  <img  *ngIf="uploadedImage" class="image-scale" [src]="postImage" >
-                  <span *ngIf="!uploadedImage">No image chosen</span>
-                  <mat-icon class="cursor-pointer" *ngIf="uploadedImage" (click)="deleteUploadedImage()">clear</mat-icon>
+                  <img  *ngIf="postImage" class="image-scale" [src]="postImage" >
+                  <span *ngIf="!postImage">{{uploadedImage ? uploadedImage.name : 'No image chosen'}}</span>
+                  <mat-icon class="cursor-pointer" *ngIf="postImage" (click)="deleteUploadedImage()">clear</mat-icon>
                   </div>
                   </div>
                 <div class="text-center mt-5 col-12" >

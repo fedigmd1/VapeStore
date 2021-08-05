@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getUserDetails() {
-    this.userDetails = JSON.parse(this.sessionService.getUserDetails())
+    this.userDetails = this.sessionService.getUserDetails()
   }
 
   showEditPasswordForm() {

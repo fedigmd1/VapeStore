@@ -1,20 +1,20 @@
-import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit,EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Post } from 'src/app/core/models/post';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-add-post',
-  templateUrl: './add-post.component.html',
-  styleUrls: ['./add-post.component.scss']
+  selector: 'app-update-post',
+  templateUrl: './update-post.component.html',
+  styleUrls: ['./update-post.component.scss']
 })
-export class AddPostComponent implements OnInit {
-
+export class UpdatePostComponent implements OnInit {
+  
+  postDetails
   postImage
   uploadedImage
   title: FormControl
   description: FormControl
-  addNewPostForm: FormGroup
+  updatePostForm: FormGroup
   public event: EventEmitter<any> = new EventEmitter();
 
   constructor(public bsModalRef: BsModalRef) { }
@@ -24,11 +24,12 @@ export class AddPostComponent implements OnInit {
   }
 
   initForm() {
-    this.title = new FormControl('', { validators: Validators.required })
-    this.description = new FormControl('', { validators: Validators.required })
 
+    this.postImage = this.postDetails.picture
+    this.title = new FormControl(this.postDetails.title, { validators: Validators.required })
+    this.description = new FormControl(this.postDetails.description, { validators: Validators.required })
 
-    this.addNewPostForm = new FormGroup({
+    this.updatePostForm = new FormGroup({
       title: this.title,
       description: this.description,
     })
@@ -46,24 +47,25 @@ export class AddPostComponent implements OnInit {
   }
 
   deleteUploadedImage() {
-    this.uploadedImage = null
+    this.postImage = null
   }
 
   hideModal() {
     this.bsModalRef.hide();
   }
 
-  addNewPost() {
-    if (this.addNewPostForm.valid) {
+  updatePost() {
+    if (this.updatePostForm.valid) {
       const requestData = {
-        title: this.addNewPostForm.value.title,
-        description: this.addNewPostForm.value.description,
-        picture: this.postImage
+        picture: this.postImage,
+        post_id: this.postDetails._id,
+        title: this.updatePostForm.value.title,
+        description: this.updatePostForm.value.description
       }
       console.log(requestData);
-      
       this.event.emit(requestData)
       this.hideModal()
     }
   }
+
 }

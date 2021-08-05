@@ -18,6 +18,7 @@ import { ColorOptionsComponent } from './main-feature/color-options/color-option
 import { CropPictureModalComponent } from './main-feature/profile/modals/crop-picture-modal/crop-picture-modal.component';
 import { AddProductModalComponent } from './main-feature/shop/products/modals/add-product-modal/add-product-modal.component';
 import { AddPostComponent } from './main-feature/market-place/modals/add-post/add-post.component';
+import { UpdatePostComponent } from './main-feature/market-place/modals/update-post/update-post.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AddPostComponent } from './main-feature/market-place/modals/add-post/ad
     AppComponent,
     AddPostComponent,
     ErrorPageComponent,
+    UpdatePostComponent,
     ColorOptionsComponent,
     AddProductModalComponent,
     CropPictureModalComponent,
@@ -49,6 +51,7 @@ import { AddPostComponent } from './main-feature/market-place/modals/add-post/ad
   }],
   entryComponents: [
     AddPostComponent,
+    UpdatePostComponent,
     AddProductModalComponent,
     CropPictureModalComponent,
   ]

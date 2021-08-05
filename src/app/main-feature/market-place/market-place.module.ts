@@ -8,14 +8,17 @@ import { MarketPlaceDetailsComponent } from './pages/market-place-details/market
 import { MarketPlaceColumnComponent } from './pages/market-place-column/market-place-column.component';
 import { MarketPlaceListComponent } from './pages/market-place-list/market-place-list.component';
 import { MarketPlaceMainComponent } from './market-place-main/market-place-main.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     SharedModule,
-    MarketPlaceRoutingModule
-
+    MarketPlaceRoutingModule,
+    NgxSkeletonLoaderModule,
+    NgxPaginationModule
   ],
   declarations: [
     MarketPlaceDetailsComponent,
