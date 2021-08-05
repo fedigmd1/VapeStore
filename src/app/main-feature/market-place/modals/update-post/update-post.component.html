@@ -31,8 +31,9 @@
                   <div class="w-100">
                     <input type="file"  (change)="uploadImage($event)"   accept="image/*" class="form-control-file hide-input"  #inputFile>
                   <button class="btn uploadImgBtn"  type="button" (click)="inputFile.click()">Choose image</button>
-                  <span >{{uploadedImage ? uploadedImage.name : 'No image chosen'}}</span>
-                  <mat-icon class="cursor-pointer" *ngIf="uploadedImage" (click)="deleteUploadedImage()">clear</mat-icon>
+                  <img  *ngIf="postImage" class="image-scale" [src]="postImage" >
+                  <span *ngIf="!postImage">{{uploadedImage ? uploadedImage.name : 'No image chosen'}}</span>
+                  <mat-icon class="cursor-pointer" *ngIf="postImage" (click)="deleteUploadedImage()">clear</mat-icon>
                   </div>
                   </div>
                 <div class="text-center mt-5 col-12" >

@@ -24,11 +24,10 @@ export class UpdatePostComponent implements OnInit {
   }
 
   initForm() {
-    console.log(this.postDetails);
 
+    this.postImage = this.postDetails.picture
     this.title = new FormControl(this.postDetails.title, { validators: Validators.required })
     this.description = new FormControl(this.postDetails.description, { validators: Validators.required })
-
 
     this.updatePostForm = new FormGroup({
       title: this.title,
@@ -48,7 +47,7 @@ export class UpdatePostComponent implements OnInit {
   }
 
   deleteUploadedImage() {
-    this.uploadedImage = null
+    this.postImage = null
   }
 
   hideModal() {
