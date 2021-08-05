@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainCarouselComponent } from './main-carousel/main-carousel.component';
 import { MainCarouselIndustrialComponent } from './industrial/main-carousel-industrial/main-carousel-industrial.component';
 import { PriceComponent } from './products/price/price.component';
-import { ProductsComponent } from '../shop/products/products.component';
 import { ProductComponent } from '../shop/products/product/product.component';
 import { ProductDetailsComponent } from '../shop/products/product-details/product-details.component';
 import { ProductDialogComponent } from '../shop/products/product-dialog/product-dialog.component';
@@ -54,7 +53,6 @@ import { StoreComponent } from './store/store.component';
     HomeComponent,
     MainCarouselComponent,
     MainCarouselIndustrialComponent,
-    ProductsComponent,
     PriceComponent,
     ProductComponent,
     ProductDetailsComponent,
@@ -89,7 +87,6 @@ import { StoreComponent } from './store/store.component';
     FoodComponent,
     FurnitureComponent,
     MainCarouselComponentFood,
-
 
   ],
   imports: [

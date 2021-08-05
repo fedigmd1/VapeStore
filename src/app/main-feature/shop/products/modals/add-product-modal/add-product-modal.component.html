@@ -1,0 +1,114 @@
+<div class="modal-style-2 d-flex justify-content-center align-items-center p-3" role="dialog" tabindex="-1">
+  <div class="modal-content d-flex p-2 flex-column justify-content-center align-items-center">
+    <!-- <div class="height-modal">
+      <div class="card card-info card-outline">
+        <div class="card-body box-profile d-flex justify-content-center align-items-center flex-column ">
+          <div class="position-relative">
+            <img class="profile-user-img img-fluid img-circle " [src]="productPicture"
+              onerror="this.src='../../../../assets/images/user-photo.jpg'" alt="product picture">
+            <span class="update-picture-btn d-flex justify-content-center align-items-center" (click)="openFile()"
+              data-toggle="tooltip" data-placement="top" title="Update picture">
+              <mat-icon class="d-flex justify-content-center align-items-center">camera_alt
+              </mat-icon>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+    <form fxLayout="form-layout  mb-3" [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+      <div class=" text-left">
+        <small class="text-danger ml-1" *ngIf="displayMessageError">Please check your inputs</small>
+      </div>
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <div class="w-100">
+          <input class="form-control" [ngClass]="{'error-form-control' : name.invalid && name.touched}"
+            placeholder="product name" type="text" [class.is-invalid]="name.invalid && name.touched"
+            formControlName="Product Name" required>
+        </div>
+        <div *ngIf="name.invalid && name.touched" class="text-danger text-left">
+          <small *ngIf="name.errors?.required">name is required</small>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <div class="w-100">
+          <input class="form-control" [ngClass]="{'error-form-control' : category.invalid && category.touched}"
+            placeholder="category" type="text" [class.is-invalid]="category.invalid && category.touched"
+            formControlName="category" required>
+        </div>
+        <div *ngIf="category.invalid && category.touched" class="text-danger text-left">
+          <small *ngIf="category.errors?.required">Category is required</small>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <div class="w-100">
+          <input class="form-control" [ngClass]="{'error-form-control' : brand.invalid && brand.touched}"
+            placeholder="brand" type="text" [class.is-invalid]="brand.invalid && brand.touched" formControlName="brand"
+            required>
+        </div>
+        <div *ngIf="brand.invalid && brand.touched" class="text-danger text-left">
+          <small *ngIf="brand.errors?.required">brand is required</small>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <div class="w-100">
+          <input class="form-control" [ngClass]="{'error-form-control' : price.invalid && price.touched}"
+            placeholder="price" type="text" [class.is-invalid]="price.invalid && price.touched" formControlName="price"
+            required>
+        </div>
+        <div *ngIf="price.invalid && price.touched" class="text-danger text-left">
+          <small *ngIf="price.errors?.required">price is required</small>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <div class="w-100">
+          <input class="form-control" [ngClass]="{'error-form-control' : quantite.invalid && quantite.touched}"
+            placeholder="quantite" type="text" [class.is-invalid]="quantite.invalid && quantite.touched"
+            formControlName="quantite" required>
+        </div>
+        <div *ngIf="quantite.invalid && quantite.touched" class="text-danger text-left">
+          <small *ngIf="quantite.errors?.required">quantite is required</small>
+        </div>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 mt-4" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <div class="w-100">
+          <input class="form-control" [ngClass]="{'error-form-control' : color.invalid && color.touched}"
+            placeholder="color" type="text" [class.is-invalid]="color.invalid && color.touched" formControlName="color"
+            required>
+        </div>
+        <div *ngIf="color.invalid && color.touched" class="text-danger text-left">
+          <small *ngIf="color.errors?.required">color is required</small>
+        </div>
+      </div>
+
+
+
+      <div class="button-wrap mt-5" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+        <button class="btn btn-project text-center" mat-raised-button color="primary" type="submit">Add product</button>
+      </div>
+    </form>
+
+
+
+
+    <h1>hello</h1>
+    <div class="" (click)="getProductImage()">
+      <h4>hello 4 </h4>
+    </div>
+    <div class="card-modif-btn d-flex justify-content-center mt-4">
+      <button class="margin-btn btn btn-sm btn-primary mainFont-bold fs-16" type="button" type="submit"
+        (click)="confirme()">
+        Confirm</button>
+      <button class="ml-3 btn btn-sm btn-danger mainFont-bold fs-16" type="button" type="reset" (click)="hideModal()">
+        Cancel</button>
+    </div>
+  </div>
+
+  <input #inputFile (change)="fileChangeEvent($event)" class="form-control disableInput border-primary-13 "
+    accept="image/*" class="hideInput" type="file" />

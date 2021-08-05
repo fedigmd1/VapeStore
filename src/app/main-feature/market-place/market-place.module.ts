@@ -9,7 +9,6 @@ import { MarketPlaceColumnComponent } from './pages/market-place-column/market-p
 import { MarketPlaceListComponent } from './pages/market-place-list/market-place-list.component';
 import { MarketPlaceMainComponent } from './market-place-main/market-place-main.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +21,8 @@ import { MarketPlaceMainComponent } from './market-place-main/market-place-main.
     MarketPlaceDetailsComponent,
     MarketPlaceColumnComponent,
     MarketPlaceListComponent,
-    MarketPlaceMainComponent
+    MarketPlaceMainComponent,
+    
   ]
 })
 export class MarketPlaceModule { }

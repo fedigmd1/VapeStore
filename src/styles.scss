@@ -50,3 +50,40 @@
 .cdk-overlay-container {
   z-index: 1110 !important;
 }
+
+form {
+  button {
+    color: white !important;
+    background-color: rgb(144, 16, 16);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+
+  }
+  button:hover{
+    border: 1px solid !important;
+    background-color:white !important;
+    color:rgb(144, 16, 16) !important;
+    border-color: rgb(144, 16, 16)!important;
+  }
+
+}
+
+.green-snackbar {
+  background: rgb(65, 252, 134);
+  color: white;
+}
+
+.red-snackbar {
+  background: #F44336;
+  color: white;
+}
+
+.green-snackbar button {
+  background-color: rgb(65, 252, 134);
+  color: white;
+  border: none;
+}
+.red-snackbar button {
+  background-color: #F44336;
+  color: white !important;
+  border: none;
+}
