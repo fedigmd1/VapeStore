@@ -35,7 +35,7 @@ export class SessionService {
     }, 2000);
   }
   getUserDetails() {
-    return localStorage.getItem('userDetail')
+    return JSON.parse(localStorage.getItem('userDetail'))
   }
 
 }
