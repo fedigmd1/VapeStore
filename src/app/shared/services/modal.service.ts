@@ -5,6 +5,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AddPostComponent } from 'src/app/main-feature/market-place/modals/add-post/add-post.component';
 import { CropPictureModalComponent } from 'src/app/main-feature/profile/modals/crop-picture-modal/crop-picture-modal.component';
 import { AddProductModalComponent } from 'src/app/main-feature/shop/products/modals/add-product-modal/add-product-modal.component';
+import { UpdatePostComponent } from 'src/app/main-feature/market-place/modals/update-post/update-post.component';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,19 @@ export class ModalService {
     });
   }
 
-
+  updatePostModal(postDetails) {
+    console.log(postDetails);
+    
+    return new Observable(obsorver => {
+      this.bsModalRef = this.modalService.show(UpdatePostComponent, {
+        class: 'modal-dialog-centered',
+        initialState:{postDetails}
+      });
+      this.bsModalRef.content.closeBtnName = 'Close';
+      this.bsModalRef.content.event.subscribe(res => {
+        obsorver.next(res);
+      });
+    });
+  }
 
 }
