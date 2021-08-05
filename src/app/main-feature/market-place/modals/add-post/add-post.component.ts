@@ -1,6 +1,7 @@
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Post } from 'src/app/core/models/post';
 
 @Component({
   selector: 'app-add-post',
