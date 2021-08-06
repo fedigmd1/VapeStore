@@ -1,6 +1,9 @@
 .margin-btn {
   margin-right: 10px;
 }
+.card{
+  width: 600px !important;
+}
 .hideInput {
   position: absolute;
   top: 0;
@@ -42,12 +45,19 @@
 form {
   padding: 30px !important ;
   text-align: center !important;
-  button {
-    margin-top: 30px;
-  }
 }
 
 .text-left {
   text-align: left !important;
   margin-left: 10px;
+}
+
+.uploadImgBtn{
+  margin-right: 10px !important;
+  border-radius: 20px !important;
+  background-color: gray;
+}
+.cancelBtn{
+  margin-left: 10px !important;
+  background-color: gray 
 }

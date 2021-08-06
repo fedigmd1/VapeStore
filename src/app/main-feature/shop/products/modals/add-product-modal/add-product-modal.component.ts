@@ -17,6 +17,7 @@ export class AddProductModalComponent implements OnInit {
   productPicture;
   addProductForm: FormGroup
   name: FormControl
+  description: FormControl
   category: FormControl
   price: FormControl
   brand: FormControl
@@ -37,21 +38,23 @@ export class AddProductModalComponent implements OnInit {
   }
 
   initForm() {
-    this.name = new FormControl('', { validators: [Validators.required, Validators.email] })
+    this.name = new FormControl('', { validators: [Validators.required] })
+    this.description = new FormControl('', { validators: [Validators.required] })
     this.category = new FormControl('', { validators: Validators.required })
-    // this.price = new FormControl('', { validators: Validators.required })
-    // this.brand = new FormControl('', { validators: Validators.required })
-    // this.color = new FormControl('', { validators: Validators.required })
-    // this.quantite = new FormControl('', { validators: Validators.required })
+    this.price = new FormControl('', { validators: Validators.required })
+    this.brand = new FormControl('', { validators: Validators.required })
+    this.color = new FormControl('', { validators: Validators.required })
+    this.quantite = new FormControl('', { validators: Validators.required })
 
 
     this.addProductForm = new FormGroup({
       name: this.name,
+      description: this.description,
       category: this.category,
-      // price: this.price,
-      // brand: this.brand,
-      // color: this.color,
-      // quantite: this.quantite,
+      price: this.price,
+      brand: this.brand,
+      color: this.color,
+      quantite: this.quantite,
     })
 
   }
