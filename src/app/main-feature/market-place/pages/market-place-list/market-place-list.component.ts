@@ -82,7 +82,7 @@ export class MarketPlaceListComponent implements OnInit, OnDestroy {
   }
 
   checkUser(postUserId){
-   return postUserId == this.sessionService.getUserDetails()._id
+   return postUserId == this.sessionService?.getUserDetails()?._id
   }
   
   showUpdatePostModal(post){
