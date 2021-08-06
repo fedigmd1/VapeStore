@@ -39,17 +39,19 @@
             </button>
           </div>
         </div>
+        
         <div [@Animation]="animation" fxLayout="row wrap" class="products-wrapper">
           <div
-            *ngFor="let products of allItems | orderBy:sortByOrder | paginate: { itemsPerPage: 12, currentPage: page  }"
+            *ngFor="let stores of allStores | orderBy:sortByOrder | paginate: { itemsPerPage: 12, currentPage: page  }"
             fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
             <div class="product-box">
-              <app-store-item [product]="products"></app-store-item>
+              <app-store-item [product]="stores"></app-store-item>
+              <div>aya harf {{stores.first_name}}</div>
             </div>
           </div>
         </div>
 
-        <div *ngIf="products.length > 0" fxLayout="row wrap ">
+        <div *ngIf="allStores.length > 0" fxLayout="row wrap ">
           <div fxFlex="100">
             <mat-card class="p-0 text-center no-shadow">
               <pagination-controls class="product-pagination" autoHide="true" maxSize="5"

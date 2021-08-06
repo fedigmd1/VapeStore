@@ -7,6 +7,10 @@ export const APIS: any = {
     PROFILE: {
         UPDATE: "/user/update"
     },
+    STORE: {
+        ALL: "/store/all",
+        TEST: "/user"
+    },
     PRODUCT: {
         ALL: "/product/",
         ADD: "/product/",

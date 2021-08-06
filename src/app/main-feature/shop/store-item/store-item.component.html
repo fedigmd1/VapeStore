@@ -2,16 +2,16 @@
    <mat-card fxLayout="column">
       <div class="product-img">
          <a class="product-link" [routerLink]="['/store/', product.id]">
-            <img [src]="product.pictures[0].big" alt="">
+            <img [src]="product.picture" alt="image description">
          </a>
          <div class="icons" fxLayout="column">
             <!-- <a (click)="addToWishlist(product)" class="hvr-icon-pulse-shrink"><mat-icon class="hvr-icon mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon></a> -->
          </div>
       </div>
       <div class="product-info-wrapper">
-         <span class="category">{{product.category}}</span> <!-- region emplacement -->
+         <span class="category">{{product.first_name}}</span> <!-- region emplacement -->
          <div class="title-wrap">
-            <h4>{{product.name}}</h4>
+            <h4>{{product.last_name}}</h4>
          </div>
          <div class="stars">
             <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
