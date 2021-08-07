@@ -39,4 +39,7 @@ export class MarketPlaceService {
   updatePost(requestData) { 
   return this.httpClient.post(this.baseUrl + this.endpoint.MARKET_PLACE.UPDATE_POST,requestData)
   }
+  getPostById(requestData) { 
+    return this.httpClient.post(this.baseUrl + this.endpoint.MARKET_PLACE.POST_DETAILS,requestData)
+    }
 }
