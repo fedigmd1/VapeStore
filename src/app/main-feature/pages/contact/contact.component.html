@@ -4,15 +4,15 @@
   <div class="container">
   
   <mat-card>
-    <div class="col-lg-7 map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d50059.12775918716!2d72.78534673554945!3d21.16564923510817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1533793756956"   allowfullscreen></iframe>
+    <div class="map">
+      <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Avenue%20de%20Yasser%20Arafat,sahloul%20sousse%20tunisa+(My%20Business%20Name)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"   allowfullscreen></iframe>
   </div>
-    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" class="mt-20">
+  <div class="mt-20"> 
+      <div class="title">
+        <h3>Contact us</h3>
+      </div>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" class="mt-20" >
       <div fxFlex="100"   fxFlex.gt-sm="60" class="left-info-panel">
-    
-        <div class="title">
-            <h3>Contact us</h3>
-        </div>
   
          <ul>
            <li>
@@ -20,60 +20,63 @@
               <br>
             <h4>Address</h4>
             <br>
-           <p class="text-muted">123 Main Street, Anytown, CA 12345 – USA</p>
+           <p class="text-muted">Avenue de Yasser Arafat, Sahloul, Sousse</p>
            </li>
            <li>
               <i class="material-icons">call </i>
               <br>
             <h4>Phone</h4>
             <br>
-            <p class="text-muted">123 Main Street, Anytown, CA 12345 – USA</p>
+            <p class="text-muted">+216 53 897 129 / +216 24 260 330 / +216 54 836 708</p>
            </li>
            <li>
               <i class="material-icons">email </i>
               <br>
             <h4>Email</h4>
             <br>
-            <p class=" text-muted text-muted">123 Main Street, Anytown, CA 12345 – USA</p>
+            <p class=" text-muted text-muted">vapestore@gmail.com</p>
            </li>
          </ul>
       </div>
       <div fxFlex="100"   fxFlex.gt-sm="60" class="contact-form">
-          <div class="title">
-              <h3>Contact us</h3>
+        
+        <form fxLayout="row wrap" [formGroup]="contactForm" (ngSubmit)="sendMail()">
+          <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Your Name" name="name" formControlName="name">
+              <mat-error *ngIf="name.errors?.required">Email is required</mat-error>
+
+            </mat-form-field>
           </div>
-          <form fxLayout="row wrap">
-            <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                <mat-form-field class="w-100">
-                    <input matInput placeholder="Your Name (required)" #name="ngModel" ngModel name="name" required>
-                    <mat-error *ngIf="name.invalid">Please enter a valid message</mat-error>
-                  </mat-form-field>
-            </div>
-            <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                <mat-form-field class="w-100">
-                    <input matInput placeholder="Your Email (required)" #email="ngModel" ngModel name="email" required>
-                    <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
-                  </mat-form-field>
-            </div>
-            <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                <mat-form-field class="w-100">
-                    <input matInput placeholder="Subject" #subject="ngModel" ngModel name="subject" required>
-                    <mat-error *ngIf="subject.invalid">Please enter a valid message</mat-error>
-                  </mat-form-field>
-            </div>
-            <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                <mat-form-field class="w-100">
-                    <textarea placeholder="Post content" matInput rows="6" ngModel name="content" required></textarea>
-                  </mat-form-field>
-            </div>
-            <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                <button class="btn-project" mat-raised-button color="primary" type="submit">Send</button>
-              </div>
-            </form>
+          <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Email" name="Your Email" formControlName="email">
+              <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
+              <mat-error *ngIf="email.errors?.required">Email is required</mat-error>
+
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Subject" name="subject" formControlName="subject">
+              <mat-error *ngIf="subject.errors?.required">Email is required</mat-error>
+
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+            <mat-form-field class="w-100">
+              <textarea placeholder="Content" matInput rows="6" name="content" formControlName="content"></textarea>
+              <mat-error *ngIf="content.errors?.required">Email is required</mat-error>
+
+            </mat-form-field>
+          </div>
+          <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+            <button class="btn-project" mat-raised-button color="primary" type="submit">Send</button>
+          </div>
+        </form>
       </div>
     </div>
-    
+  </div>
   </mat-card>
 </div>
 </div>
-
