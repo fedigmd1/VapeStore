@@ -8,7 +8,6 @@ import { CompareComponent } from './compare/compare.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FaqComponent } from './faq/faq.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MainPageComponent } from './main-page/main-page.component';
@@ -26,7 +25,6 @@ const routes: Routes = [
       { path: 'wishlist', component: WishlistComponent },
       { path: 'compare', component: CompareComponent },
       { path: 'my-account', component: MyAccountComponent },
-      { path: 'error', component: ErrorPageComponent },
       { path: 'testimonials', component: ReviewsComponent },
       { path: 'order-success', component: OrderSuccessComponent }
     ]
