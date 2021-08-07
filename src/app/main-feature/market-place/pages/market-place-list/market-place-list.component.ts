@@ -49,8 +49,6 @@ export class MarketPlaceListComponent implements OnInit, OnDestroy {
   }
 
   getDetails(id: any) {
-    console.log(id);
-    
     let url = 'market-place/post/' + id + '/details'
     this.router.navigate([url])
   }
