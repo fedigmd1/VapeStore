@@ -12,7 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { OrderSuccessComponent } from './order-success/order-success.component';
@@ -37,14 +36,10 @@ import { MainPageComponent } from './main-page/main-page.component';
     MyAccountComponent,
     FaqComponent,
     AboutUsComponent,
-    ErrorPageComponent,
     ReviewsComponent,
     OrderSuccessComponent,
     MainPageComponent
 
-  ],
-  exports:[
-    ErrorPageComponent
   ]
 })
 export class PagesModule { }
