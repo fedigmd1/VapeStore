@@ -17,7 +17,8 @@ export const APIS: any = {
         ALL_POSTS: "/posts/all",
         ADD_POST: "/posts/create",
         POST_DETAILS: "/posts/post",
-        UPDATE_POST: "/posts/update",
         DELETE_POST: "/posts/delete",
+        UPDATE_POST: "/posts/update",
+        ADD_COMMENT: "/posts/create-comment",
     }
 }
