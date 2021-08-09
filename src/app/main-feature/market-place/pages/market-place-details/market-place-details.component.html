@@ -79,7 +79,7 @@
                                 <mat-form-field class="w-100">
                                     <textarea placeholder="Comment content" matInput rows="4" formControlName="comment"
                                         name="content"></textarea>
-                                    <mat-error *ngIf="comment.invalid">Please enter a valid message</mat-error>
+                                    <mat-error *ngIf="comment.invalid && comment.touched">Please enter a valid message</mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1"
