@@ -86,7 +86,10 @@ export class MarketPlaceListComponent implements OnInit, OnDestroy {
   checkUser(postUserId){
    return postUserId == this.sessionService?.getUserDetails()?._id
   }
-  
+  checkUserRole(){
+    return  this.sessionService?.getUserDetails()?.role != 'store'
+   }
+
   showUpdatePostModal(post){
     this.modalService.updatePostModal(post).subscribe(requestData => {
       console.log(requestData);
