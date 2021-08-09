@@ -84,3 +84,30 @@ a:hover{
     text-decoration: underline;
     font-size: 16px;
 }
+.search {
+    position: relative;
+    width: 550px;
+     input {
+      width: 100%;
+      height: 54px;
+      border: none;
+      border: 1px solid #e5e5e5;
+      padding: 0 56px 0 12px;
+      color: #777777;
+      &:focus {
+        outline: none;
+      }
+     }
+     button {
+      width: 54px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: white;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      border-radius: 0;
+     }
+  }

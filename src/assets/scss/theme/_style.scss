@@ -6588,7 +6588,11 @@ img {
       .main-blog-panel {
         padding-right: 15px;
           .single-blog-list {
-
+              .post-title{
+                font-size: 22px !important;
+                margin-bottom: 5px !important;
+                font-weight: 500 !important;
+              }
               .image-box {
                 overflow: hidden;
                 padding-right: 10px;
@@ -6671,9 +6675,8 @@ img {
                    .inner {
                     position: relative;
                     padding: 30px 0px 25px;
-                    border-top: 1px solid $grey6;
-                    border-bottom: 1px solid $grey6;
                      .img-box {
+                       border-radius: 50%;
                       width: 100px;
                       height: 100px;
                       overflow: hidden;
@@ -6689,16 +6692,17 @@ img {
                       line-height: 24px;
                       border-bottom: none;
                       margin: 0;
-                      h5 {
-                        color: $grey4;
-                        font-size: 18px;
-                        margin-bottom: 5px;
-                        font-weight: 500;
-                      }
-                      p {
-                        margin: 0;
-                      }
+
                      }
+                     &::before {
+                      content: "";
+                        left: 0;
+                        position: absolute;
+                        width: 100%;
+                        height: 0.0625rem;
+                        bottom: 5px;
+                        background-color:  $grey6;
+                    }
                    }
                  }
                }
@@ -6718,7 +6722,7 @@ img {
                        .comment {
                         position: relative;
                         font-size: 14px;
-                        padding: 0px 0px 0px 80px;
+                        margin-left: 30px;
                          .author-thumb {
                           position: absolute;
                           left: 0px;
