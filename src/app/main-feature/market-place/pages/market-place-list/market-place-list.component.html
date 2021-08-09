@@ -2,14 +2,14 @@
 <div class="blog-list">
  
   <div class="container">
-    <div class="d-flex justify-content-center mt-4"  *ngIf="checkUserRole()">
+    <div class="d-flex justify-content-center mt-4">
       <div class="search">
        <input class="form-control"(input)="onSearch($event.target.value)" placeholder="Search..." type="search">
        <button mat-raised-button color="primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i> </button>
    </div>
   </div>    
 
-    <div class="d-flex justify-content-end mb-2 mt-2">
+    <div class="d-flex justify-content-end mb-2 mt-2" *ngIf="checkUserRole()">
       <a class="add-post-btn" (click)="showAddPostModal()">
         <mat-icon mat-stroked-button  class="mat-icon-lg mat-icon material-icons"  data-toggle="tooltip" data-placement="top" title="Add post">add
         </mat-icon>
