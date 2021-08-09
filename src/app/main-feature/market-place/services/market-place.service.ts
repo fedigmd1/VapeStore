@@ -31,6 +31,9 @@ export class MarketPlaceService {
   addPost(requestData) { 
     return this.httpClient.post(this.baseUrl + this.endpoint.MARKET_PLACE.ADD_POST,requestData)
   }
+  addComment(requestData) { 
+    return this.httpClient.post(this.baseUrl + this.endpoint.MARKET_PLACE.ADD_COMMENT,requestData)
+  }
 
   deletePost(requestData) {
     return this.httpClient.post(this.baseUrl + this.endpoint.MARKET_PLACE.DELETE_POST,requestData)
