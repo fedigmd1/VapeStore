@@ -1,9 +1,8 @@
-<app-breadcrumb [title]="'Market Place'" [breadcrumb]="'Market Place'"></app-breadcrumb>
 
 <div class="blog-list">
  
   <div class="container">
-    <div class="d-flex justify-content-center mt-4">
+    <div class="d-flex justify-content-center mt-4"  *ngIf="checkUserRole()">
       <div class="search">
        <input class="form-control"(input)="onSearch($event.target.value)" placeholder="Search..." type="search">
        <button mat-raised-button color="primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i> </button>
@@ -40,7 +39,7 @@
                     <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">
                       <i class="material-icons">person </i>
                     </button>
-                    Marc Spenser
+                    {{post.user_id.first_name}} {{post.user_id.last_name}}
                   </li>
                   <li>
                     <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">
@@ -52,7 +51,7 @@
                 <p class="description-holder">{{post.description}}</p>
               </div>
               <div class="edit-buttons d-flex justify-content-center flex-column p-3" *ngIf="checkUser(post.user_id)">
-                <mat-icon   class="mat-icon-lg mat-icon material-icons mb-4 cursor-pointer" (click)="showUpdatePostModal(post)" data-toggle="tooltip" data-placement="top" title="Edit post">edit
+                <mat-icon   class="mat-icon-lg mat-icon material-icons mb-2 cursor-pointer" (click)="showUpdatePostModal(post)" data-toggle="tooltip" data-placement="top" title="Edit post">edit
                 </mat-icon>
                 <mat-icon  class="mat-icon-lg mat-icon material-icons cursor-pointer"  data-toggle="tooltip" data-placement="top" title="Delete post"
                 (click)="deletePost(post._id)">delete
