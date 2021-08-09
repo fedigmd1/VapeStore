@@ -15,11 +15,13 @@ import { SessionService } from 'src/app/shared/services/session.service';
 })
 export class MarketPlaceListComponent implements OnInit, OnDestroy {
 
-  id = 6
-  postList : Post[]
-  subscription = new Subscription();
-  public page: any;
+
   contentLoaded
+  allPostSearch
+  postList : Post[]
+  public page: any;
+  subscription = new Subscription();
+
   constructor(
     private router: Router,
     private snackBar: MatSnackBar,
@@ -36,8 +38,9 @@ export class MarketPlaceListComponent implements OnInit, OnDestroy {
     this.contentLoaded = false
       this.subscription.add(this.marketPlaceService.getAllPosts().subscribe(res => {
         if (res) {
-          this.contentLoaded = true
           this.postList = res
+          this.allPostSearch = res;
+          this.contentLoaded = true
         }
       }, (error) => {
         console.log(error)
@@ -46,8 +49,7 @@ export class MarketPlaceListComponent implements OnInit, OnDestroy {
   }
 
   getDetails(id: any) {
-    this.id = id
-    let url = 'market-place/post/' + this.id + '/details'
+    let url = 'market-place/post/' + id + '/details'
     this.router.navigate([url])
   }
 
@@ -84,7 +86,10 @@ export class MarketPlaceListComponent implements OnInit, OnDestroy {
   checkUser(postUserId){
    return postUserId == this.sessionService?.getUserDetails()?._id
   }
-  
+  checkUserRole(){
+    return  this.sessionService?.getUserDetails()?.role != 'store'
+   }
+
   showUpdatePostModal(post){
     this.modalService.updatePostModal(post).subscribe(requestData => {
       console.log(requestData);
@@ -101,6 +106,13 @@ export class MarketPlaceListComponent implements OnInit, OnDestroy {
         this.snackBar.open(error.message, '×', { panelClass: 'red-snackbar', verticalPosition: 'top', duration: 3000 });
       }))
     });
+  }
+  onSearch(value: string): void {
+    if (value === '') {
+      this.postList = this.allPostSearch;
+    } else {
+      this.postList = this.allPostSearch.filter(({ title }) => title.toLowerCase().indexOf(value) > -1);
+    }
   }
 
   public onPageChanged(event) {

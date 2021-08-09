@@ -1,23 +1,31 @@
-<app-breadcrumb [title]="'Market Place'" [breadcrumb]="'Market Place'"></app-breadcrumb>
 
 <div class="blog-list">
  
   <div class="container">
-    <div class="d-flex justify-content-end mt-4">
+    <div class="d-flex justify-content-center mt-4">
+      <div class="search">
+       <input class="form-control"(input)="onSearch($event.target.value)" placeholder="Search..." type="search">
+       <button mat-raised-button color="primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i> </button>
+   </div>
+  </div>    
+
+    <div class="d-flex justify-content-end mb-2 mt-2" *ngIf="checkUserRole()">
       <a class="add-post-btn" (click)="showAddPostModal()">
         <mat-icon mat-stroked-button  class="mat-icon-lg mat-icon material-icons"  data-toggle="tooltip" data-placement="top" title="Add post">add
         </mat-icon>
       </a>
-    </div>
+    </div>    
+ 
+
     <div *ngFor="let post of postList | paginate: { itemsPerPage: 10, currentPage: page  }">
       <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" class="blog-list-wrapper  sec-padding position-relative">
         <div fxFlex="100" fxFlex.gt-sm="100" class="main-blog-panel w-100 ">
           <div class="single-blog-list shadow-box  card-height"  fxLayout="row" fxLayout.lt-md="column">
-            <div fxFlex="100" fxFlex.gt-sm="30" class="image-box cursor-pointer" (click)="getDetails(id)">
+            <div fxFlex="100" fxFlex.gt-sm="30" class="image-box cursor-pointer" (click)="getDetails(post._id)">
               <img  class="image-scale" [src]="post.picture" onerror="this.src='assets/images/blog/b1.jpg'">
             </div>
             <div  fxFlex="100" fxFlex.gt-sm="70" class="text-box mt-2 row">
-                <div class="mt-2 title-margin cursor-pointer" (click)="getDetails(id)">
+                <div class="mt-2 title-margin cursor-pointer" (click)="getDetails(post._id)">
                   <h4>{{post.title}}</h4>
                 </div>
                 <ul fxLayout="row">
@@ -31,7 +39,7 @@
                     <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">
                       <i class="material-icons">person </i>
                     </button>
-                    Marc Spenser
+                    {{post.user_id.first_name}} {{post.user_id.last_name}}
                   </li>
                   <li>
                     <button color="primary" mat-icon-button aria-label="Example icon-button with a heart icon">

@@ -31,6 +31,9 @@ export class MarketPlaceService {
   addPost(requestData) { 
     return this.httpClient.post(this.baseUrl + this.endpoint.MARKET_PLACE.ADD_POST,requestData)
   }
+  addComment(requestData) { 
+    return this.httpClient.post(this.baseUrl + this.endpoint.MARKET_PLACE.ADD_COMMENT,requestData)
+  }
 
   deletePost(requestData) {
     return this.httpClient.post(this.baseUrl + this.endpoint.MARKET_PLACE.DELETE_POST,requestData)
@@ -39,4 +42,7 @@ export class MarketPlaceService {
   updatePost(requestData) { 
   return this.httpClient.post(this.baseUrl + this.endpoint.MARKET_PLACE.UPDATE_POST,requestData)
   }
+  getPostById(requestData) { 
+    return this.httpClient.post(this.baseUrl + this.endpoint.MARKET_PLACE.POST_DETAILS,requestData)
+    }
 }
