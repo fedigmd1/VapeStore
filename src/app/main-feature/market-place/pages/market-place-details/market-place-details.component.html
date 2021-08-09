@@ -9,10 +9,13 @@
                         <div class="post-author">
                             <div class="inner d-flex align-items-center">
                                 <div class="img-box">
-                                    <img class="img-responsive" src="assets/images/about-us/t2.jpg">
+                                    <img class="img-responsive" *ngIf="contentLoaded"
+                                        [src]="postDetails?.user_id.picture">
+                                    <img class="image-scale" *ngIf="!postDetails?.user_id.picture && contentLoaded"
+                                        src="assets/images/user-photo.jpg">
                                 </div>
                                 <div class="text-box">
-                                    <h4>to fix with BE</h4>
+                                    <h4> {{postDetails?.user_id.first_name}} {{postDetails?.user_id.last_name}}</h4>
                                 </div>
                             </div>
                         </div>
@@ -24,7 +27,8 @@
                     </ngx-skeleton-loader>
                     <div class="image-box d-flex justify-content-center">
                         <img class="image-scale" *ngIf="contentLoaded" [src]="postDetails?.picture">
-                        <img class="image-scale" *ngIf="!postDetails?.picture && contentLoaded" src="assets/images/blog/b1.jpg">
+                        <img class="image-scale" *ngIf="!postDetails?.picture && contentLoaded"
+                            src="assets/images/blog/b1.jpg">
                     </div>
                     <div class="text-box">
                         <ul class="det-info" fxLayout="row">
@@ -45,51 +49,25 @@
                         </ul>
                         <p>{{postDetails?.description}}</p>
                     </div>
-                    <div class="comments-area">
+                    <div  *ngIf="postDetails?.comments.length>0" class="comments-area">
                         <div class="group-title">
                             <h3>Read Comments</h3>
                         </div>
-                        <!--Comment Box-->
-                        <div class="comment-box">
-                            <div class="comment">
-                                <div class="comment-inner">
-                                    <div class="d-flex align-items-center">
-                                        <mat-icon>person</mat-icon>
-                                        <div class="comment-info clearfix text-center">Steven Rich – Sep 17, 2016:</div>
+                        <div *ngFor="let comment of postDetails?.comments">
+                            <!--Comment Box-->
+                            <div class="comment-box">
+                                <div class="comment">
+                                    <div class="comment-inner">
+                                        <div class="d-flex align-items-center">
+                                            <mat-icon>person</mat-icon>
+                                            <div class="comment-info clearfix text-center">{{comment.user_id.first_name}} {{comment.user_id.last_name}} – {{comment.user_id.createdAt | date}}</div>
+                                        </div>
+                                        <div class="text">{{comment.content}} </div>
                                     </div>
-                                    <div class="text">How all this mistaken idea of denouncing pleasure and praising
-                                        pain was born and I will give you a complete account of the system, and expound
-                                        the actual teachings.</div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="comment-box">
-                            <div class="comment">
-                                <div class="comment-inner">
-                                    <div class="d-flex align-items-center">
-                                        <mat-icon>person</mat-icon>
-                                        <div class="comment-info clearfix text-center">Steven Rich – Sep 17, 2016:</div>
-                                    </div>
-                                    <div class="text">How all this mistaken idea of denouncing pleasure and praising
-                                        pain was born and I will give you a complete account of the system, and expound
-                                        the actual teachings.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-box">
-                            <div class="comment">
-                                <div class="comment-inner">
-                                    <div class="d-flex align-items-center">
-                                        <mat-icon>person</mat-icon>
-                                        <div class="comment-info clearfix text-center">Steven Rich – Sep 17, 2016:</div>
-                                    </div>
-                                    <div class="text">How all this mistaken idea of denouncing pleasure and praising
-                                        pain was born and I will give you a complete account of the system, and expound
-                                        the actual teachings.</div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="contact-form">
                         <div class="header-title">
@@ -101,7 +79,7 @@
                                 <mat-form-field class="w-100">
                                     <textarea placeholder="Comment content" matInput rows="4" formControlName="comment"
                                         name="content"></textarea>
-                                        <mat-error *ngIf="comment.invalid">Please enter a valid message</mat-error>
+                                    <mat-error *ngIf="comment.invalid">Please enter a valid message</mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1"

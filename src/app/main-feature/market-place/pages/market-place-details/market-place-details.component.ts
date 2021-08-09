@@ -41,7 +41,11 @@ export class MarketPlaceDetailsComponent implements OnInit {
 
   }
   addComment(){
+    
     console.log(this.commentForm);
+    if (this.commentForm.valid){
+      this.marketPlaceService.addComment({content: this.commentForm.value.comment}).subscribe((response: any) => {})
+    }
     
   }
 
