@@ -1,7 +1,7 @@
 [
-    { "title": "New Laptops", "subtitle": "Sale up to 30% off all products in the new collection.", "image": "assets/images/product/laptop.png" },
-    { "title": "Tablets, Smartphones and more", "subtitle": "Sale up to 30%.", "image": "assets/images/product/tablet.png" },
-    { "title": "New Cameras Collection", "subtitle": "Sale up to 30%.", "image": "assets/images/product/cameras.png" },
-    { "title": "Cach Big Offers on Cameras", "subtitle": "Sale up to 20%.", "image": "assets/images/product/mobiles.png" },
+    { "title": "New e-liquids", "subtitle": "Sale up to 30% off all products in the new collection.", "image": "assets/images/lig.png" },
+    { "title": "E-liquid, Ato and more", "subtitle": "", "image": "assets/images/atoo.png" },
+    { "title": "E-liquid, Ato and more", "subtitle": "", "image": "assets/images/atoo.png" },
+    { "title": "New Vapes Collection", "subtitle": "Sale up to 20%.", "image": "assets/images/vapes.png"},
     { "title": "Big offer on Smartphones", "subtitle": "Sale up to 20%.", "image": "assets/images/product/cameras.png" }
   ]
