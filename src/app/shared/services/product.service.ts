@@ -4,6 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from 'src/app/core/modals/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs/operators';
+import { User } from 'src/app/core/models/auth';
+import { environment } from 'src/environments/environment';
+import { APIS } from 'src/app/core/config/route/endpoint';
 
 
 
@@ -20,6 +23,8 @@ export class ProductService {
   private _url: string = "assets/data/";
   public url = "assets/data/banners.json";
 
+  baseUrl: string = environment.baseUrl
+
   public compareProducts: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   public observer: Subscriber<{}>;
 
@@ -27,8 +32,12 @@ export class ProductService {
     this.compareProducts.subscribe(products => products = products)
   }
 
+
   private products(): Observable<Product[]> {
     return this.httpClient.get<Product[]>('assets/data/products2.json');
+  }
+  private stores(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.baseUrl + APIS.STORE.ALL);
   }
 
   public banners(): Observable<any[]> {
@@ -57,12 +66,6 @@ export class ProductService {
     // return this.httpClient.get<Product>(this._url + 'product-' + id + '.json');
   }
 
-
-  /*
----------------------------------------------
-----------  Compare Product  ----------------
----------------------------------------------
-*/
 
   // Get Compare Products
   public getComapreProducts(): Observable<Product[]> {
@@ -128,6 +131,10 @@ export class ProductService {
 
       })
     ));
+  }
+
+  public getstoreByCategory() {
+    return this.stores()
   }
 
 }

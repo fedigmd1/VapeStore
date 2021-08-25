@@ -14,7 +14,7 @@
             </ngx-skeleton-loader>
             <div *ngIf="contentLoaded" class="baner seccond">
               <div fxLayout="row" fxLayout.xs="column" class="info">
-                <div fxFlex="100" fxFlex.gt-md="50" class="bn-img">
+                <div fxFlex="100" class="bn-img">
                   <img [src]="bn.image" alt="">
                 </div>
                 <div fxFlex="100" fxFlex.gt-md="50" class="text-box w-50" fxLayout="column">
@@ -42,7 +42,7 @@
 
   <div class="vertical-products">
     <div class="container">
-      <app-product-vertical [products]="products"></app-product-vertical>
+      <app-product-vertical [id]="id"></app-product-vertical>
     </div>
   </div>
   <div class="blog-section sec-padding">

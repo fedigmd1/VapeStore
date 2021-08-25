@@ -61,3 +61,12 @@ form {
   margin-left: 10px !important;
   background-color: gray 
 }
+
+.parent{
+  position: relative;
+}
+.icon-item{
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}

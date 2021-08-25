@@ -7,6 +7,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
 import { ProductDialogComponent } from '../products/product-dialog/product-dialog.component';
+import { User } from 'src/app/core/models/auth';
 
 @Component({
   selector: 'app-store-item',
@@ -16,7 +17,7 @@ import { ProductDialogComponent } from '../products/product-dialog/product-dialo
 export class StoreItemComponent implements OnInit {
 
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
-  @Input() product: Product;
+  @Input() product: User;
 
   constructor(
     private router: Router,
@@ -26,6 +27,8 @@ export class StoreItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.warn('this.product', this.product);
+    
   }
 
   // Add to wishlist

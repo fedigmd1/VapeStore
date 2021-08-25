@@ -13,21 +13,34 @@
 
             <div class="col-6">
               <label class="text-left w-100 mb-2 mainFont-medium fs-12 text-dark">Product title</label>
-              <div class="w-100">
-                <input class="form-control" [ngClass]="{'error-form-control' : name.invalid && name.touched}"
-                  placeholder="product name" type="text" [class.is-invalid]="name.invalid && name.touched"
-                  formControlName="name" required>
+              <div class="parent w-100">
+                <select class="form-control" [ngClass]="{'error-form-control' : name.invalid && name.touched}"
+                  [class.is-invalid]="name.invalid && name.touched" formControlName="name" required
+                  (change)="onChangeSorting('title',$event.target.value)">
+                  <option *ngFor="let cat of productTitle" value="{{cat}}">{{cat}}</option>
+                </select>
+                <span class="">
+                  <mat-icon *ngIf="!name.invalid || !name.touched" class="icon-item" aria-hidden="false"
+                    aria-label="Example home icon">expand_more</mat-icon>
+                </span>
               </div>
               <div *ngIf="name.invalid && name.touched" class="text-danger text-left">
                 <small *ngIf="name.errors?.required">name is required</small>
               </div>
             </div>
+
             <div class="col-6">
               <label class="text-left w-100 mb-2 mainFont-medium fs-12 text-dark">Product Category</label>
-              <div class="w-100">
-                <input class="form-control" [ngClass]="{'error-form-control' : category.invalid && category.touched}"
-                  placeholder="category" type="text" [class.is-invalid]="category.invalid && category.touched"
-                  formControlName="category" required>
+              <div class="parent w-100">
+                <select class="form-control" [ngClass]="{'error-form-control' : category.invalid && category.touched}"
+                  [class.is-invalid]="category.invalid && category.touched" formControlName="category" required
+                  (change)="onChangeSorting('categorie', $event.target.value)">
+                  <option *ngFor="let cat of productCategories" value="{{cat}}">{{cat}}</option>
+                </select>
+                <span class="">
+                  <mat-icon *ngIf="!category.invalid || !category.touched" class="icon-item" aria-hidden="false"
+                    aria-label="Example home icon">expand_more</mat-icon>
+                </span>
               </div>
               <div *ngIf="category.invalid && category.touched" class="text-danger text-left">
                 <small *ngIf="category.errors?.required">Category is required</small>
@@ -38,10 +51,16 @@
 
             <div class="col-6">
               <label class="text-left w-100 mb-2 mainFont-medium fs-12 text-dark mt-3">Product brand</label>
-              <div class="w-100">
-                <input class="form-control" [ngClass]="{'error-form-control' : brand.invalid && brand.touched}"
-                  placeholder="brand" type="text" [class.is-invalid]="brand.invalid && brand.touched"
-                  formControlName="brand" required>
+              <div class="parent w-100">
+                <select class="form-control" [ngClass]="{'error-form-control' : brand.invalid && brand.touched}"
+                  [class.is-invalid]="brand.invalid && brand.touched" formControlName="brand" required
+                  (change)="onChangeSorting('categorie', $event.target.value)">
+                  <option *ngFor="let cat of productBrand" value="{{cat}}">{{cat}}</option>
+                </select>
+                <span class="">
+                  <mat-icon *ngIf="!brand.invalid || !brand.touched" class="icon-item" aria-hidden="false"
+                    aria-label="Example home icon">expand_more</mat-icon>
+                </span>
               </div>
               <div *ngIf="brand.invalid && brand.touched" class="text-danger text-left">
                 <small *ngIf="brand.errors?.required">brand is required</small>

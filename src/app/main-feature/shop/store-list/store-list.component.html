@@ -1,6 +1,6 @@
 <app-breadcrumb [title]="'Shop'" [breadcrumb]="'Shop'"></app-breadcrumb>
 
-<div class="left-sidebar-wrapper sec-padding">
+<div *ngIf="loaded" class="left-sidebar-wrapper sec-padding">
   <div class="container">
     <div class="sidebar-wrapper" fxLayout='row' fxLayout.lt-md="column">
       <div fxFlex="100" fxFlex.lt-sm="100" class="all-products" ngClass.gt-sm="p-left">
@@ -39,17 +39,18 @@
             </button>
           </div>
         </div>
+        
         <div [@Animation]="animation" fxLayout="row wrap" class="products-wrapper">
           <div
-            *ngFor="let products of allItems | orderBy:sortByOrder | paginate: { itemsPerPage: 12, currentPage: page  }"
+            *ngFor="let stores of allStores | orderBy:sortByOrder | paginate: { itemsPerPage: 12, currentPage: page  }"
             fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
             <div class="product-box">
-              <app-store-item [product]="products"></app-store-item>
+              <app-store-item [product]="stores"></app-store-item>
             </div>
           </div>
         </div>
 
-        <div *ngIf="products.length > 0" fxLayout="row wrap ">
+        <div *ngIf="allStores.length > 0" fxLayout="row wrap ">
           <div fxFlex="100">
             <mat-card class="p-0 text-center no-shadow">
               <pagination-controls class="product-pagination" autoHide="true" maxSize="5"

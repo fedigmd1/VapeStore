@@ -24,6 +24,24 @@ export class AddProductModalComponent implements OnInit {
   color: FormControl
   quantite: FormControl
   displayMessageError = false
+  productTitle = ["Kit", "Box", "Ato", "Liquide"]
+  productCategories = []
+  productBrand = []
+  product = [
+    { 'key': 'Kit', 'value': ["Pen", "Expert"] },
+    { 'key': 'Pen', 'value': ["Smoke", "Puma"] },
+    { 'key': 'Expert', 'value': ["Vaporesso", "Smoke", "Puma",] },
+    { 'key': 'Box', 'value': ["mini", "mod"] },
+    { 'key': 'mini', 'value': ["Vaporesso", "Drug"] },
+    { 'key': 'mod', 'value': ["SX-mini", "Vaporesso", "Drug", "Puma"] },
+    { 'key': 'Ato', 'value': ["RDTA", "RTA"] },
+    { 'key': 'RDTA', 'value': ["Zeus", "DeadRabbit"] },
+    { 'key': 'RTA', 'value': ["Zeus", "DeadRabbit"] },
+    { 'key': 'Liquide', 'value': ["Base", "Arome"] },
+    { 'key': 'Base', 'value': ["50-50", "70-30", "30-70"] },
+    { 'key': 'Arome', 'value': ["Fruite", "Gaurmand"] },
+  ]
+
 
   public event: EventEmitter<any> = new EventEmitter();
 
@@ -83,7 +101,6 @@ export class AddProductModalComponent implements OnInit {
   }
 
   getBase64(event: any) {
-    let me = this;
     let file = event.target.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -107,4 +124,23 @@ export class AddProductModalComponent implements OnInit {
       this.addProductForm.value
     }
   }
+
+  getValueByKey(key) {
+    return this.product.filter((x: any) => {
+      if (x.key == key) {
+        return x.value;
+      }
+    });
+  }
+
+  onChangeSorting(type, val) {
+    if (type == 'title') {
+      this.productCategories = this.getValueByKey(val)[0].value
+      this.productBrand = [];
+    }
+    if (type == 'categorie') {
+      this.productBrand = this.getValueByKey(val)[0].value;
+    }
+  }
+
 }
