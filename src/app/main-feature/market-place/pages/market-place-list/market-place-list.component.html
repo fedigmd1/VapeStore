@@ -17,7 +17,7 @@
     </div>    
  
 
-    <div *ngFor="let post of postList | paginate: { itemsPerPage: 10, currentPage: page  }">
+    <div *ngFor="let post of postList | paginate: { itemsPerPage: 3, currentPage: page  }">
       <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" class="blog-list-wrapper  sec-padding position-relative">
         <div fxFlex="100" fxFlex.gt-sm="100" class="main-blog-panel w-100 ">
           <div class="single-blog-list shadow-box  card-height"  fxLayout="row" fxLayout.lt-md="column">
@@ -50,7 +50,7 @@
                 </ul>
                 <p class="description-holder">{{post.description}}</p>
               </div>
-              <div class="edit-buttons d-flex justify-content-center flex-column p-3" *ngIf="checkUser(post.user_id)">
+              <div class="edit-buttons d-flex justify-content-center flex-column p-3" *ngIf="checkUser(post.user_id._id)">
                 <mat-icon   class="mat-icon-lg mat-icon material-icons mb-2 cursor-pointer" (click)="showUpdatePostModal(post)" data-toggle="tooltip" data-placement="top" title="Edit post">edit
                 </mat-icon>
                 <mat-icon  class="mat-icon-lg mat-icon material-icons cursor-pointer"  data-toggle="tooltip" data-placement="top" title="Delete post"

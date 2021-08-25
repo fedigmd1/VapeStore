@@ -84,6 +84,9 @@ export class MarketPlaceListComponent implements OnInit, OnDestroy {
   }
 
   checkUser(postUserId){
+    console.log(postUserId);
+    console.log(this.sessionService?.getUserDetails()?._id);
+    
    return postUserId == this.sessionService?.getUserDetails()?._id
   }
   checkUserRole(){
