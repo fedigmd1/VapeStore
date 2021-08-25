@@ -45,17 +45,4 @@
       <app-product-vertical [id]="id"></app-product-vertical>
     </div>
   </div>
-  <div class="blog-section sec-padding">
-    <div class="container">
-      <div class="section-title">
-        <ngx-skeleton-loader *ngIf="!contentLoaded" count="2" [theme]="{ 'border-radius': '0', height: '20px' }">
-        </ngx-skeleton-loader>
-        <h3 *ngIf="contentLoaded">Latest From Our Blog</h3>
-        <p *ngIf="contentLoaded">Business analytics (BA) is the practice of iterative, methodical exploration of an<br>
-          organization's data with emphasis on statistical analysis.</p>
-      </div>
-      <app-blog-section></app-blog-section>
-
-    </div>
-  </div>
 </div>
