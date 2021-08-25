@@ -7,6 +7,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product, ColorFilter } from 'src/app/core/modals/product.model';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Component({
   selector: 'app-store-list',
@@ -30,8 +31,13 @@ export class StoreListComponent implements OnInit {
   public products: any
   public tags: any[] = [];
   public colors: any[] = [];
+  loaded = false
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(
+    private loader: LoaderService,
+    private route: ActivatedRoute,
+    private productService: ProductService,
+  ) {
   }
 
   ngOnInit() {
@@ -40,11 +46,19 @@ export class StoreListComponent implements OnInit {
 
 
   getAllStore() {
-    this.productService.getstoreByCategory().subscribe(data => {
-      console.warn("data", data);
-      this.allStores = data.slice(0.8);;
-      this.allStoresSearch = this.allStores;
-    })
+    this.loader.showSpinner()
+    this.productService.getstoreByCategory().subscribe(
+      (data) => {
+        console.warn("data", data);
+        this.allStores = data.slice(0.8);;
+        this.allStoresSearch = this.allStores;
+        this.loader.stopSpinner()
+        this.loaded = true
+      }, (err) => {
+        console.warn("err", err);
+        this.loader.stopSpinner()
+        this.loaded = true
+      })
   }
 
   changeViewType(viewType, viewCol) {
@@ -77,7 +91,10 @@ export class StoreListComponent implements OnInit {
     if (value === '') {
       this.allStores = this.allStoresSearch;
     } else {
-      this.allStores = this.allStoresSearch.filter(({ name }) => name.toLowerCase().indexOf(value) > -1);
+      this.allStores = this.allStoresSearch.filter(({ first_name, last_name }) => 
+      { const name = first_name + " " + last_name
+        return name.toLowerCase().indexOf(value) > -1
+      });
     }
   }
 }
